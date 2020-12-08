@@ -1,0 +1,231 @@
+<html>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--Banner-->
+  <div class="header flex_to_corner">
+    <div style="flex-grow: 1">
+      <img class="BJB_logo" src="/assets/image/BJB logo.png" alt="BJB logo">
+    </div>
+    <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
+    <div class="sign_in_up" style="flex-grow: 1; text-align: right">
+        Selamat Datang user ||
+      <a href="#">LOG KELUAR</a> ||
+      <a href="#">KEMASKINI AKUAN</a>
+  </div>
+  </div>
+
+  <!--Navigation Bar-->
+  <div>
+    <ul>
+      <li><a href="#">LAMAN UTAMA</a></li>
+      <li class="dropdown">
+        <a class="active" href="#">SENARAI UTILITI</a>
+        <div class="dropdown-content">
+          <a routerLink="/view-utility">RUANG</a>
+          <a href="#">PERALATAN</a>
+        </div>
+      </li>
+      <li><a href="#">TENTANG KAMI</a></li>
+      <li><a href="#">HUBUNGI KAMI</a></li>
+    </ul>
+  </div>
+
+  <!--Content Start Here-->
+  <div class="registercontainer">  
+  
+    <div class="box_1">
+        <div class="title">
+            <h1 align="center">Booked Ruang</h1>
+        </div>
+        
+        <hr class="line">
+        <div class="row">
+            <div class="columnleft">
+                <img class="img" src="/assets/image/hall1.jpg"> 
+            </div>
+            <div class="columnright">
+                <font class="utilitytitle">Bilik Belajar dalam Bangsa Johor Bahagia</font><br>
+                Maklumat Tentang Tempahan: Sewa untuk menjalankan bincangan. Perlukan 15 kerusi.<br>
+                <b>Status: Tamat</b><br><br>
+                <hr width="10%" align="left">
+                <table>
+                    <tr>
+                    <td><label>Tarikh Mula</label></td>
+                    <td>08/12/2020</td>
+                  
+      
+                    <td><label>Masa Mula</label></td>
+                    <td>8:00am</td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Tarikh Tamat</label></td>
+                    <td>08/12/2020</td>
+      
+                    <td><label>Masa Tamat</label></td>
+                    <td>6:00pm</td>
+                    </tr>
+                </table>
+
+                <br><br>
+
+                <table>
+                    <tr>
+                    <td><label>Kadar Tempahan</label></td>
+                    <td><div class="price">RM20/jam</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Bayaran</label></td>
+                    <td><div class="price">RM200</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Diskaun</label></td>
+                    <td><div class="price">RM50</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Jumlah Bayaran</label></td>
+                    <td><div class="price">RM150</div></td>
+                    </tr>
+                  </table>
+                <br><br>
+
+                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" routerLink="/updateReservation">
+                <input type="button" name="delete" value="Padam" id="fed_btn">
+            </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+            <div class="columnleft">
+                <img class="img" src="/assets/image/badminton.png"> 
+            </div>
+            <div class="columnright">
+                <font class="utilitytitle">Gelanggang Badminton dalam Bangsa Johor Bahagia</font><br>
+                Maklumat Tentang Tempahan: -<br>
+                <b>Status: Aktif</b><br><br>
+                <hr width="10%" align="left">
+                <table>
+                    <tr>
+                    <td><label>Tarikh Mula</label></td>
+                    <td>08/02/2021</td>
+                  
+      
+                    <td><label>Masa Mula</label></td>
+                    <td>8:00am</td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Tarikh Tamat</label></td>
+                    <td>08/02/2021</td>
+      
+                    <td><label>Masa Tamat</label></td>
+                    <td>10:00am</td>
+                    </tr>
+                </table>
+
+                <br><br>
+                
+                <table>
+                    <tr>
+                    <td><label>Kadar Tempahan</label></td>
+                    <td><div class="price">RM3/jam</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Bayaran</label></td>
+                    <td><div class="price">RM6</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Diskaun</label></td>
+                    <td><div class="price">RM0</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Jumlah Bayaran</label></td>
+                    <td><div class="price">RM6</div></td>
+                    </tr>
+                  </table>
+                <br><br>
+                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn">
+                <input type="button" name="delete" value="Padam" id="fed_btn">
+            </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+            <div class="columnleft">
+                <img class="img" src="/assets/image/homestay1.jpg"> 
+            </div>
+            <div class="columnright">
+                <font class="utilitytitle">Homestay dalam Bangsa Johor Bahagia</font><br>
+                Maklumat Tentang Tempahan: -<br>
+                <b>Status: Aktif</b><br><br>
+                <hr width="10%" align="left">
+                <table>
+                    <tr>
+                    <td><label>Tarikh Mula</label></td>
+                    <td>25/12/2020</td>
+                  
+      
+                    <td><label>Masa Mula</label></td>
+                    <td>8:00am</td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Tarikh Tamat</label></td>
+                    <td>27/12/2020</td>
+      
+                    <td><label>Masa Tamat</label></td>
+                    <td>6:00pm</td>
+                    </tr>
+                </table>
+
+                <br><br>
+                
+                <table>
+                    <tr>
+                    <td><label>Kadar Tempahan</label></td>
+                    <td><div class="price">RM200/hari</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Bayaran</label></td>
+                    <td><div class="price">RM600</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Diskaun</label></td>
+                    <td><div class="price">RM100</div></td>
+                    </tr>
+      
+                    <tr>
+                    <td><label>Jumlah Bayaran</label></td>
+                    <td><div class="price">RM500</div></td>
+                    </tr>
+                  </table>
+                <br><br>
+                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn">
+                <input type="button" name="delete" value="Padam" id="fed_btn">
+            </div>
+        </div>
+        <hr class="line">
+    </div>
+  </div>
+ 
+  <!--Footer-->
+  <div class="bjb_footer">
+    <a href="https://www.facebook.com/kbjbkangkarpulai/" target="_blank"><img class="footer" src="/assets/image/facebook.jpg"></a>
+    <a href="mailto:bjbkangkarpulai@gmail.com" target="_blank"><img class="footer" src="/assets/image/gmail.jpg"></a>
+  </div>
+  <div class="bjb_footer">
+    © 2020 Bark Chic, Inc. All rights reserved
+  </div>
+ 
+</html>
+
+
