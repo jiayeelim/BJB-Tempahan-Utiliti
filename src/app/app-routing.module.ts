@@ -7,6 +7,7 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {InsertReservationComponent} from './insert-reservation/insert-reservation.component';
 import {UpdateReservationComponent} from './update-reservation/update-reservation.component';
+import {UserViewUtilitiComponent} from './user-view-utiliti/user-view-utiliti.component';
 import {ViewReservationComponent} from './view-reservation/view-reservation.component';
 import {ViewUtilityComponent} from './view-utility/view-utility.component';
 import {AddUtilityComponent} from './add-utility/add-utility.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'insertReservation', component: InsertReservationComponent},
   {path:'updateReservation', component: UpdateReservationComponent},
+  {path:'user-view-utility', component: UserViewUtilitiComponent},
   {path:'viewReservation', component: ViewReservationComponent},
   {path:'view-utility', component: ViewUtilityComponent},
   {path:'add-utility', component: AddUtilityComponent},
