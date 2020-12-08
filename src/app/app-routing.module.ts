@@ -11,6 +11,7 @@ import {ViewReservationComponent} from './view-reservation/view-reservation.comp
 import {ViewUtilityComponent} from './view-utility/view-utility.component';
 import {AddUtilityComponent} from './add-utility/add-utility.component';
 import {UpdateUtilityComponent} from './update-utility/update-utility.component';
+import {AdminPortalComponent} from './admin-portal/admin-portal.component';
 
 const routes: Routes = [
   {path:'appcomponent', component: AppComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'viewReservation', component: ViewReservationComponent},
   {path:'view-utility', component: ViewUtilityComponent},
   {path:'add-utility', component: AddUtilityComponent},
-  {path:'update-utility', component: UpdateUtilityComponent}
+  {path:'update-utility', component: UpdateUtilityComponent},
+  {path:'admin-portal', component: AdminPortalComponent}
 ];
 
 @NgModule({
