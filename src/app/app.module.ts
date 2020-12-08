@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { InsertReservationComponent } from './insert-reservation/insert-reservation.component';
 import { UpdateReservationComponent } from './update-reservation/update-reservation.component';
 import { ViewReservationComponent } from './view-reservation/view-reservation.component';
+import { UserPortalComponent } from './user-portal/user-portal.component';
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ViewReservationComponent } from './view-reservation/view-reservation.co
     InsertReservationComponent,
     UpdateReservationComponent,
     ViewReservationComponent,
+    UserPortalComponent,
     //SizeDetectorComponent
   ],
   imports: [
