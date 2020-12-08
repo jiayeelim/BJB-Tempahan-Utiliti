@@ -22,10 +22,10 @@ const routes: Routes = [
   {path:'insertReservation', component: InsertReservationComponent},
   {path:'updateReservation', component: UpdateReservationComponent},
   {path:'viewReservation', component: ViewReservationComponent},
-  {path:'view-utility', component: ViewUtilityComponent},
-  {path:'add-utility', component: AddUtilityComponent},
-  {path:'update-utility', component: UpdateUtilityComponent},
-  {path:'admin-portal', component: AdminPortalComponent}
+  {path:'viewUtility', component: ViewUtilityComponent},
+  {path:'addUtility', component: AddUtilityComponent},
+  {path:'updateUtility', component: UpdateUtilityComponent},
+  {path:'adminPortal', component: AdminPortalComponent}
 ];
 
 @NgModule({

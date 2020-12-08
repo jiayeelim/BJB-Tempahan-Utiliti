@@ -26,10 +26,13 @@ ul {
   
   li a:hover, .dropdown:hover .dropbtn {
     background-color:rgb(17, 156, 187);
+    text-decoration: none;
+    color: #000;
   }
   
   li.dropdown {
     display: inline-block;
+    position: relative;
   }
   
   .dropdown-content {
