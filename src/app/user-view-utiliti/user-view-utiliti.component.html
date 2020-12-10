@@ -9,7 +9,7 @@
     </div>
     <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
     <div class="sign_in_up" style="flex-grow: 1; text-align: right">
-        Selamat Datang admin ||
+        Selamat Datang user ||
       <a href="#">LOG KELUAR</a> ||
       <a href="#">KEMASKINI AKUAN</a>
   </div>
@@ -18,12 +18,12 @@
   <!--Navigation Bar-->
   <div>
     <ul>
-      <li><a href="#">LAMAN UTAMA</a></li>
+      <li><a routerLink="/home">LAMAN UTAMA</a></li>
       <li class="dropdown">
-        <a class="active" href="#">SENARAI UTILITI</a>
+        <a class="active" href="javascript:void(0)">SENARAI UTILITI</a>
         <div class="dropdown-content">
-          <a routerLink="/view-utility">RUANG</a>
-          <a href="#">PERALATAN</a>
+          <a routerLink="/user-view-utility">SENARAI RUANG</a>
+          <a routerLink="/viewReservation">SENARAI TEMPAHAN RUANG</a>
         </div>
       </li>
       <li><a href="#">TENTANG KAMI</a></li>
@@ -50,7 +50,7 @@
                 <hr width="10%" align="left">
                 15 orang<br>
                 <div class="price">RM20/jam</div>
-                <input type="submit" class="add" name="add" value="Tambah" id="fed_btn" routerLink="/addReservation">
+                <input type="submit" class="add" name="add" value="Tambah Tempahan" id="fed_btn" routerLink="/insertReservation">
             </div>
         </div>
 
@@ -65,7 +65,7 @@
                 <hr width="10%" align="left">
                 200 orang<br>
                 <div class="price">RM50/jam</div>
-                <input type="submit" class="add" name="add" value="Tambah" id="fed_btn" routerLink="/addReservation">
+                <input type="submit" class="add" name="add" value="Tambah Tempahan" id="fed_btn" routerLink="/insertReservation">
             </div>
         </div>
 
@@ -80,7 +80,7 @@
                 <hr width="10%" align="left">
                 40 orang<br>
                 <div class="price">RM15/jam</div>
-                <input type="submit" class="add" name="add" value="Tambah" id="fed_btn" routerLink="/addReservation">
+                <input type="submit" class="add" name="add" value="Tambah Tempahan" id="fed_btn" routerLink="/insertReservation">
             </div>
         </div>
 
@@ -95,7 +95,7 @@
                 <hr width="10%" align="left">
                 4 orang<br>
                 <div class="price">RM15/jam</div>
-                <input type="submit" class="add" name="add" value="Tambah" id="fed_btn" routerLink="/addReservation">
+                <input type="submit" class="add" name="add" value="Tambah Tempahan" id="fed_btn" routerLink="/insertReservation">
             </div>
         </div>
 
@@ -110,7 +110,7 @@
                 <hr width="10%" align="left">
                 5 orang<br>
                 <div class="price">RM80/semalam</div>
-                <input type="submit" class="add" name="add" value="Tambah" id="fed_btn" routerLink="/add-utility">
+                <input type="submit" class="add" name="add" value="Tambah Tempahan" id="fed_btn" routerLink="/insertReservation">
             </div>
         </div>
         <hr class="line">
