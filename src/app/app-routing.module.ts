@@ -24,9 +24,9 @@ const routes: Routes = [
   {path:'updateReservation', component: UpdateReservationComponent},
   {path:'user-view-utility', component: UserViewUtilitiComponent},
   {path:'viewReservation', component: ViewReservationComponent},
-  {path:'viewUtility', component: ViewUtilityComponent},
-  {path:'addUtility', component: AddUtilityComponent},
-  {path:'updateUtility', component: UpdateUtilityComponent},
+  {path:'view-utility', component: ViewUtilityComponent},
+  {path:'add-utility', component: AddUtilityComponent},
+  {path:'update-utility', component: UpdateUtilityComponent},
   {path:'adminPortal', component: AdminPortalComponent}
 ];
 

@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {environment} from '../environments/environment';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -12,6 +18,10 @@ import { ViewReservationComponent } from './view-reservation/view-reservation.co
 import { UserPortalComponent } from './user-portal/user-portal.component';
 import { AdminPortalComponent } from './admin-portal/admin-portal.component';
 import { UserViewUtilitiComponent } from './user-view-utiliti/user-view-utiliti.component';
+import { ViewUtilityComponent} from './view-utility/view-utility.component';
+import { AddUtilityComponent} from './add-utility/add-utility.component';
+import { UpdateUtilityComponent} from './update-utility/update-utility.component';
+
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
 @NgModule({
@@ -20,17 +30,27 @@ import { UserViewUtilitiComponent } from './user-view-utiliti/user-view-utiliti.
     RegisterComponent,
     HomeComponent,
     LoginComponent,
+
     InsertReservationComponent,
     UpdateReservationComponent,
     ViewReservationComponent,
+
     UserPortalComponent,
     AdminPortalComponent,
+
     UserViewUtilitiComponent,
+    ViewUtilityComponent,
+    AddUtilityComponent,
+    UpdateUtilityComponent
+
     //SizeDetectorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
