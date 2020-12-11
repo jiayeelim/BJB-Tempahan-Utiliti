@@ -27,7 +27,7 @@ const routes: Routes = [
   {path:'view-utility', component: ViewUtilityComponent},
   {path:'add-utility', component: AddUtilityComponent},
   {path:'update-utility', component: UpdateUtilityComponent},
-  {path:'adminPortal', component: AdminPortalComponent}
+  {path:'admin-portal', component: AdminPortalComponent}
 ];
 
 @NgModule({
