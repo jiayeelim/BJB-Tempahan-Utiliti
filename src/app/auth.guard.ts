@@ -13,31 +13,33 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot):
 
-    boolean {
-      let url: string = state.url;  
-      return this.verifyLogin(url);
-    }
+  boolean {
+    let url: string = state.url;  
+    return this.verifyLogin(url);
+  }
 
-    verifyLogin(url) : boolean{
-      if(!this.isLoggedIn()){
-          this.router.navigate(['/login']);
-          return false;
-      }
-      else if(this.isLoggedIn()){
+  verifyLogin(url) : boolean{
+    if(!this.isLoggedIn()){
+      this.router.navigate(['/login']);
+      return false;
+    }
+    else if(this.isLoggedIn()){
           return true;
-      }
-      throw new Error('Invalid value');
     }
+    throw new Error('Invalid value');
+  }
 
-      public isLoggedIn(): boolean{
-        let status = false;
-        if( localStorage.getItem('isLoggedIn') == "true"){
-          status = true;
-        }
-        else{
-          status = false;
-        }
-        return status;
-      }
+  public isLoggedIn(): boolean{
+    let status = false;
+    if( localStorage.getItem('isLoggedIn') == "true"){
+      status = true;
     }
+    else{
+      status = false;
+    }
+    return status;
+  }
+
+  
+}
   

@@ -28,26 +28,26 @@
 <div class="registercontainer">  
   
   <div class="box_1">
-    <form [formGroup]="addutilityform">
+    <!--<form [formGroup]="addutilityform">-->
         <h2 align="center">Tambah Ruang Baru</h2>
         <label>Nama</label>
-        <input type="text" name="name"  placeholder="Masukkan nama ruang" required><br><br><!--[(ngModel)]="ruangName"-->
+        <input type="text" name="name" [(ngModel)]="ruangName" placeholder="Masukkan nama ruang" required><br><br>
 
         <label>Maklumat Ruang</label>
-        <textarea name="infomation" rows="5" cols="70" placeholder="Masukkan maklumat ruang" required></textarea><br><br><!--[(ngModel)]="ruangInformation"-->
+        <textarea name="infomation" rows="5" cols="70" [(ngModel)]="ruangInformation" placeholder="Masukkan maklumat ruang" required></textarea><br><br>
 
         <label>Harga</label><br>
-        <input type="number" name="price" placeholder="Masukkan harga ruang" required><br><br><!--[(ngModel)]="ruangPrice"-->
+        <input type="number" name="price" [(ngModel)]="ruangPrice" placeholder="Masukkan harga ruang" required><br><br>
 
         <label>Kapaciti</label><br>
-        <input type="number" name="capacity" placeholder="Masukkan kapasiti ruang" required><br><br> <!--[(ngModel)]="ruangCapacity"-->
+        <input type="number" name="capacity" [(ngModel)]="ruangCapacity" placeholder="Masukkan kapasiti ruang" required><br><br>
 
         <label>Gambar</label><br>
-        <input type="file" name="fileToUpload"><br><br>
+        <input type="file" name="file" (change)="upload($event)" accept="*.png.jpg"><br><br>
 
-        <input type="submit" name="submit" value="Hantar" id="reg_btn">
+        <input type="submit" (click)="CreateRuang()" name="submit" value="Hantar" id="reg_btn">
 
-    </form>
+    <!--</form>-->
     </div>
 </div>
 

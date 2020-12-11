@@ -10,7 +10,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +28,7 @@ import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from './register.service';
+import { RuangService } from './ruang.service'
 
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
@@ -66,9 +67,10 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireStorageModule
   ],
-  providers: [AuthGuard, RegisterService],
+  providers: [AuthGuard, RegisterService, RuangService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
