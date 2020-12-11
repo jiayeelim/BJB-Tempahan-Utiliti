@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   model: Login = { username: "admin", password: "1234" };
-  loginForm?: FormGroup;
+  loginForm: FormGroup;
   message?: string;
   returnUrl?: string;
   submitted?: false;
