@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-update-utility',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-utility.component.css']
 })
 export class UpdateUtilityComponent implements OnInit {
+
+  updateutilityform: FormGroup;
 
   constructor() { }
 

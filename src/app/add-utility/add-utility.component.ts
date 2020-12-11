@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-utility',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUtilityComponent implements OnInit {
 
+  addutilityform: FormGroup;
+  /*ruangName: string;
+  ruangInformation: string;
+  ruangPrice: number;
+  ruangCapacity: number;*/
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  
 
 }

@@ -26,6 +26,7 @@ export class AuthGuard implements CanActivate {
       else if(this.isLoggedIn()){
           return true;
       }
+      throw new Error('Invalid value');
     }
 
       public isLoggedIn(): boolean{

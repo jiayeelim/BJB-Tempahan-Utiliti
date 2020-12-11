@@ -17,7 +17,7 @@
   <ul>
     <li><a routerLink="/admin-portal">LAMAN UTAMA</a></li>
     <li class="dropdown">
-        <a routerLink="/view-utility">SENARAI UTILITI</a>
+        <a routerLink="/view-utility">SENARAI UTILITI</a>y
     </li>
     <li><a href="#">TENTANG KAMI</a></li>
     <li><a href="#">HUBUNGI KAMI</a></li>
@@ -28,7 +28,7 @@
 <div class="registercontainer">  
   
   <div class="box_1">
-    <form action="" method="POST">
+    <form [formGroup]="updateutilityform">
         <h2 align="center">Kemaskini Ruang</h2>
         <label>Nama</label>
         <input type="text" name="name" placeholder="nama ruang" required><br><br>
