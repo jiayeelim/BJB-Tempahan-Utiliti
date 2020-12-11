@@ -31,18 +31,30 @@
 
 <div class = "registercontainer">
     <div class="box_1">
-        <!--<form [formGroup] = 'login' (ngSubmit)="validateLogin()" ngNativeValidate>-->
+      <p *ngIf="message" class="error-msg">{{message}}</p>
+        <form [formGroup] = 'loginForm' (ngSubmit)="login()">
             <h2>LOG MASUK</h2>
-            <label>Nama Pengguna</label>
-            <input type="text" formControlName="username" placeholder="nama pengguna" required><br>
-            <label>Kata Laluan</label>
-            <input type="password" formControlName="pwd" placeholder="kata laluan" required><br>
+            <div [ngClass]="{ 'has-error': submitted && f.username.errors }">
+            <label for ="username">Nama Pengguna</label>
+            <input type="text" class="form-control" formControlName="username" placeholder="nama pengguna" required><br>
+              <div *ngIf="submitted && f.username.errors">
+                <div *ngIf="f.username.errors.required">Username is required></div>
+              </div>
+            </div>
+          
+            <div [ngClass]="{ 'has-error': submitted && f.password.errors }"></div>
+            <label for="password">Kata Laluan</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="kata laluan" required><br>
+              <div *ngIf="submitted && f.password.errors">
+                <div *ngIf="f.password.errors.required">Password is required></div>
+              </div>
+            </div>
             <input type="submit" value="Log Masuk">
 
             <div class="sign_in_up" style="flex-grow: 1; text-align: center">
                 <p>Tiada Akaun? <a class="click-here" href='/register' target="_blank">Klik Sini</a> Untuk Daftar Akaun Anda!</p>
             </div>
-        <!--</form>-->
+        </form>
     </div>
 
 </div>
