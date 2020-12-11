@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-    this.returnUrl = '/add-utility';
+    this.returnUrl = '/admin-portal';
     this.authService.logout();
 
   }
