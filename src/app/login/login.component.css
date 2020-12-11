@@ -47,6 +47,13 @@ h2{
     box-sizing: border-box;
   }
 
+  p.error-msg{
+    padding: 5px 2px;
+    color: red;
+    background-color: pink;
+    border: 1px rgb(243, 59, 90) solid;
+}
+
    /*-----Container-----*/
    .registercontainer {
     position: relative;

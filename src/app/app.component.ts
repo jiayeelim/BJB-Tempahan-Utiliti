@@ -9,5 +9,5 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class AppComponent {
   title = 'my-dream-app';
 
-  constructor(private route:Router){}
+  constructor(){}
 }

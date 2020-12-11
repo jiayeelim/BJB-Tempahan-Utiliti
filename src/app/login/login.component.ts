@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login } from 'src/app/login';
+import { Login } from '../login';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -12,10 +12,10 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   model: Login = { username: "admin", password: "1234" };
-  loginForm: FormGroup;
-  message: string;
-  returnUrl: string;
-  submitted: false;
+  loginForm?: FormGroup;
+  message?: string;
+  returnUrl?: string;
+  submitted?: false;
 
   constructor(private formBuilder: FormBuilder,private router: Router, public authService: AuthService) { }
 
@@ -24,8 +24,9 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
-    this.returnUrl = '/admin-portal';
+    this.returnUrl = '/add-utility';
     this.authService.logout();
+
   }
 
   // convenience getter for easy access to form fields
