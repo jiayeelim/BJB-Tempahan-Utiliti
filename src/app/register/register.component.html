@@ -30,55 +30,57 @@
  <!--Content-->
 <div class="registercontainer">
     
-    
-  
   <div class="box_1">
-    <form action="PO_register.php" method="POST">
+    <!--<>form [formGroup]="registerForm" (ngSubmit)="submitted()" ngNativeValidate>-->
         <h2 align="center">Seksyen 1: Informasi Peribadi</h2>
         <label>Nama Pernuh</label>
-        <input type="text" name="name" placeholder="nama pengguna" required>
+        <input type="text"  class="form-control" [(ngModel)]="name" placeholder="nama pengguna" required>
 
         <label>Nombor Pengenalan</label>
-        <input type="text" name="ic" placeholder="nama pengguna" required>
+        <input type="text"  class="form-control" [(ngModel)]="ic" placeholder="Nombor Kad Pengenalan" required>
 
         <label>Tarikh Lahir</label><br>
         <input type="date" name="dob" required><br><br>
 
         <label>Tempat Tinggal</label><br>
-        <textarea name="address" rows="5" cols="70" required></textarea><br><br>
+        <label>Alamat 1</label>
+        <input type="text" class="form-control" [(ngModel)]="address1" placeholder="contoh: Jalan Bahagia" required>
+
+        <label>Alamat 2</label>
+        <input type="text" class="form-control" [(ngModel)]="address2" placeholder="contoh: Taman Sangat Bahagia" required>
+
+        <label>Poskod</label>
+        <input type="number"  class="form-control" [(ngModel)]="postcode" placeholder="contoh: 51550" required>
+
+        <label>Negeri</label>
+        <input type="text"  class="form-control" [(ngModel)]="state" placeholder="contoh: Johor" required>
 
         <label>Adakah anda Penduduk Kangkar Pulai?</label><br>
         <input type="radio" name="resident" value="yes">Ya<br>
         <input type="radio" name="resident" value="no" checked>Bukan<br><br>
 
         <label>E-mel</label>
-        <input type="text" name="email" placeholder="cth: abc@gmail.com" required>
+        <input type="text" class="form-control" [(ngModel)]="email" placeholder="cth: abc@gmail.com" required>
 
         <label>Tel no. Peribadi</label>
-        <input type="text" name="telno" placeholder="0123456789" required>
-
-        <label>Pekerjaan</label>
-        <input type="text" name="job" placeholder="pekerjaan" required>
-
+        <input type="text"  class="form-control" [(ngModel)]="phone" placeholder="0123456789" required>
 
         <h2 align="center"><br>Seksyen 2: Nama Pengguna & Kata laluan</h2>
 
         <label>Nama Pengguna Baru</label>
-        <input type="text" name="n_username" placeholder="nama pengguna baru" required>
+        <input type="text" class="form-control" [(ngModel)]="username" placeholder="nama pengguna baru" required>
 
         <label>Kata Laluan Baru</label>
-        <input type="password" name="n_pwd_1" placeholder="kata laluan baru" required>
+        <input type="password"  class="form-control" [(ngModel)]="password" placeholder="kata laluan baru" required>
 
         <label>Taip Semula Kata Laluan Baru</label>
-        <input type="password" name="n_pwd_2" placeholder="kata laluan baru" required>
+        <input type="password"  class="form-control" [(ngModel)]="password2" placeholder="kata laluan baru" required>
 
-        <input type="submit" name="submit" value="Hantar Borang Pendaftaran" id="reg_btn">
+        <input type="submit" (click)="CreateUser()" name="submit" value="Hantar Borang Pendaftaran" id="reg_btn">
 
-    </form>
+    <!--</form>-->
     </div>
 </div>
-
-
 
 <!--Footer-->
 <div class="bjb_footer">

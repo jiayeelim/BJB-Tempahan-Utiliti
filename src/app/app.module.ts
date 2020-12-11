@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import {} from '@angular/compiler';
-//import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
@@ -27,6 +27,7 @@ import { ViewUtilityComponent} from './view-utility/view-utility.component';
 import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterService } from './register.service';
 
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
@@ -58,7 +59,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    //FormsModule,
+    FormsModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
@@ -67,7 +68,7 @@ const appRoutes: Routes = [
     AngularFirestoreModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
