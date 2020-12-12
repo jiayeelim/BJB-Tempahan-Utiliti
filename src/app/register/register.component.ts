@@ -11,9 +11,9 @@ import { FormBuilder, FormGroup, Validators, FormControl  } from '@angular/forms
 export class RegisterComponent{
 
   registerForm: FormGroup;
-  submitted = true;
+  submitted = false;
 
-  constructor(public activatedRoute: ActivatedRoute, public registerService:RegisterService) { }
+  constructor(public activatedRoute: ActivatedRoute, public registerService:RegisterService, private formBuilder: FormBuilder) { }
 
   user: any;
   username: string;
@@ -28,9 +28,6 @@ export class RegisterComponent{
   email: string;
   phone: number | undefined;
   message: void;
-
-  ngOnInit(){
-  }
 
   CreateUser(){
     let User = {};
@@ -62,5 +59,33 @@ export class RegisterComponent{
   }).catch(error => {
     console.log(error);
   });
+}
+
+ngOnInit(){
+  this.registerForm = this.formBuilder.group({
+    name: ['',Validators.required],
+    username: ['',[Validators.required],this.registerService.userNameValidator.bind(this.registerService)],
+    ic: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
+    address1: ['', [Validators.required]],
+    address2: ['', [Validators.required]],
+    postcode: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    phone: ['', [Validators.required, Validators.pattern('^[0-9]{0,30}$')]],
+    state: ['', [Validators.required]],
+    password: ['', Validators.compose([Validators.required, this.registerService.patternValidator()])],
+    password2: ['', [Validators.required]],
+  }, {
+    validator: this.registerService.MatchPassword('password', 'comfirmPassword')
+  })
+}
+
+get registerFormControl() {return this.registerForm.controls;}
+
+onSubmit() {
+  this.submitted = true;
+  if (this.registerForm.valid) {
+    alert('Form Submitted succesfully!!!\n Check the values in browser console.');
+    console.table(this.registerForm.value);
+  }
 }
 }

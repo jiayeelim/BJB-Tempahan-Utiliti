@@ -8,6 +8,11 @@
    
   }
 
+  .text-danger{
+    color:red;
+    font-size: small;
+  }
+
   input[type=text], input[type=number], select {
     width: 100%;
     padding: 12px 20px;
