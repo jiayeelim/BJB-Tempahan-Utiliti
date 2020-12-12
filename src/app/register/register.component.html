@@ -95,7 +95,7 @@
       <div class="text-danger" *ngIf="(registerFormControl.password2.touched || submitted)&& registerFormControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
       <div class="text-danger" *ngIf="registerFormControl.password2.touched && registerFormControl.password2.errors?.passwordMismatch">Kata Laluan mesti sepandan</div>
 
-      <input type="submit" (click)="CreateUser()" name="submit" [disabled]="!email || password" value="Hantar Borang Pendaftaran" id="reg_btn">
+      <input type="submit" (click)="CreateUser()" name="submit" value="Hantar Borang Pendaftaran" id="reg_btn">
   
     <!--<h3>{{message}}</h3>-->
   </form>
