@@ -5,6 +5,9 @@ import { AuthGuard } from './auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import {} from '@angular/compiler';
 import { FormsModule } from '@angular/forms';
+//import { PasswordPatternDirective } from './directives/password-pattern.directive';
+//import { MatchPasswordDirective } from './directives/match-password.directive';
+//import { ValidateUserNameDirective } from './directives/validate-user-name.directive';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
@@ -54,7 +57,11 @@ const appRoutes: Routes = [
     UserViewUtilitiComponent,
     ViewUtilityComponent,
     AddUtilityComponent,
-    UpdateUtilityComponent
+    UpdateUtilityComponent,
+
+    //PasswordPatternDirective,
+    //MatchPasswordDirective,
+    //ValidateUserNameDirective
 
     //SizeDetectorComponent
   ],

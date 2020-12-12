@@ -31,55 +31,75 @@
 <div class="registercontainer">
     
   <div class="box_1">
-    <!--<>form [formGroup]="registerForm" (ngSubmit)="submitted()" ngNativeValidate>-->
-        <h2 align="center">Seksyen 1: Informasi Peribadi</h2>
-        <label>Nama Pernuh</label>
-        <input type="text"  class="form-control" [(ngModel)]="name" placeholder="nama pengguna" required>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h2 align="center">Seksyen 1: Informasi Peribadi</h2>
+      <label for="name">Nama Pernuh:</label>
+      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="name" [(ngModel)]="name" placeholder="Nama Pengguna" required>
+      <div class="text-danger" *ngIf="(registerFormControl.name.touched || submitted) && registerFormControl.name.errors?.required">Name Pernuh diperlukan</div>
+    
+      <label>Nombor Kad Pengenalan:</label>
+      <input type="number" formControlName="ic" class="form-control" [(ngModel)]="ic" minlength="12" maxlength="12" pattern="[0]{1}[1]{1}[0-9]{8,}" placeholder="Nombor Kad Pengenalan" required>
+      <div class="text-danger" *ngIf="registerFormControl.ic.touched && registerFormControl.ic.errors?.minLength && registerFormControl.ic.errors?.maxLength">Sila isi Nombor Kad Pengenalan yang disahkan</div>
+      <div class="text-danger" *ngIf="(registerFormControl.ic.touched || submitted) && registerFormControl.ic.errors?.required">Nombor Kad Pengenalan diperlukan</div>
+      
+      <!--<label>Tarikh Lahir:</label><br>
+      <input type="date" name="dob" required><br><br>-->
 
-        <label>Nombor Pengenalan</label>
-        <input type="text"  class="form-control" [(ngModel)]="ic" placeholder="Nombor Kad Pengenalan" required>
+      <label>Tempat Tinggal:</label><br><br>
+      <label>Alamat 1</label>
+      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="address1" [(ngModel)]="address1" placeholder="contoh: Jalan Bahagia" required>
+      <div class="text-danger" *ngIf="(registerFormControl.address1.touched || submitted) && registerFormControl.address1.errors?.required">Alamat1 diperlukan</div>
 
-        <label>Tarikh Lahir</label><br>
-        <input type="date" name="dob" required><br><br>
+      <label>Alamat 2</label>
+      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="address2" [(ngModel)]="address2" placeholder="contoh: Taman Sangat Bahagia" required>
+      <div class="text-danger" *ngIf="(registerFormControl.address2.touched || submitted) && registerFormControl.address2.errors?.required">Alamat2 diperlukan</div>
 
-        <label>Tempat Tinggal</label><br>
-        <label>Alamat 1</label>
-        <input type="text" class="form-control" [(ngModel)]="address1" placeholder="contoh: Jalan Bahagia" required>
+      <label>Poskod</label>
+      <input type="number" formControlName="postcode"  minlength="5" maxlength="5" class="form-control" [(ngModel)]="postcode" placeholder="contoh: 51550" required>
+      <div class="text-danger" *ngIf="(registerFormControl.postcode.touched || submitted) && registerFormControl.postcode.errors?.required">Poskod diperlukan</div>
+      <div *ngIf="registerFormControl.postcode.touched && registerFormControl.postcode.errors?.minlength">Sila isi Poskod yang disahkan</div>
 
-        <label>Alamat 2</label>
-        <input type="text" class="form-control" [(ngModel)]="address2" placeholder="contoh: Taman Sangat Bahagia" required>
+      <label>Negeri</label>
+      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="state" [(ngModel)]="state" placeholder="contoh: Johor" required>
+      <div class="text-danger" *ngIf="(registerFormControl.state.touched || submitted) && registerFormControl.state.errors?.required">State diperlukan</div>
 
-        <label>Poskod</label>
-        <input type="number"  class="form-control" [(ngModel)]="postcode" placeholder="contoh: 51550" required>
+      <label>Adakah anda Penduduk Kangkar Pulai?</label><br>
+      <input type="radio" name="resident" value="yes">Ya<br>
+      <input type="radio" name="resident" value="no" checked>Bukan<br><br>
 
-        <label>Negeri</label>
-        <input type="text"  class="form-control" [(ngModel)]="state" placeholder="contoh: Johor" required>
+      <label>E-mel</label>
+      <input type="text" formControlName="email" class="form-control" [(ngModel)]="email" placeholder="contoh: abc@gmail.com" required>
+      <div class="text-danger" *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">E-mel diperlukan</div>
+      <div class="text-danger"*ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">Sila isi E-mel yang disahkan</div>
 
-        <label>Adakah anda Penduduk Kangkar Pulai?</label><br>
-        <input type="radio" name="resident" value="yes">Ya<br>
-        <input type="radio" name="resident" value="no" checked>Bukan<br><br>
+      <label>Tel no. Peribadi</label>
+      <input type="number" formControlName="phone" class="form-control"  minlength=10 maxlength=11 [(ngModel)]="phone" placeholder="0123456789" required>
+      <div class="text-danger" *ngIf="(registerFormControl.phone.touched || submitted) && registerFormControl.phone.errors?.required">Nombor Telefon diperlukan</div>
+      <div class="text-danger" *ngIf="registerFormControl.phone.touched && registerFormControl.phone.errors?.minlength">Sila isi Nombor Telefon yang disahkan</div>
 
-        <label>E-mel</label>
-        <input type="text" class="form-control" [(ngModel)]="email" placeholder="cth: abc@gmail.com" required>
+      <h2 align="center"><br>Seksyen 2: Nama Pengguna & Kata laluan</h2>
 
-        <label>Tel no. Peribadi</label>
-        <input type="text"  class="form-control" [(ngModel)]="phone" placeholder="0123456789" required>
+      <label>Nama Pengguna Baru</label>
+      <input type="text" formControlName="username" class="form-control" [(ngModel)]="username" placeholder="nama pengguna baru" required>
+      <div class="text-danger" *ngIf="(registerFormControl.username.touched || submitted) && registerFormControl.username.errors?.required">Username diperlukan</div>
+      <div class="text-danger" *ngIf="registerFormControl.username.touched && registerFormControl.username.errors?.userNameNotAvailable">Username teleh digunakan</div>
 
-        <h2 align="center"><br>Seksyen 2: Nama Pengguna & Kata laluan</h2>
+      <label>Kata Laluan Baru</label>
+      <input type="password" class="form-control" formControlName="password" [(ngModel)]="password" placeholder="kata laluan baru" required>
+      <div class="text-danger" *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">Kata Laluan diperlukan</div>
+      <div class="text-danger" *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
+        huruf dan 1 nombor</div>
 
-        <label>Nama Pengguna Baru</label>
-        <input type="text" class="form-control" [(ngModel)]="username" placeholder="nama pengguna baru" required>
+      <label>Taip Semula Kata Laluan Baru</label>
+      <input type="password"class="form-control" formControlName="password2" [(ngModel)]="password2" placeholder="kata laluan baru" required>
+      <div class="text-danger" *ngIf="(registerFormControl.password2.touched || submitted)&& registerFormControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
+      <div class="text-danger" *ngIf="registerFormControl.password2.touched && registerFormControl.password2.errors?.passwordMismatch">Kata Laluan mesti sepandan</div>
 
-        <label>Kata Laluan Baru</label>
-        <input type="password"  class="form-control" [(ngModel)]="password" placeholder="kata laluan baru" required>
-
-        <label>Taip Semula Kata Laluan Baru</label>
-        <input type="password"  class="form-control" [(ngModel)]="password2" placeholder="kata laluan baru" required>
-
-        <input type="submit" (click)="CreateUser()" name="submit" value="Hantar Borang Pendaftaran" id="reg_btn">
-
-    <!--</form>-->
-    </div>
+      <input type="submit" (click)="CreateUser()" name="submit" [disabled]="!email || password" value="Hantar Borang Pendaftaran" id="reg_btn">
+  
+    <!--<h3>{{message}}</h3>-->
+  </form>
+  </div>
 </div>
 
 <!--Footer-->
