@@ -13,6 +13,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
+//Component
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -26,9 +27,12 @@ import { UserViewUtilitiComponent } from './user-view-utiliti/user-view-utiliti.
 import { ViewUtilityComponent} from './view-utility/view-utility.component';
 import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
+//Module
 import { ReactiveFormsModule } from '@angular/forms';
+//Service
 import { RegisterService } from './register.service';
-import { RuangService } from './ruang.service'
+import { RuangService } from './ruang.service';
+import { ReservationService } from './reservation.service';
 
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
@@ -70,7 +74,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     AngularFireStorageModule
   ],
-  providers: [AuthGuard, RegisterService, RuangService],
+  providers: [AuthGuard, RegisterService, RuangService, ReservationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

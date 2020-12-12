@@ -35,24 +35,24 @@
         <form>
     
             <label>Maklumat Tentang Tempahan</label>
-            <textarea name="activitydescription" rows="6" cols="65" required></textarea><br><br>
+            <textarea name="tempahandescription"  [(ngModel)]="reservationDescription" rows="6" cols="65" required></textarea><br><br>
 
             <table>
               <tr>
               <td><label>Tarikh Mula</label></td>
-              <td><input type="date" name="startdate"></td>
+              <td><input type="date" name="startdate"  [(ngModel)]="startdate"></td>
             
 
               <td><label>Masa Mula</label></td>
-              <td><input type="time" name="starttime"></td>
+              <td><input type="time" name="starttime" [(ngModel)]="starttime"></td>
               </tr>
 
               <tr>
               <td><label>Tarikh Tamat</label></td>
-              <td><input type="date" name="enddate"></td>
+              <td><input type="date" name="enddate"  [(ngModel)]="enddate"></td>
 
               <td><label>Masa Tamat</label></td>
-              <td><input type="time" name="endtime"></td>
+              <td><input type="time" name="endtime"  [(ngModel)]="endtime"></td>
               </tr>
             </table>
             
@@ -61,29 +61,29 @@
             <table>
               <tr>
               <td><label>Kadar Tempahan</label></td>
-              <td></td>
+              <td>RM</td>
               </tr>
 
               <tr>
               <td><label>Bayaran</label></td>
-              <td></td>
+              <td>RM</td>
               </tr>
 
               <tr>
               <td><label>Diskaun</label></td>
-              <td></td>
+              <td>%</td>
               </tr>
 
               <tr>
               <td><label>Jumlah Bayaran</label></td>
-              <td></td>
+              <td>RM</td>
               </tr>
             </table>
 
             <br><br>
     
             
-            <input type="submit" value="Simpan Tempahan" id="fed_btn">
+            <input type="submit" (click)="CreateReservation()" value="Simpan Tempahan" id="fed_btn">
         </form>
     </div>
     </div>
