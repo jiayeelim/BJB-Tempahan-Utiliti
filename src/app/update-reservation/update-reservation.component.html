@@ -2,15 +2,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--Banner-->
-    <div class="header flex_to_corner">
-      <div style="flex-grow: 1">
-        <img class="BJB_logo" src="/assets/image/BJB logo.png" alt="BJB logo">
-      </div>
-      <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
-      <div class="sign_in_up" style="flex-grow: 1; text-align: right">
-        <a routerLink="/login">LOG MASUK</a> ||
-        <a routerLink="/register"  >DAFTAR</a>
-    </div>
+    <div>
+      <ul>
+        <li><a routerLink="/home">LAMAN UTAMA</a></li>
+        <li class="dropdown">
+          <a class="active" routerLink="/user-view-utiliti">SENARAI RUANG</a>
+        </li>
+        <li><a href="#">TENTANG KAMI</a></li>
+        <li><a href="#">HUBUNGI KAMI</a></li>
+        <li><a routerLink="/viewReservation">SENARAI TEMPAHAN RUANG</a></li>
+      </ul>
     </div>
   
     <!--Navigation Bar-->
