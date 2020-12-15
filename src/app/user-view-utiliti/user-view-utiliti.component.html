@@ -20,11 +20,7 @@
     <ul>
       <li><a routerLink="/home">LAMAN UTAMA</a></li>
       <li class="dropdown">
-        <a class="active" href="javascript:void(0)">SENARAI UTILITI</a>
-        <div class="dropdown-content">
-          <a routerLink="/user-view-utility">SENARAI RUANG</a>
-          <a routerLink="/viewReservation">SENARAI TEMPAHAN RUANG</a>
-        </div>
+        <a routerLink="/user-view-utility" class="dropbtn" class="active">SENARAI RUANG</a>
       </li>
       <li><a href="#">TENTANG KAMI</a></li>
       <li><a href="#">HUBUNGI KAMI</a></li>
@@ -37,6 +33,7 @@
     <div class="box_1">
         <div class="title">
             <h1 align="center">Senarai Ruang</h1>
+            <input type="submit" class="add" name="add" value="SENARAI TEMPAHAN RUANG" id="fed_btn" routerLink="/viewReservation">
         </div>
         
         <hr class="line">

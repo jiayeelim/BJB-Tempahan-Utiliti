@@ -32,6 +32,11 @@ input select, textarea {
     box-sizing: border-box;
   }
 
+  .title{
+    position: relative;
+    float: right;
+}
+
 /*-----Table-----*/
   table, td, th {
     border: 1px solid black;
