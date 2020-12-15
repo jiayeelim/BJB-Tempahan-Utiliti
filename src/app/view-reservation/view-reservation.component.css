@@ -57,7 +57,7 @@
 }
 
 input[type=submit].add {
-    width: 90px;
+    width: 250px;
     background-color: rgb(17, 156, 187);
     color: white;
     padding: 10px;
