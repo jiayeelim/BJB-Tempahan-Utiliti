@@ -35,24 +35,26 @@
             <h1 align="center">Senarai Ruang</h1>
             <input type="submit" class="add" name="add" value="Tambah" id="fed_btn" routerLink="/add-utility">
         </div>
-        
+      
+      <div *ngFor="let item of ruang" >
         <hr class="line">
         <div class="row">
             <div class="columnleft">
-                <img class="img" src="/assets/image/hall1.jpg"> 
+                <img class="img" [src]="getImage(item.payload.doc.data().image)" alt="Image from Angular Storage">
             </div>
             <div class="columnright">
-                <font class="utilitytitle">Bilik Belajar dalam Bangsa Johor Bahagia</font><br>
-                Ruang selesa yang boleh mengadakan sesi belajar.<br><br>
+                <font class="utilitytitle">{{item.payload.doc.data().name}}</font><br>
+                {{item.payload.doc.data().information}}<br><br>
                 <hr width="10%" align="left">
-                15 orang<br>
-                <div class="price">RM20/jam</div>
+                {{item.payload.doc.data().capacity}} orang<br>
+                <div class="price">RM {{item.payload.doc.data().price}} /jam</div>
                 <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" routerLink="/update-utility">
                 <input type="button" name="delete" value="Padam" id="fed_btn">
             </div>
         </div>
+      </div> 
 
-        <hr class="line">
+        <!--<hr class="line">
         <div class="row">
             <div class="columnleft">
                 <img class="img" src="/assets/image/hall2.jpg"> 
@@ -114,7 +116,7 @@
                 <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn">
                 <input type="button" name="delete" value="Padam" id="fed_btn">
             </div>
-        </div>
+        </div>-->
         <hr class="line">
     </div>
   </div>

@@ -15,6 +15,7 @@ import {UpdateUtilityComponent} from './update-utility/update-utility.component'
 import {AdminPortalComponent} from './admin-portal/admin-portal.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path:'appcomponent', component: AppComponent},
   {path:'register', component: RegisterComponent},
   {path:'home', component: HomeComponent},

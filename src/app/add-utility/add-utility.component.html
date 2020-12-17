@@ -43,7 +43,8 @@
         <input type="number" name="capacity" [(ngModel)]="ruangCapacity" placeholder="Masukkan kapasiti ruang" required><br><br>
 
         <label>Gambar</label><br>
-        <input type="file" name="file" (change)="upload($event)" accept="*.png.jpg"><br><br>
+        <img [src]="imgSrc" width="350px" height="250px" (click)="fileUploader.click()"><br><br>
+        <input type="file" name="file" formControlName="imageUrl" (change)="upload($event)" (change)="showPreview($event)" #fileUploader accept="*.png.jpg"><br><br>
 
         <input type="submit" (click)="CreateRuang()" name="submit" value="Hantar" id="reg_btn">
 
