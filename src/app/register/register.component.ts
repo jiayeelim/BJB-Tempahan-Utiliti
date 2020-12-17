@@ -12,6 +12,7 @@ export class RegisterComponent{
 
   registerForm: FormGroup;
   submitted = false;
+  stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Malacca', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
 
   constructor(public activatedRoute: ActivatedRoute, public registerService:RegisterService, private formBuilder: FormBuilder) { }
 
@@ -28,6 +29,7 @@ export class RegisterComponent{
   email: string;
   phone: number | undefined;
   message: void;
+  resident: string;
 
   CreateUser(){
     let User = {};
@@ -42,6 +44,7 @@ export class RegisterComponent{
     User['state'] = this.state;
     User['email'] = this.email;
     User['phone'] = this.phone;
+    User['resident'] = this.resident;
 
     this.registerService.create_newUser(User).then(res =>{
       this.username = "";
@@ -53,6 +56,7 @@ export class RegisterComponent{
       this.ic = undefined;
       this.postcode = undefined;
       this.state = "";
+      this.resident = "";
       console.log(res);
       this.message = alert("User data save DONE");
 
@@ -70,10 +74,11 @@ ngOnInit(){
     address2: ['', [Validators.required]],
     postcode: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required, Validators.pattern('^[0-9]{0,30}$')]],
+    phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
     state: ['', [Validators.required]],
     password: ['', Validators.compose([Validators.required, this.registerService.patternValidator()])],
     password2: ['', [Validators.required]],
+    resident: ['', [Validators.required]],
   }, {
     validator: this.registerService.MatchPassword('password', 'comfirmPassword')
   })

@@ -56,12 +56,14 @@
       <div *ngIf="registerFormControl.postcode.touched && registerFormControl.postcode.errors?.minlength">Sila isi Poskod yang disahkan</div>
 
       <label>Negeri</label>
-      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="state" [(ngModel)]="state" placeholder="contoh: Johor" required>
-      <div class="text-danger" *ngIf="(registerFormControl.state.touched || submitted) && registerFormControl.state.errors?.required">State diperlukan</div>
+        <select formControlName="state" class="form-control" [(ngModel)]="state" required>
+          <option *ngFor="let state of stateList">{{state}}</option>
+        </select>
+      <div class="text-danger" *ngIf="(registerFormControl.state.touched || submitted) && registerFormControl.state.errors?.required">State diperlukan</div><br>
 
       <label>Adakah anda Penduduk Kangkar Pulai?</label><br>
-      <input type="radio" name="resident" value="yes">Ya<br>
-      <input type="radio" name="resident" value="no" checked>Bukan<br><br>
+      <input type="radio" formControlName="resident" class="radio-group" [(ngModel)]="resident" value="Yes">Ya<br>
+        <input type="radio" formControlName="resident" class="radio-group" [(ngModel)]="resident" value="No">Bukan<br><br>
 
       <label>E-mel</label>
       <input type="text" formControlName="email" class="form-control" [(ngModel)]="email" placeholder="contoh: abc@gmail.com" required>
