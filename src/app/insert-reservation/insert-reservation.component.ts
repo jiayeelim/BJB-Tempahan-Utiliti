@@ -2,7 +2,7 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { ReservationService } from '../reservation.service'
+import { ReservationService } from '../reservation.service';
 
 @Component({
   selector: 'app-insert-reservation',
@@ -11,16 +11,17 @@ import { ReservationService } from '../reservation.service'
 })
 export class InsertReservationComponent implements OnInit {
   
-  reservationDescription: string;
-  startdate: Date | undefined;
-  starttime: Time | undefined;
-  enddate: Date | undefined;
-  endtime:Time | undefined;
-  message: void;
-  //price:number;
-  //rate:number;
-  //discount:number;
-  //total:number;
+      reservationDescription: string;
+      startdate: Date | undefined;
+      starttime: Time | undefined;
+      enddate: Date | undefined;
+      endtime:Time | undefined;
+      message: void;
+      //price:number;
+      //rate:number;
+      //discount:number;
+      //total:number;
+  
 
   constructor(public af:AngularFireStorage, public reservationService:ReservationService) { }
 
