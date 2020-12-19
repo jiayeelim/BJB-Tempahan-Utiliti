@@ -5,14 +5,12 @@ import { AuthGuard } from './auth.guard';
 import { HttpClientModule } from '@angular/common/http';
 import {} from '@angular/compiler';
 import { FormsModule } from '@angular/forms';
-//import { PasswordPatternDirective } from './directives/password-pattern.directive';
-//import { MatchPasswordDirective } from './directives/match-password.directive';
-//import { ValidateUserNameDirective } from './directives/validate-user-name.directive';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +34,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from './register.service';
 import { RuangService } from './ruang.service';
 import { ReservationService } from './reservation.service';
+import { AuthService } from "./auth.service";
+
 
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
@@ -79,9 +79,10 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
+    AngularFireAuthModule,
     AngularFireStorageModule
   ],
-  providers: [AuthGuard, RegisterService, RuangService, ReservationService ],
+  providers: [AuthGuard, RegisterService, RuangService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

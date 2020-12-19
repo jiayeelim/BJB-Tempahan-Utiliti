@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../register.service';
 import { FormBuilder, FormGroup, Validators, FormControl  } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,12 @@ export class RegisterComponent{
   submitted = false;
   stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Malacca', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
 
-  constructor(public activatedRoute: ActivatedRoute, public registerService:RegisterService, private formBuilder: FormBuilder) { }
+  constructor(
+    public activatedRoute: ActivatedRoute, 
+    public registerService:RegisterService, 
+    private formBuilder: FormBuilder,
+    public authService: AuthService
+    ) { }
 
   user: any;
   username: string;
