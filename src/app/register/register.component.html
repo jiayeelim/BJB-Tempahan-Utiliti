@@ -27,7 +27,7 @@
 <div class="registercontainer">
     
   <div class="box_1">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="registerForm" (ngSubmit)="registerNewUser()" ngNativeValidate>
       <h2 align="center">Seksyen 1: Informasi Peribadi</h2>
       <label for="name">Nama Pernuh:</label>
       <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="name" [(ngModel)]="name" placeholder="Nama Pengguna" required>
@@ -93,7 +93,7 @@
       <div class="text-danger" *ngIf="(registerFormControl.password2.touched || submitted)&& registerFormControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
       <div class="text-danger" *ngIf="registerFormControl.password2.touched && registerFormControl.password2.errors?.passwordMismatch">Kata Laluan mesti sepandan</div>
 
-      <input type="submit" (click)="CreateUser()" name="submit" value="Hantar Borang Pendaftaran" id="reg_btn">
+      <input type="submit" name="submit" value="Hantar Borang Pendaftaran" id="reg_btn">
   
     <!--<h3>{{message}}</h3>-->
   </form>

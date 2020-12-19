@@ -5,6 +5,7 @@ import {HomeComponent} from './home/home.component';
 import {UserPortalComponent} from './user-portal/user-portal.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
+import {LoginAdminComponent} from '../app/login-admin/login-admin.component';
 import {InsertReservationComponent} from './insert-reservation/insert-reservation.component';
 import {UpdateReservationComponent} from './update-reservation/update-reservation.component';
 import {UserViewUtilitiComponent} from './user-view-utiliti/user-view-utiliti.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'home', component: HomeComponent},
   {path:'user-portal', component: UserPortalComponent},
   {path:'login', component: LoginComponent},
+  {path: 'login-admin', component: LoginAdminComponent},
   {path:'insertReservation', component: InsertReservationComponent},
   {path:'updateReservation', component: UpdateReservationComponent},
   {path:'user-view-utility', component: UserViewUtilitiComponent},

@@ -103,7 +103,7 @@ export class AuthService {
   }
 
   getUserData() {
-    return this.userData;
+    return this.afs.collection<User>('User');
   }
 
   // Sign out 

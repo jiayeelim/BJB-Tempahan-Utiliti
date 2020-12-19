@@ -29,7 +29,7 @@
 <div class = "registercontainer">
     <div class="box_1">
       <p *ngIf="message" class="error-msg">{{message}}</p>
-        <form [formGroup] = "loginForm" (ngSubmit)="login()">
+        <form [formGroup] = "loginAdminForm" (ngSubmit)="loginAdmin()">
             <h2>LOG MASUK</h2>
             <div [ngClass]="{ 'has-error': submitted && f.username.errors }">
             <label for ="username">Nama Pengguna</label>
@@ -47,13 +47,6 @@
               </div>
             <!--</div>-->
             <input type="submit" value="Log Masuk">
-
-            <div class="sign_in_up" style="flex-grow: 1; text-align: center">
-                <p>Tiada Akaun? <a class="click-here" href='/register' target="_blank">Klik Sini</a> Untuk Daftar Akaun Anda!</p>
-                <p><b>OR</b></p>
-                <p>Log Masuk Sebagai <a class="click-here" href='/login-admin' target="_blank">ADMIN</a></p>
-            </div>
-
         </form>
     </div>
 
@@ -68,3 +61,4 @@
     © 2020 Bark Chic, Inc. All rights reserved
   </div>
 </html>
+

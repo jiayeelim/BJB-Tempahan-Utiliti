@@ -35,6 +35,7 @@ import { RegisterService } from './register.service';
 import { RuangService } from './ruang.service';
 import { ReservationService } from './reservation.service';
 import { AuthService } from "./auth.service";
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
     ViewUtilityComponent,
     AddUtilityComponent,
     UpdateUtilityComponent,
+    LoginAdminComponent,
 
     //PasswordPatternDirective,
     //MatchPasswordDirective,

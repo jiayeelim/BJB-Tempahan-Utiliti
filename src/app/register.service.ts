@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ValidatorFn, AbstractControl, MinLengthValidator } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { User } from '../app/models/user';
 
 
 @Injectable({
@@ -10,6 +11,10 @@ import { FormGroup } from '@angular/forms';
 export class RegisterService {
 
   constructor(public fireservices:AngularFirestore) { }
+
+  newUserData(){
+    return this.fireservices.collection<User>('User');
+  }
 
   patternValidator(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
@@ -43,29 +48,4 @@ export class RegisterService {
     }
   }
 
-  userNameValidator(userControl: AbstractControl) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        if (this.validateUserName(userControl.value)) {
-          resolve({ userNameNotAvailable: true });
-        } else {
-          resolve(null);
-        }
-      }, 1000);
-    });
-  }
-
-  validateUserName(userName: string) {
-
-    /* A static array is used to validate the availability of user names.
-    *  Ideally it should be a service call to the server to search the value from a database.
-    */
-
-    const UserList = ['ankit', 'admin', 'user', 'superuser'];
-    return (UserList.indexOf(userName) > -1);
-  }
-
-  create_newUser(User){
-    return this.fireservices.collection('Users').add(User);
-  }
 }
