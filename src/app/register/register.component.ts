@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../register.service';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl  } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { User } from '../models/user';
@@ -63,7 +64,8 @@ export class RegisterComponent implements OnInit{
     public activatedRoute: ActivatedRoute, 
     public registerService:RegisterService, 
     private formBuilder: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    private router: Router,
     ) {
       this.user_username.pop();
       this.newUser = this.registerService.newUserData();
@@ -134,7 +136,7 @@ export class RegisterComponent implements OnInit{
 
 ngOnInit(): void{
   this.user_data$.subscribe(); 
-  this.returnUrl = '/admin-portal';
+  this.returnUrl = "/login";
   }
 
   registerNewUser(){
@@ -165,7 +167,7 @@ ngOnInit(): void{
           this.newUser.add(Object.assign({}, this.UserData)).then( () => {
             window.alert("Anda teleh berjaya didaftarkan!");
             this.registerForm.reset();
-            this.returnUrl['/user-portal'];
+            this.router.navigate([this.returnUrl]);
             window.close();
           }, () => {
             window.alert("Minta Maaf. Pendaftaran Tak Berjaya");
