@@ -33,7 +33,7 @@
             <h2>LOG MASUK</h2>
             <div [ngClass]="{ 'has-error': submitted && f.username.errors }">
             <label for ="username">Nama Pengguna</label>
-            <input type="text" class="form-control" formControlName="username" #username placeholder="nama pengguna" required><br>
+            <input type="text" class="form-control" formControlName="username" placeholder="nama pengguna" required><br>
               <div *ngIf="submitted && f.username.errors">
                 <div *ngIf="f.username.errors.required">Username is required></div>
               </div>
@@ -41,7 +41,7 @@
           
             <div [ngClass]="{ 'has-error': submitted && f.password.errors }"></div>
             <label for="password">Kata Laluan</label>
-            <input type="password" class="form-control" formControlName="password" #password placeholder="kata laluan" required><br>
+            <input type="password" class="form-control" formControlName="password" placeholder="kata laluan" required><br>
               <div *ngIf="submitted && f.password.errors">
                 <div *ngIf="f.password.errors.required">Password is required></div>
               </div>

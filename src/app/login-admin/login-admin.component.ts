@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AngularFirestoreDocument } from '@angular/fire/firestore';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+//import { AuthService } from '../auth.service';
 import { Login } from '../login';
-import { AuthService } from '../auth.service';
-import { User } from '../models/user';
 
 @Component({
   selector: 'app-login-admin',
@@ -18,11 +15,12 @@ export class LoginAdminComponent implements OnInit {
   loginAdminForm: FormGroup;
   message: string;
   returnUrl: string;
+  submitted: false;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    public authService: AuthService, 
+    //public authService: AuthService, 
     ) { }
 
   ngOnInit(): void {
@@ -31,7 +29,7 @@ export class LoginAdminComponent implements OnInit {
       password: ['', Validators.required]
     });
     this.returnUrl = "/admin-portal";
-    this.authService.logout();
+    //this.authService.logout();
   }
 
   get f() { return this.loginAdminForm.controls; }

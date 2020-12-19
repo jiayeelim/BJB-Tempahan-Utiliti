@@ -30,11 +30,11 @@
     <form [formGroup]="registerForm" (ngSubmit)="registerNewUser()" ngNativeValidate>
       <h2 align="center">Seksyen 1: Informasi Peribadi</h2>
       <label for="name">Nama Pernuh:</label>
-      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="name" [(ngModel)]="name" placeholder="Nama Pengguna" required>
+      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="name" placeholder="Nama Pengguna" required>
       <div class="text-danger" *ngIf="(registerFormControl.name.touched || submitted) && registerFormControl.name.errors?.required">Name Pernuh diperlukan</div>
     
       <label>Nombor Kad Pengenalan:</label>
-      <input type="number" formControlName="ic" class="form-control" [(ngModel)]="ic" minlength="12" maxlength="12" pattern="[0]{1}[1]{1}[0-9]{8,}" placeholder="Nombor Kad Pengenalan" required>
+      <input type="number" formControlName="ic" class="form-control"  minlength="12" maxlength="12" pattern="[0]{1}[1]{1}[0-9]{8,}" placeholder="Nombor Kad Pengenalan" required>
       <div class="text-danger" *ngIf="registerFormControl.ic.touched && registerFormControl.ic.errors?.minLength && registerFormControl.ic.errors?.maxLength">Sila isi Nombor Kad Pengenalan yang disahkan</div>
       <div class="text-danger" *ngIf="(registerFormControl.ic.touched || submitted) && registerFormControl.ic.errors?.required">Nombor Kad Pengenalan diperlukan</div>
       
@@ -43,53 +43,53 @@
 
       <label>Tempat Tinggal:</label><br><br>
       <label>Alamat 1</label>
-      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="address1" [(ngModel)]="address1" placeholder="contoh: Jalan Bahagia" required>
+      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="address1" placeholder="contoh: Jalan Bahagia" required>
       <div class="text-danger" *ngIf="(registerFormControl.address1.touched || submitted) && registerFormControl.address1.errors?.required">Alamat1 diperlukan</div>
 
       <label>Alamat 2</label>
-      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="address2" [(ngModel)]="address2" placeholder="contoh: Taman Sangat Bahagia" required>
+      <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="address2"  placeholder="contoh: Taman Sangat Bahagia" required>
       <div class="text-danger" *ngIf="(registerFormControl.address2.touched || submitted) && registerFormControl.address2.errors?.required">Alamat2 diperlukan</div>
 
       <label>Poskod</label>
-      <input type="number" formControlName="postcode"  minlength="5" maxlength="5" class="form-control" [(ngModel)]="postcode" placeholder="contoh: 51550" required>
+      <input type="number" formControlName="postcode"  minlength="5" maxlength="5" class="form-control"  placeholder="contoh: 51550" required>
       <div class="text-danger" *ngIf="(registerFormControl.postcode.touched || submitted) && registerFormControl.postcode.errors?.required">Poskod diperlukan</div>
       <div *ngIf="registerFormControl.postcode.touched && registerFormControl.postcode.errors?.minlength">Sila isi Poskod yang disahkan</div>
 
       <label>Negeri</label>
-        <select formControlName="state" class="form-control" [(ngModel)]="state" required>
+        <select formControlName="state" class="form-control"  required>
           <option *ngFor="let state of stateList">{{state}}</option>
         </select>
       <div class="text-danger" *ngIf="(registerFormControl.state.touched || submitted) && registerFormControl.state.errors?.required">State diperlukan</div><br>
 
       <label>Adakah anda Penduduk Kangkar Pulai?</label><br>
-      <input type="radio" formControlName="resident" class="radio-group" [(ngModel)]="resident" value="Yes">Ya<br>
-        <input type="radio" formControlName="resident" class="radio-group" [(ngModel)]="resident" value="No">Bukan<br><br>
+      <input type="radio" formControlName="resident" class="radio-group"  value="Yes">Ya<br>
+        <input type="radio" formControlName="resident" class="radio-group" value="No">Bukan<br><br>
 
       <label>E-mel</label>
-      <input type="text" formControlName="email" class="form-control" [(ngModel)]="email" placeholder="contoh: abc@gmail.com" required>
+      <input type="text" formControlName="email" class="form-control" placeholder="contoh: abc@gmail.com" required>
       <div class="text-danger" *ngIf="(registerFormControl.email.touched || submitted) && registerFormControl.email.errors?.required">E-mel diperlukan</div>
       <div class="text-danger"*ngIf="registerFormControl.email.touched && registerFormControl.email.errors?.email">Sila isi E-mel yang disahkan</div>
 
       <label>Tel no. Peribadi</label>
-      <input type="number" formControlName="phone" class="form-control"  minlength=10 maxlength=11 [(ngModel)]="phone" placeholder="0123456789" required>
+      <input type="number" formControlName="phone" class="form-control"  minlength=10 maxlength=11  placeholder="0123456789" required>
       <div class="text-danger" *ngIf="(registerFormControl.phone.touched || submitted) && registerFormControl.phone.errors?.required">Nombor Telefon diperlukan</div>
       <div class="text-danger" *ngIf="registerFormControl.phone.touched && registerFormControl.phone.errors?.minlength">Sila isi Nombor Telefon yang disahkan</div>
 
       <h2 align="center"><br>Seksyen 2: Nama Pengguna & Kata laluan</h2>
 
       <label>Nama Pengguna Baru</label>
-      <input type="text" formControlName="username" class="form-control" [(ngModel)]="username" placeholder="nama pengguna baru" required>
+      <input type="text" formControlName="username" class="form-control" placeholder="nama pengguna baru" required>
       <div class="text-danger" *ngIf="(registerFormControl.username.touched || submitted) && registerFormControl.username.errors?.required">Username diperlukan</div>
       <div class="text-danger" *ngIf="registerFormControl.username.touched && registerFormControl.username.errors?.userNameNotAvailable">Username teleh digunakan</div>
 
       <label>Kata Laluan Baru</label>
-      <input type="password" class="form-control" formControlName="password" [(ngModel)]="password" placeholder="kata laluan baru" required>
+      <input type="password" class="form-control" formControlName="password" placeholder="kata laluan baru" required>
       <div class="text-danger" *ngIf="(registerFormControl.password.touched || submitted) && registerFormControl.password.errors?.required">Kata Laluan diperlukan</div>
       <div class="text-danger" *ngIf="registerFormControl.password.touched && registerFormControl.password.errors?.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
         huruf dan 1 nombor</div>
 
       <label>Taip Semula Kata Laluan Baru</label>
-      <input type="password"class="form-control" formControlName="password2" [(ngModel)]="password2" placeholder="kata laluan baru" required>
+      <input type="password"class="form-control" formControlName="password2"  placeholder="kata laluan baru" required>
       <div class="text-danger" *ngIf="(registerFormControl.password2.touched || submitted)&& registerFormControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
       <div class="text-danger" *ngIf="registerFormControl.password2.touched && registerFormControl.password2.errors?.passwordMismatch">Kata Laluan mesti sepandan</div>
 
