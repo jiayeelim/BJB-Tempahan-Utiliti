@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AdminPortalComponent implements OnInit {
 
-  username: string;
   constructor(private router: Router,public authService: AuthService) { }
 
   ngOnInit() {

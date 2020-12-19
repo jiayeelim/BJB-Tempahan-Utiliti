@@ -6,6 +6,7 @@ import {UserPortalComponent} from './user-portal/user-portal.component';
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {LoginAdminComponent} from '../app/login-admin/login-admin.component';
+import { UpdateUser, UpdateUserComponent } from '../app/update-user/update-user.component';
 import {InsertReservationComponent} from './insert-reservation/insert-reservation.component';
 import {UpdateReservationComponent} from './update-reservation/update-reservation.component';
 import {UserViewUtilitiComponent} from './user-view-utiliti/user-view-utiliti.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'user-portal', component: UserPortalComponent},
   {path:'login', component: LoginComponent},
   {path: 'login-admin', component: LoginAdminComponent},
+  {path: 'update-user', component: UpdateUserComponent},
   {path:'insertReservation', component: InsertReservationComponent},
   {path:'updateReservation', component: UpdateReservationComponent},
   {path:'user-view-utility', component: UserViewUtilitiComponent},

@@ -36,6 +36,7 @@ import { RuangService } from './ruang.service';
 import { ReservationService } from './reservation.service';
 import { AuthService } from "./auth.service";
 import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
@@ -64,6 +65,7 @@ const appRoutes: Routes = [
     AddUtilityComponent,
     UpdateUtilityComponent,
     LoginAdminComponent,
+    UpdateUserComponent,
 
     //PasswordPatternDirective,
     //MatchPasswordDirective,

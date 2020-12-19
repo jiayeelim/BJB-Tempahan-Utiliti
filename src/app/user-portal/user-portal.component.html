@@ -9,9 +9,10 @@
     </div>
     <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
     <div class="sign_in_up" style="flex-grow: 1; text-align: right">
-      <a routerLink="/login">LOG MASUK</a> ||
-      <a routerLink="/register"  >DAFTAR</a>
-  </div>
+      Selamat Datang <h2>{{name}}</h2>
+      <a href="/home" (click)="logout()">LOG KELUAR</a> ||
+      <a href="/update-user">KEMASKINI AKUAN</a>
+</div>
   </div>
 
   <!--Navigation Bar-->
