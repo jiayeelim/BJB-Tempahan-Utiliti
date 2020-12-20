@@ -39,6 +39,7 @@ import { AuthService } from "./service/auth.service";
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ViewUserDetailComponent } from './view-user-detail/view-user-detail.component';
+import { UserService } from './service/user.service';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 
 
@@ -91,7 +92,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     AngularFireStorageModule
   ],
-  providers: [AuthGuard, RegisterService, RuangService, AuthService],
+  providers: [AuthGuard, RegisterService, RuangService, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

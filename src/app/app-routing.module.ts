@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'add-utility', component: AddUtilityComponent},
   {path: 'update-utility', component: UpdateUtilityComponent},
   {path: 'admin-portal', component: AdminPortalComponent},
-  {path: 'view-user-detail/:id', component: ViewUserDetailComponent}
+  {path: 'view-user-detail', component: ViewUserDetailComponent}
   //{path: 'hubungi-kami', component: HubungiKamiComponent}
 ];
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Location } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../service/user.service';
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 
 @Component({
@@ -11,27 +11,33 @@ import { User } from '../models/user';
 })
 export class ViewUserDetailComponent implements OnInit {
 
+  //user1: Array<any>;
   user: User = new User();
-  route_url: Array<string> = [];
-  id: string;
-  message: string;
   username: string;
-  
   selectedUser$: AngularFirestoreDocument<User>;
 
   constructor(
     private router:Router,
-    private firestore: AngularFirestore) {
+    private firestore: AngularFirestore,
+    public userService: UserService) {
 
-    this.route_url = this.router.url.split('/');
-    this.id = this.route_url[2];
-    
-    console.log(this.route_url);
-    console.log(this.id);
+      this.username = localStorage.getItem('token');
+      
+      //var userID = firestore.collection('User');
+      //var query = userID.ref.where("username", "==", this.username);
 
-    this.username = localStorage.getItem('token');
+      firestore.collection('User').ref.where("username", "==", this.username)
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          console.log(doc.id, "=>", doc.data());
+        });
+      })
+      .catch(function(error){
+        console.log("Error", error);
+      });
 
-    const query = this.firestore.collection<User>('User').ref.where('username', '==', this.user.username);
+    const query = this.firestore.collection<User>('User').ref.where('username', '==', this.username);
 
     query.onSnapshot( doc => {
       doc.forEach( documentSnapshot => {
@@ -53,7 +59,8 @@ export class ViewUserDetailComponent implements OnInit {
       });
   }  
 
-  ngOnInit(): void {
+  ngOnInit(){ 
+    this.userService.logout();
   }
 
 }
