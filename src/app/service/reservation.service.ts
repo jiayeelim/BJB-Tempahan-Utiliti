@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+import { Reservation } from '../models/reservation';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,8 @@ export class ReservationService {
 
     constructor(public fireservices:AngularFirestore) { }
   
-    create_newReservation(Reservation)
+    newReservationData()
     {
-      return this.fireservices.collection('Reservation').add(Reservation);
+      return this.fireservices.collection<Reservation>('Reservation');
     }
   }

@@ -31,26 +31,26 @@
           <input type="submit" class="add" name="add" value="SENARAI TEMPAHAN RUANG" id="fed_btn" routerLink="/viewReservation">
       </div>
       <div class="utiliticontainer">
-        <form>
+        <form [formGroup]="createReservationForm" (ngSubmit)="addNewReservation()" ngNativeValidate>
             <label>Maklumat Tentang Tempahan</label>
-            <textarea name="tempahandescription"  [(ngModel)]="reservationDescription" rows="6" cols="65" required></textarea><br><br>
+            <textarea formControlName="reservationDescription" rows="6" cols="65" required></textarea><br><br>
 
             <table>
               <tr>
               <td><label>Tarikh Mula</label></td>
-              <td><input type="date" name="startdate"  [(ngModel)]="startdate"></td>
+              <td><input type="date" formControlName="startdate" ></td>
             
 
               <td><label>Masa Mula</label></td>
-              <td><input type="time" name="starttime" [(ngModel)]="starttime"></td>
+              <td><input type="time" formControlName="starttime" ></td>
               </tr>
 
               <tr>
               <td><label>Tarikh Tamat</label></td>
-              <td><input type="date" name="enddate"  [(ngModel)]="enddate"></td>
+              <td><input type="date" formControlName="enddate" ></td>
 
               <td><label>Masa Tamat</label></td>
-              <td><input type="time" name="endtime"  [(ngModel)]="endtime"></td>
+              <td><input type="time" formControlName="endtime" ></td>
               </tr>
             </table>
             
@@ -69,19 +69,19 @@
 
               <tr>
               <td><label>Diskaun</label></td>
-              <td>RM</td>
+              <td>RM - </td>
               </tr>
 
               <tr>
               <td><label>Jumlah Bayaran</label></td>
-              <td>RM</td>
+              <td>RM bayaran-diskaun </td>
               </tr>
             </table>
 
             <br><br>
     
             
-            <input type="submit" (click)="CreateReservation()" value="Simpan Tempahan" id="fed_btn">
+            <input type="submit" value="Simpan Tempahan" id="fed_btn">
         </form>
     </div>
     </div>
