@@ -2,7 +2,7 @@ import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { ReservationService } from '../reservation.service';
+import { ReservationService } from '../service/reservation.service';
 
 @Component({
   selector: 'app-insert-reservation',
