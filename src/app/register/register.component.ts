@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RegisterService } from '../register.service';
+import { RegisterService } from '../service/register.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl  } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../service/auth.service';
 import { User } from '../models/user';
 
 import { Observable } from 'rxjs';
