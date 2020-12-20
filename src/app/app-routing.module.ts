@@ -16,6 +16,7 @@ import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
 import { AdminPortalComponent} from './admin-portal/admin-portal.component';
 import { ViewUserDetailComponent} from './view-user-detail/view-user-detail.component';
+//import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'update-utility', component: UpdateUtilityComponent},
   {path: 'admin-portal', component: AdminPortalComponent},
   {path: 'view-user-detail/:id', component: ViewUserDetailComponent}
+  //{path: 'hubungi-kami', component: HubungiKamiComponent}
 ];
 
 @NgModule({

@@ -39,6 +39,7 @@ import { AuthService } from "./service/auth.service";
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ViewUserDetailComponent } from './view-user-detail/view-user-detail.component';
+//import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 
 
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
@@ -69,6 +70,7 @@ const appRoutes: Routes = [
     LoginAdminComponent,
     UpdateUserComponent,
     ViewUserDetailComponent,
+    //HubungiKamiComponent,
 
     //PasswordPatternDirective,
     //MatchPasswordDirective,
