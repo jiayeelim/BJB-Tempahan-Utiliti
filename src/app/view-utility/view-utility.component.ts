@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RuangService } from '../ruang.service';
+import { RuangService } from '../service/ruang.service';
 import { AngularFireStorage } from '@angular/fire/storage'
 import { Observable } from 'rxjs';
 
