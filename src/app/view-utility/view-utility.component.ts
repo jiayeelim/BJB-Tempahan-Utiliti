@@ -35,7 +35,8 @@ export class ViewUtilityComponent implements OnInit {
     /*ref.child(path).getDownloadURL().subscribe(url => {
       this.imageUrl = url;
       console.log("File available at", url);
-    })*/
+    })*/ 
+    
     return this.imageUrl;
   }
 }
