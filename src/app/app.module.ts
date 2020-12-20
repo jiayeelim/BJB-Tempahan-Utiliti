@@ -32,10 +32,10 @@ import { UpdateUtilityComponent} from './update-utility/update-utility.component
 //Module
 import { ReactiveFormsModule } from '@angular/forms';
 //Service
-import { RegisterService } from './register.service';
-import { RuangService } from './ruang.service';
-import { ReservationService } from './reservation.service';
-import { AuthService } from "./auth.service";
+import { RegisterService } from './service/register.service';
+import { RuangService } from './service/ruang.service';
+import { ReservationService } from './service/reservation.service';
+import { AuthService } from "./service/auth.service";
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { ViewUserDetailComponent } from './view-user-detail/view-user-detail.component';
