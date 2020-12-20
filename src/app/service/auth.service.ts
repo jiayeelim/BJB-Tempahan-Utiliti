@@ -37,6 +37,7 @@ export class AuthService {
     return this.afs.collection<User>('User');
   }
 
+
   isLoggedIn(){
     if(localStorage.getItem('isLoggedIn') == "true"){
       return true;

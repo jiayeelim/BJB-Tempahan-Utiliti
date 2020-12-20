@@ -6,12 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import {} from '@angular/compiler';
 import { FormsModule } from '@angular/forms';
 
-import {AngularFireModule} from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {environment} from '../environments/environment';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFireModule} from '@angular/fire';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { environment} from '../environments/environment';
+import { AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import {AngularFireStorageModule} from '@angular/fire/storage';
+import { AngularFireStorageModule} from '@angular/fire/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 //Component
@@ -28,6 +28,7 @@ import { UserViewUtilitiComponent } from './user-view-utiliti/user-view-utiliti.
 import { ViewUtilityComponent} from './view-utility/view-utility.component';
 import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
+
 //Module
 import { ReactiveFormsModule } from '@angular/forms';
 //Service
@@ -37,6 +38,7 @@ import { ReservationService } from './reservation.service';
 import { AuthService } from "./auth.service";
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { ViewUserDetailComponent } from './view-user-detail/view-user-detail.component';
 
 
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
@@ -66,6 +68,7 @@ const appRoutes: Routes = [
     UpdateUtilityComponent,
     LoginAdminComponent,
     UpdateUserComponent,
+    ViewUserDetailComponent,
 
     //PasswordPatternDirective,
     //MatchPasswordDirective,
