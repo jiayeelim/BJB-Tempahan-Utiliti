@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-<<<<<<< Updated upstream
+//<<<<<<< Updated upstream
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
-=======
->>>>>>> Stashed changes
+//=======
+//>>>>>>> Stashed changes
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-<<<<<<< Updated upstream
   constructor(public fireservices:AngularFirestore, private firebase:AngularFireDatabase, private router: Router) { }
 
   getUserID(){
@@ -31,13 +30,5 @@ export class UserService {
     localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('token');
     localStorage.removeItem('name');
-    //this.router.navigate(['/home']);
   }
-
 }
-
-
-=======
-  constructor() { }
-}
->>>>>>> Stashed changes
