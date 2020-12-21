@@ -63,3 +63,19 @@ input[type=submit].update {
     bottom: 0%;
     right: 100px;
   }
+
+  .row {
+    display: flex;
+  }
+  
+.columnleft {
+    flex: 30%;
+    padding: 5px;
+    margin: auto;
+}
+
+.columnright {
+    flex: 70%;
+    padding: 5px;
+    position: relative;
+}

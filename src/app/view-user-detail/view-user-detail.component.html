@@ -9,7 +9,7 @@
     </div>
     <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
     <div class="sign_in_up" style="flex-grow: 1; text-align: right">
-      <!--<a href="/home" (click)="logout()"><b>LOG KELUAR</b></a>-->
+      <a href="/home" (click)="logout()"><b>LOG KELUAR</b></a>
     </div>
 </div>
 
@@ -29,12 +29,47 @@
         </div>
 
         <hr class="line">
-        <div class = "title">Nama Penuh</div>
-            <!--<input type = "submit" class="update" value="Kemas Kini"><br><br>-->
-        <!--<tr ngFor= "let user of user">{{user?.name}}</tr>-->
+        <div class="row">
+        <div class = "columnleft">
+          <font class = "title">Nama Penuh</font>
+        </div>
+        <div class = "columnright">
+         <font class = "data">{{user.name}} </font>
+        </div>
+        </div>
+        
         <hr class="line">
-        <div class = "title">Alamat Penuh</div>
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Alamat Penuh </font>
+          </div>
+          <div class = "columnright">
+              {{user.address1}}, <br>                      
+              {{user.address2}} <br>
+              {{user.postcode}},{{user.state}} <br>
+          </div>
+        </div>
 
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Telefon Nombor</font>
+          </div>
+          <div class = "columnright">
+              {{user.phone}}
+          </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">E-mel</font>
+          </div>
+          <div class = "columnright">
+              {{user.email}} 
+          </div>
+        </div>
+        <!--<input type = "submit" class="update" value="Kemas Kini"><br><br>-->
     </div>
     </div>
 
