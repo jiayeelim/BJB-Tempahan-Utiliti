@@ -40,7 +40,7 @@
         <hr class="line">
         <div class="row">
             <div class="columnleft">
-                <img class="img" [src]="getImage(item.payload.doc.data().image)" alt="Image from Angular Storage">
+                <img class="img" [src]="item.payload.doc.data().image_url" alt="Image from Angular Storage">
             </div>
             <div class="columnright">
                 <font class="utilitytitle">{{item.payload.doc.data().name}}</font><br>
