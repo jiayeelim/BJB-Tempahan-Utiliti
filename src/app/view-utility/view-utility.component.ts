@@ -6,6 +6,11 @@ import { Observable } from 'rxjs';
 import { Ruang } from '../models/ruang'
 import { Router } from '@angular/router';
 
+class RuangWithId extends Ruang{
+  id: string;
+  url: string;
+}
+
 @Component({
   selector: 'app-view-utility',
   templateUrl: './view-utility.component.html',
@@ -13,7 +18,48 @@ import { Router } from '@angular/router';
 })
 export class ViewUtilityComponent implements OnInit {
 
-  ruang: Array<any>;
+  name: string;
+
+  selectedRuang$: AngularFirestoreDocument<Ruang>;
+  ruang: RuangWithId;
+  ruangList: Array<RuangWithId> = [null];
+
+  constructor(private router:Router, private ruangServices: RuangService, private firestore: AngularFirestore, private storage: AngularFireStorage){
+
+    this.ruangList.pop();
+
+    const query = this.ruangServices.getRuangData().ref;
+    query.onSnapshot( doc => {
+      doc.forEach( documentSnapshot => {
+        this.selectedRuang$ = this.firestore.doc(documentSnapshot.ref);
+        this.selectedRuang$.snapshotChanges().subscribe( value => {
+          const data = value.payload.data();
+          const id = value.payload.id;
+
+          this.ruang = new RuangWithId();
+          this.ruang.id = id;
+          this.ruang.name = data.name;
+          this.ruang.information = data.information;
+          this.ruang.price = data.price;
+          this.ruang.capacity = data.capacity;
+          this.ruang.image_url = data.image_url;
+
+          this.ruangList.push(this.ruang);
+          //console.log(this.ruangList.length);
+          console.log(this.name);
+        });
+      })
+    });
+  }
+
+  ngOnInit(): void {
+  }
+
+  updateUtility(ruangID){
+    this.router.navigate(['/updateRuang',ruangID]);
+  }
+
+  /*ruang: Array<any>;
   
   constructor(public ruangService:RuangService, public af:AngularFireStorage) {}
   
@@ -22,7 +68,7 @@ export class ViewUtilityComponent implements OnInit {
       this.ruang = data;
 
     })
-  }
+  }*/
 
   /*getImage(path: string)
   {

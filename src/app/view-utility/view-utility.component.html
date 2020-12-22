@@ -36,19 +36,19 @@
             <input type="submit" class="add" name="add" value="Tambah" id="fed_btn" routerLink="/add-utility">
         </div>
       
-      <div *ngFor="let item of ruang" >
+      <div *ngFor="let item of ruangList" >
         <hr class="line">
         <div class="row">
             <div class="columnleft">
-                <img class="img" [src]="item.payload.doc.data().image_url" alt="Image from Angular Storage">
+                <img class="img" [src]="item.image_url" alt="Image from Angular Storage">
             </div>
             <div class="columnright">
-                <font class="utilitytitle">{{item.payload.doc.data().name}}</font><br>
-                {{item.payload.doc.data().information}}<br><br>
+                <font class="utilitytitle">{{item.name}}</font><br>
+                {{item.information}}<br><br>
                 <hr width="10%" align="left">
-                {{item.payload.doc.data().capacity}} orang<br>
-                <div class="price">RM {{item.payload.doc.data().price}} /jam</div>
-                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" routerLink="/update-utility">
+                {{item.capacity}} orang<br>
+                <div class="price">RM {{item.price}} /jam</div>
+                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" (click)="updateUtility(item.id)">
                 <input type="button" name="delete" value="Padam" id="fed_btn">
             </div>
         </div>

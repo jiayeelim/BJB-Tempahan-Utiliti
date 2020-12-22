@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-//<<<<<<< Updated upstream
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
-//=======
-//>>>>>>> Stashed changes
 
 @Injectable({
   providedIn: 'root'
@@ -31,4 +28,7 @@ export class UserService {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
   }
+
 }
+
+

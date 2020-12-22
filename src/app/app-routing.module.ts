@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'viewReservation', component: ViewReservationComponent},
   {path: 'view-utility', component: ViewUtilityComponent},
   {path: 'add-utility', component: AddUtilityComponent},
-  {path: 'update-utility', component: UpdateUtilityComponent},
+  {path: 'updateProduct/:ruangID', component: UpdateUtilityComponent},
   {path: 'admin-portal', component: AdminPortalComponent},
   {path: 'view-user-detail', component: ViewUserDetailComponent}
   //{path: 'hubungi-kami', component: HubungiKamiComponent}

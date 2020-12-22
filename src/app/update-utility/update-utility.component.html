@@ -28,24 +28,26 @@
 <div class="registercontainer">  
   
   <div class="box_1">
-    <form [formGroup]="updateutilityform">
+    <form [formGroup]="updateutilityform" (ngSubmit)='updateRuang()' ngNativeValidate>
         <h2 align="center">Kemaskini Ruang</h2>
         <label>Nama</label>
-        <input type="text" name="name" placeholder="nama ruang" required><br><br>
+        <input type="text" formControlName="name" value="{{item.name}}" required><br><br>
 
         <label>Maklumat Ruang</label>
-        <textarea name="address" rows="5" cols="70" required></textarea><br><br>
+        <textarea formControlName="information" value="{{item.information}}" rows="5" cols="70" required></textarea><br><br>
 
         <label>Harga</label><br>
-        <input type="number" name="price" required><br><br>
+        <input type="number" formControlName="price" value="{{item.price}}" required><br><br>
 
-        <label>Kapaciti</label><br>
-        <input type="number" name="capacity" required><br><br>
+        <label>Kapasiti</label><br>
+        <input type="number" formControlName="capacity" value="{{item.capacity}}" required><br><br>
 
         <label>Gambar</label><br>
-        <input type="file" name="fileToUpload"><br><br>
+        <div [innerHTML]="message" *ngIf="message" style="color: red;"></div>
+        <div><img width="350px" height="250px" [src]="url" *ngIf="url"></div>
+        <input type="file" accept="image/*" formControlName="img" (change)="selectFile($event)" required><br><br>
 
-        <input type="submit" name="submit" value="Kemaskini" id="reg_btn">
+        <input type="submit" value="Kemaskini" id="reg_btn">
 
     </form>
     </div>

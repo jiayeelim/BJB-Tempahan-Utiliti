@@ -17,8 +17,12 @@ export class RuangService {
     return this.fireservices.collection('Ruang').add(Ruang);
   }*/
 
-  get_allRuang(){
+  /*get_allRuang(){
     return this.fireservices.collection('Ruang').snapshotChanges();
+  }*/
+
+  getRuangData(){
+    return this.fireservices.collection<Ruang>('Ruang');
   }
 
   newRuangData(){
