@@ -7,12 +7,11 @@ export class Reservation
     starttime: Time | undefined;
     enddate: Date | undefined;
     endtime:Time | undefined;
-    message: void;
     ruangprice:number | undefined;
     ruangname: string;
-    //rate:number;
-    //discount:number;
-    //total:number;
+    quantity: number | undefined;
+    discount:number;
+    total:number;
     name: string;
     phoneno: string;
 

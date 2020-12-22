@@ -1,8 +1,9 @@
 import { Time } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ReservationService } from '../service/reservation.service';
+import { RuangService } from '../service/ruang.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormGroup, FormControl } from '@angular/forms';
 import {Reservation } from '../models/reservation';
@@ -34,14 +35,29 @@ export class InsertReservationComponent implements OnInit {
       });
 
       newReservation: Reservation =  new Reservation();
+      ruang: Ruang = new Ruang();
+      ruangID: string;
+      route_url: Array<string> = [];
  
-      ruangData$: Observable <Ruang[]> ;
+      //ruangData$: Observable <Ruang[]> ;
   
 
-  constructor(public af:AngularFireStorage, public reservationService:ReservationService, public firebase:AngularFirestore) { }
+  constructor(public router: Router, public af:AngularFireStorage, public reservationService:ReservationService, public firebase:AngularFirestore, public ruangService:RuangService) {
+    this.route_url = this.router.url.split('/');
+    this.ruangID = this.route_url[2];
+    const query = this.firebase.collection<Ruang>('Ruang').doc(this.ruangID).get();
+    query.subscribe(value =>{
+      const data = value.data();
 
+      this.ruang.name = data.name;
+      this.ruang.price = data.price;
+  
+  })
+   }
+  
   addNewReservation()
   {
+    
     this.newReservation.name = localStorage.getItem('name');
     this.newReservation.phoneno = localStorage.getItem('phone');
     this.newReservation.reservationDescription = this.createReservationForm.value.reservationDescription;
@@ -49,6 +65,10 @@ export class InsertReservationComponent implements OnInit {
     this.newReservation.starttime = this.createReservationForm.value.starttime;
     this.newReservation.enddate = this.createReservationForm.value.enddate;
     this.newReservation.endtime = this.createReservationForm.value.endtime;
+    this.newReservation.ruangname = this.ruang.name;
+    this.newReservation.ruangprice = this.ruang.price;
+    //this.newReservation.quantity = this.calculateTime(this.newReservation.starttime, this.newReservation.endtime);
+    //this.newReservation.total = (this.newReservation.ruangprice*this.newReservation.quantity);
 
 
     try
@@ -71,6 +91,13 @@ export class InsertReservationComponent implements OnInit {
       this.createReservationForm.reset();
     })
   }
+
+  //calculateTime(starttime,endtime)
+  //{
+    //var timestart = starttime.getTime();
+    //var timeend = endtime.getTime();
+  //  return starttime-endtime;
+  //}
   
 
   ngOnInit(): void 

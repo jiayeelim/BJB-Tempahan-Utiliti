@@ -36,22 +36,24 @@
             <input type="submit" class="add" name="add" value="SENARAI TEMPAHAN RUANG" id="fed_btn" routerLink="/viewReservation">
         </div>
         
-        <hr class="line">
-        <div class="row">
-            <div class="columnleft">
-                <img class="img" src="/assets/image/hall1.jpg"> 
-            </div>
-            <div class="columnright">
-                <font class="utilitytitle">Bilik Belajar dalam Bangsa Johor Bahagia</font><br>
-                Ruang selesa yang boleh mengadakan sesi belajar.<br><br>
-                <hr width="10%" align="left">
-                15 orang<br>
-                <div class="price">RM20/jam</div>
-                <input type="submit" class="add" name="add" value="Tambah Tempahan" id="fed_btn" routerLink="/insertReservation">
-            </div>
+        <div *ngFor="let item of ruangList" >
+          <hr class="line">
+          <div class="row">
+              <div class="columnleft">
+                  <img class="img" [src]="item.image_url" alt="Image from Angular Storage">
+              </div>
+              <div class="columnright">
+                  <font class="utilitytitle">{{item.name}}</font><br>
+                  {{item.information}}<br><br>
+                  <hr width="10%" align="left">
+                  {{item.capacity}} orang<br>
+                  <div class="price">RM {{item.price}} /jam</div>
+                <input type="submit" class="add" name="add" value="Tambah Tempahan" id="fed_btn" a [routerLink]="['/insertReservation',item.id]">
+              </div>
+          </div>
         </div>
 
-        <hr class="line">
+      <!--<hr class="line">
         <div class="row">
             <div class="columnleft">
                 <img class="img" src="/assets/image/hall2.jpg"> 
@@ -109,7 +111,7 @@
                 <div class="price">RM80/semalam</div>
                 <input type="submit" class="add" name="add" value="Tambah Tempahan" id="fed_btn" routerLink="/insertReservation">
             </div>
-        </div>
+        </div>-->
         <hr class="line">
     </div>
   </div>
