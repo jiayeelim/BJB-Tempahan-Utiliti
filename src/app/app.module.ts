@@ -28,6 +28,7 @@ import { UserViewUtilitiComponent } from './user-view-utiliti/user-view-utiliti.
 import { ViewUtilityComponent} from './view-utility/view-utility.component';
 import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 //Module
 import { ReactiveFormsModule } from '@angular/forms';
@@ -37,7 +38,6 @@ import { RuangService } from './service/ruang.service';
 import { ReservationService } from './service/reservation.service';
 import { AuthService } from "./service/auth.service";
 import { LoginAdminComponent } from './login-admin/login-admin.component';
-import { UpdateUserComponent } from './update-user/update-user.component';
 import { ViewUserDetailComponent } from './view-user-detail/view-user-detail.component';
 import { UserService } from './service/user.service';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';

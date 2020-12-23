@@ -16,6 +16,7 @@ import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
 import { AdminPortalComponent} from './admin-portal/admin-portal.component';
 import { ViewUserDetailComponent} from './view-user-detail/view-user-detail.component';
+import {} from '@angular/compiler';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 
 const routes: Routes = [
