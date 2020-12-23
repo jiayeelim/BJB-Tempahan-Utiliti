@@ -51,13 +51,15 @@ export class InsertReservationComponent implements OnInit {
 
       this.ruang.name = data.name;
       this.ruang.price = data.price;
+      this.ruang.pricePer = data.pricePer;
   
   })
+
    }
   
   addNewReservation()
   {
-    
+    if(localStorage.getItem('isLoggedIn')=='true'){
     this.newReservation.name = localStorage.getItem('name');
     this.newReservation.phoneno = localStorage.getItem('phone');
     this.newReservation.reservationDescription = this.createReservationForm.value.reservationDescription;
@@ -67,7 +69,7 @@ export class InsertReservationComponent implements OnInit {
     this.newReservation.endtime = this.createReservationForm.value.endtime;
     this.newReservation.ruangname = this.ruang.name;
     this.newReservation.ruangprice = this.ruang.price;
-    //this.newReservation.quantity = this.calculateTime(this.newReservation.starttime, this.newReservation.endtime);
+    this.newReservation.quantity = this.calculateQuantity(this.ruang.pricePer, this.newReservation.startdate,this.newReservation.enddate, this.newReservation.starttime, this.newReservation.endtime);
     //this.newReservation.total = (this.newReservation.ruangprice*this.newReservation.quantity);
 
 
@@ -80,6 +82,7 @@ export class InsertReservationComponent implements OnInit {
     {
       console.log(err);
     }
+  }
 
 
   }
@@ -92,12 +95,18 @@ export class InsertReservationComponent implements OnInit {
     })
   }
 
-  //calculateTime(starttime,endtime)
-  //{
-    //var timestart = starttime.getTime();
-    //var timeend = endtime.getTime();
-  //  return starttime-endtime;
-  //}
+  calculateQuantity(priceper, startdate, enddate,starttime,endtime)
+  {
+    if(priceper=='jam'){
+      var timestart = starttime.getTime();
+      var timeend = endtime.getTime();
+      return starttime-endtime;
+    }
+    else{
+      return Math.ceil(Math.abs(startdate - enddate) / (1000 * 60 * 60 * 24));
+    }
+   
+  }
   
 
   ngOnInit(): void 

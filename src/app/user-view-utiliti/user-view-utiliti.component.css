@@ -50,6 +50,10 @@
   position: relative;
 }
 
+.price{
+  font-weight: bold;
+}
+
 input[type=submit].add {
   width: 250px;
   background-color: rgb(17, 156, 187);

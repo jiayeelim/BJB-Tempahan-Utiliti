@@ -41,6 +41,7 @@ export class UserViewUtilitiComponent implements OnInit {
           this.ruang.name = data.name;
           this.ruang.information = data.information;
           this.ruang.price = data.price;
+          this.ruang.pricePer = data.pricePer;
           this.ruang.capacity = data.capacity;
           this.ruang.image_url = data.image_url;
 
