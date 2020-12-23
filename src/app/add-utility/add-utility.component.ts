@@ -14,22 +14,11 @@ import { Observable } from 'rxjs';
 })
 export class AddUtilityComponent implements OnInit {
 
-  /*ruang: any;
-  ruangName: string;
-  ruangInformation: string;
-  ruangPrice: number|undefined;
-  ruangCapacity: number|undefined;
-  ruangImageUrl: any;
-  message: void;
-  path: string;
-  imgSrc: string = '/assets/image/blankImage.png';
-  selectedImage: any = null;
-  task: AngularFireUploadTask;*/
-
   addUtilityForm = new FormGroup({
     name: new FormControl(''),
     information: new FormControl(''),
     price: new FormControl(''),
+    pricePer: new FormControl(''),
     capacity: new FormControl(''),
     img: new FormControl(''),
   });
@@ -37,64 +26,7 @@ export class AddUtilityComponent implements OnInit {
   newRuang: Ruang = new Ruang();
   selectedFile;
 
-  //constructor(public af:AngularFireStorage, public ruangService:RuangService) { }
-
   constructor(private ruangService:RuangService, private location:Location, private storage:AngularFireStorage) {}
-
-  /*showPreview(event:any)
-  {
-    if(event.target.files && event.target.files[0]){
-      const reader = new FileReader();
-      reader.onload = (e:any) => this.imgSrc = e.target.result;
-      reader.readAsDataURL(event.target.files[0]);
-      this.selectedImage = event.target.files[0];
-    }
-    else{
-      this.imgSrc = '/assets/image/blankImage.png';
-      this.selectedImage = null;
-    }
-  }
-
-  upload($event)
-  {
-    this.path = $event.target.files[0];
-  }
-
-  /*CreateRuang()
-  {
-    //console.log(this.path);
-    var filename = "/files"+Math.random()+this.path;
-    //const filename = this.selectedImage.name;
-    this.task = this.af.upload(filename,this.path);
-    const fileRef = this.af.ref(filename);
-
-    let Ruang = {};
-    Ruang['name'] = this.ruangName;
-    Ruang['information'] = this.ruangInformation;
-    Ruang['price'] = this.ruangPrice;
-    Ruang['capacity'] = this.ruangCapacity;
-    Ruang['image'] = filename;
-
-    this.ruangService.create_newRuang(Ruang).then(res =>{
-
-      this.ruangName="";
-      this.ruangInformation="";
-      this.ruangPrice=undefined;
-      this.ruangCapacity=undefined;
-      fileRef.getDownloadURL().subscribe((url) => {
-        this.ruangImageUrl = url;
-      })
-
-      console.log(res);
-
-      this.message = alert("Ruang data save DONE");
-
-    }).catch(error => {
-      console.log(error);
-
-    });
-
-  }*/
 
   ngOnInit(): void {
   }
@@ -131,6 +63,7 @@ export class AddUtilityComponent implements OnInit {
     this.newRuang.information = this.addUtilityForm.value.information;
     this.newRuang.capacity = this.addUtilityForm.value.capacity;
     this.newRuang.price = this.addUtilityForm.value.price;
+    this.newRuang.pricePer = this.addUtilityForm.value.pricePer;
 
     var imageurl = this.addUtilityForm.value.img.split("\\");
     this.newRuang.image_url = imageurl[imageurl.length - 1];

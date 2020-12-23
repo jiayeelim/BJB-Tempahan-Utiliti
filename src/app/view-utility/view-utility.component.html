@@ -47,7 +47,7 @@
                 {{item.information}}<br><br>
                 <hr width="10%" align="left">
                 {{item.capacity}} orang<br>
-                <div class="price">RM {{item.price}} /jam</div>
+                <div class="price">RM {{item.price}} / {{item.pricePer}} </div>
                 <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" [routerLink]="['/updateProduct',item.id]">
             </div>
         </div>

@@ -39,6 +39,12 @@
         <label>Harga</label><br>
         <input type="number" formControlName="price" value="{{item.price}}" required><br><br>
 
+        <label>Sila pilih</label><br>
+        <select formControlName="pricePer" required>
+          <option value="jam" selected>harga/jam</option>
+          <option value="semalam">harga/semalam</option>
+        </select><br><br>
+
         <label>Kapasiti</label><br>
         <input type="number" formControlName="capacity" value="{{item.capacity}}" required><br><br>
 

@@ -35,6 +35,7 @@ export class UpdateUtilityComponent implements OnInit {
       this.item.information = data.information;
       this.item.capacity = data.capacity;
       this.item.price = data.price;
+      this.item.pricePer = data.pricePer;
       this.item.image_url = data.image_url;
       this.url = this.item.image_url;
 
@@ -44,6 +45,7 @@ export class UpdateUtilityComponent implements OnInit {
         name: new FormControl(this.item.name),
         information: new FormControl(this.item.information),
         price: new FormControl(this.item.price),
+        pricePer: new FormControl(this.item.pricePer),
         capacity: new FormControl(this.item.capacity),
         img: new FormControl(''),
       });
@@ -101,6 +103,7 @@ export class UpdateUtilityComponent implements OnInit {
     this.item.information = this.updateutilityform.value.information;
     this.item.capacity = this.updateutilityform.value.capacity;
     this.item.price = this.updateutilityform.value.price;
+    this.item.pricePer = this.updateutilityform.value.pricePer;
     //console.log(this.updateutilityform.value.img);
 
     try{
