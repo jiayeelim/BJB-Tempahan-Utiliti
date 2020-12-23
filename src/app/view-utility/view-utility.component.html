@@ -48,7 +48,7 @@
                 <hr width="10%" align="left">
                 {{item.capacity}} orang<br>
                 <div class="price">RM {{item.price}} /jam</div>
-                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" (click)="updateUtility(item.id)">
+                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" [routerLink]="['/updateProduct',item.id]">
                 <input type="button" name="delete" value="Padam" id="fed_btn">
             </div>
         </div>

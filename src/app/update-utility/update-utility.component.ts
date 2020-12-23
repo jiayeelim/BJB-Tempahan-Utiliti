@@ -79,9 +79,9 @@ export class UpdateUtilityComponent implements OnInit {
 
         // update product details to firestore
         this.firestore.collection('Ruang').doc(this.ruangID).update(Object.assign({}, this.item)).then(() => {
-          window.alert("Product updated! :)");
+          window.alert("Ruang updated! :)");
           this.updateutilityform.reset();
-          this.router.navigate(['']);          
+          this.router.navigate(['view-utility']);          
         });
      });
     });
@@ -101,7 +101,7 @@ export class UpdateUtilityComponent implements OnInit {
         this.firestore.collection('Ruang').doc(this.ruangID).update(Object.assign({}, this.item));
         window.alert("Ruang updated! :)");
         this.updateutilityform.reset();
-        this.router.navigate(['']);
+        this.router.navigate(['view-utility']);
       }
       else{
         this.changeImageAndUpdateRuang(this.event, this.newImgURL);

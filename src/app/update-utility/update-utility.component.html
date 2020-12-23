@@ -45,7 +45,7 @@
         <label>Gambar</label><br>
         <div [innerHTML]="message" *ngIf="message" style="color: red;"></div>
         <div><img width="350px" height="250px" [src]="url" *ngIf="url"></div>
-        <input type="file" accept="image/*" formControlName="img" (change)="selectFile($event)" required><br><br>
+        <input type="file" accept="image/*" formControlName="img" (change)="selectFile($event)"><br><br>
 
         <input type="submit" value="Kemaskini" id="reg_btn">
 
