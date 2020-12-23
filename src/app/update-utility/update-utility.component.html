@@ -15,9 +15,9 @@
 <!--Navigation Bar-->
 <div>
   <ul>
-    <li><a routerLink="/home">LAMAN UTAMA</a></li>
+    <li><a routerLink="/admin-portal">LAMAN UTAMA</a></li>
     <li class="dropdown">
-      <a class="active" routerLink="/view-utility">SENARAI RUANG</a>
+      <a routerLink="/view-utility">SENARAI RUANG</a>
     </li>
     <li><a href="#">TENTANG KAMI</a></li>
     <li><a href="#">HUBUNGI KAMI</a></li>
@@ -48,6 +48,7 @@
         <input type="file" accept="image/*" formControlName="img" (change)="selectFile($event)"><br><br>
 
         <input type="submit" value="Kemaskini" id="reg_btn">
+        <input type="button" value="Padam Ruang ini" id="del_btn" (click)=deleteRuang()>
 
     </form>
     </div>

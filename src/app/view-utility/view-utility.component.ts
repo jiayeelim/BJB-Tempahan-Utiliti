@@ -55,9 +55,11 @@ export class ViewUtilityComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  updateUtility(ruangID){
+  /*updateUtility(ruangID){
     this.router.navigate(['/updateRuang',ruangID]);
-  }
+  }*/
+
+
 
   /*ruang: Array<any>;
   

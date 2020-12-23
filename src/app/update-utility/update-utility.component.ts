@@ -54,6 +54,15 @@ export class UpdateUtilityComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  deleteRuang(){
+    var selection = confirm("Are you sure to delete this item?");
+    if(selection == true){
+      this.deleteImgUrl();
+      this.firestore.collection<Ruang>('Ruang').doc(this.ruangID).delete();
+      this.router.navigate(['view-utility']);
+    }
+  }
+
   deleteImgUrl(){
     this.storage.storage.refFromURL(this.previousImgURL).delete();
   }
