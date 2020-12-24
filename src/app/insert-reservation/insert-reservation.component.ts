@@ -38,6 +38,7 @@ export class InsertReservationComponent implements OnInit {
       ruang: Ruang = new Ruang();
       ruangID: string;
       route_url: Array<string> = [];
+    
  
       //ruangData$: Observable <Ruang[]> ;
   
@@ -54,7 +55,7 @@ export class InsertReservationComponent implements OnInit {
       this.ruang.pricePer = data.pricePer;
   
   })
-
+      this.newReservation.discount = 0;
    }
   
   addNewReservation()
@@ -69,6 +70,7 @@ export class InsertReservationComponent implements OnInit {
     this.newReservation.endtime = this.createReservationForm.value.endtime;
     this.newReservation.ruangname = this.ruang.name;
     this.newReservation.ruangprice = this.ruang.price;
+    this.newReservation.discount = 0;
     this.newReservation.quantity = this.calculateQuantity(this.ruang.pricePer, this.newReservation.startdate,this.newReservation.enddate, this.newReservation.starttime, this.newReservation.endtime);
     //this.newReservation.total = (this.newReservation.ruangprice*this.newReservation.quantity);
 
