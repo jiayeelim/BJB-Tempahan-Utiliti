@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'user-portal', component: UserPortalComponent},
   {path: 'login', component: LoginComponent},
   {path: 'login-admin', component: LoginAdminComponent},
-  {path: 'update-user', component: UpdateUserComponent},
+  {path: 'update-user/:id', component: UpdateUserComponent},
   {path: 'insertReservation/:ruangID', component: InsertReservationComponent},
   {path: 'updateReservation', component: UpdateReservationComponent},
   {path: 'user-view-utility', component: UserViewUtilitiComponent},
