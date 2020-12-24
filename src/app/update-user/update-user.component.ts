@@ -1,5 +1,4 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -15,6 +14,7 @@ export class UpdateUserComponent implements OnInit {
 
   user: User = new User();
   route_url: Array<string> = [];
+  username: string;
   id: string;
   name: string;
 
@@ -24,13 +24,13 @@ export class UpdateUserComponent implements OnInit {
 
     //console.log(this.router.url);
     this.route_url = this.router.url.split('/');
-    this.id = this.route_url[2];
+    this.username = this.route_url[2];
 
     // get product id
-    console.log(this.id);
+    console.log(this.username);
 
-    const query = this.firestore.collection<User>('User').doc(this.id).get();
-    console.log(this.user.name);
+    const query = this.firestore.collection<User>('User').doc(this.username).get();
+    //console.log(this.user.name);
 
     query.subscribe(value => {
       const data = value.data();
@@ -91,6 +91,21 @@ export class UpdateUserComponent implements OnInit {
     } catch(err){
       console.log(err);
     }
+  }
+
+  updateUser(){
+    this.user.name = this.updateUserForm.value.name;
+    this.user.address1 = this.updateUserForm.value.address1;
+    this.user.address2 = this.updateUserForm.value.address2;
+    this.user.state = this.updateUserForm.value.state;
+    this.user.postcode = this.updateUserForm.value.postcode;
+    this.user.phone = this.updateUserForm.value.phone;
+    this.user.email = this.updateUserForm.value.email;
+
+    this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
+    window.alert("User telah Dikemas Kini!");
+    this.updateUserForm.reset();
+    this.router.navigate(['/view-user-detail']);
   }
 
 }

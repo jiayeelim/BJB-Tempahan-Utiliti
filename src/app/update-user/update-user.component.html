@@ -24,16 +24,55 @@
   <div class="registercontainer">  
   
     <div class="box_1">
+      <from [formGroup]="updateUserForm" (ngSubmit)="updateUser()" ngNativaValidate>
         <div class="title">
             <h1 align="center">Maklumat Peribadi</h1>
         </div>
 
         <hr class="line">
-        <div class = "title">Nama Penuh</div>
-            <!--<input type = "submit" class="update" value="Kemas Kini"><br><br>-->
+        <div class="row">
+        <div class = "columnleft">
+          <label>Nama Penuh</label>
+        </div>
+        <div class = "columnright">
+         <input type="text" formControlName="name" value="{{user.name}}" required>
+        </div>
+        </div>
+        
         <hr class="line">
-        <div class = "title">Alamat Penuh</div>
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Alamat Penuh </font>
+          </div>
+          <div class = "columnright">
+              {{user.address1}}, <br>                      
+              {{user.address2}} <br>
+              {{user.postcode}},{{user.state}} <br>
+          </div>
+        </div>
 
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Telefon Nombor</font>
+          </div>
+          <div class = "columnright">
+              {{user.phone}}
+          </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">E-mel</font>
+          </div>
+          <div class = "columnright">
+              {{user.email}} 
+          </div>
+        </div>
+        <hr class="line"> <br><br>
+        <input type = "submit" class="update" value="Kemas Kini">
+        </from>
     </div>
     </div>
 

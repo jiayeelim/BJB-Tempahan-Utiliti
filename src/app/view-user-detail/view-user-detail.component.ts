@@ -4,6 +4,11 @@ import { UserService } from '../service/user.service';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 
+class UserID extends User {
+  username: string;
+  url: string;
+}
+
 @Component({
   selector: 'app-view-user-detail',
   templateUrl: './view-user-detail.component.html',
@@ -11,8 +16,9 @@ import { User } from '../models/user';
 })
 export class ViewUserDetailComponent implements OnInit {
 
-  //user1: Array<any>;
-  user: User = new User();
+  //user: User = new User();
+  user: UserID;
+  userList: Array<UserID> = [null];
   username: string;
   selectedUser$: AngularFirestoreDocument<User>;
 
@@ -25,6 +31,7 @@ export class ViewUserDetailComponent implements OnInit {
       
       //var userID = firestore.collection('User');
       //var query = userID.ref.where("username", "==", this.username);
+      this.userList.pop();
 
       firestore.collection('User').ref.where("username", "==", this.username)
       .get()
@@ -44,6 +51,9 @@ export class ViewUserDetailComponent implements OnInit {
         this.selectedUser$ = this.firestore.doc(documentSnapshot.ref);
         this.selectedUser$.snapshotChanges().subscribe( value => {
           const data = value.payload.data();
+          const id = value.payload.id;
+
+          this.user = new UserID();
           this.user.name = data.name;
           this.user.ic= data.ic;
           this.user.address1 = data.address1;
@@ -54,6 +64,8 @@ export class ViewUserDetailComponent implements OnInit {
           this.user.phone = data.phone;
           this.user.username = data.username;
           this.user.password = data.password;
+
+          this.userList.push(this.user);
         });
         });
       });
