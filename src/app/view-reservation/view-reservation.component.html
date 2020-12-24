@@ -35,32 +35,34 @@
             <h1 align="center">Senarai Tempahan Ruang</h1>
         </div>
         
-        <hr class="line">
-        <div class="row">
-            <div class="columnleft">
-                <img class="img" src="/assets/image/hall1.jpg"> 
-            </div>
-            <div class="columnright">
-                <font class="utilitytitle">Bilik Belajar dalam Bangsa Johor Bahagia</font><br>
-                Maklumat Tentang Tempahan: Sewa untuk menjalankan bincangan. Perlukan 15 kerusi.<br>
+       
+          <hr class="line">
+          <div class="row">
+              <div class="columnleft">
+                  <img class="img" [src]="ruangData.image_url" alt="Image from Angular Storage">
+              </div>
+              <div class="columnright">
+                  <font class="utilitytitle">{{ruangData.name}}</font><br>
+                  {{ruangData.information}}<br><br>
+              </div>
                 <b>Status: Tamat</b><br><br>
                 <hr width="10%" align="left">
                 <table>
                     <tr>
                     <td><label>Tarikh Mula</label></td>
-                    <td>08/12/2020</td>
+                    <td>{{reservationData.startdate}}</td>
                   
       
                     <td><label>Masa Mula</label></td>
-                    <td>8:00am</td>
+                    <td>{{reservationData.starttime}}</td>
                     </tr>
       
                     <tr>
                     <td><label>Tarikh Tamat</label></td>
-                    <td>08/12/2020</td>
+                    <td>{{reservationData.enddate}}</td>
       
                     <td><label>Masa Tamat</label></td>
-                    <td>6:00pm</td>
+                    <td>{{reservationData.endtime}}</td>
                     </tr>
                 </table>
 
@@ -69,7 +71,7 @@
                 <table>
                     <tr>
                     <td><label>Kadar Tempahan</label></td>
-                    <td><div class="price">RM20/jam</div></td>
+                    <td><div class="price">RM {{ruangData.price}}  / {{ruangData.pricePer}}</div></td>
                     </tr>
       
                     <tr>
@@ -79,7 +81,7 @@
       
                     <tr>
                     <td><label>Diskaun</label></td>
-                    <td><div class="price">RM50</div></td>
+                    <td><div class="price">RM {{reservationData.discount}} </div></td>
                     </tr>
       
                     <tr>
@@ -92,8 +94,9 @@
                 <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" routerLink="/updateReservation">
                 <input type="button" name="delete" value="Padam" id="fed_btn">
             </div>
-        </div>
+        
 
+         <!--
         <hr class="line">
         <div class="row">
             <div class="columnleft">
@@ -208,7 +211,7 @@
                 <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn">
                 <input type="button" name="delete" value="Padam" id="fed_btn">
             </div>
-        </div>
+        </div>-->
         <hr class="line">
     </div>
   </div>
