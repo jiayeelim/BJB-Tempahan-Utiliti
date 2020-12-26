@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'appcomponent', component: AppComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'user-portal', component: UserPortalComponent},
+  {path: 'user-portal/:id', component: UserPortalComponent},
   {path: 'login', component: LoginComponent},
   {path: 'login-admin', component: LoginAdminComponent},
   {path: 'update-user/:id', component: UpdateUserComponent},
@@ -37,7 +37,7 @@ const routes: Routes = [
   {path: 'add-utility', component: AddUtilityComponent},
   {path: 'updateProduct/:ruangID', component: UpdateUtilityComponent},
   {path: 'admin-portal', component: AdminPortalComponent},
-  {path: 'view-user-detail', component: ViewUserDetailComponent},
+  {path: 'view-user-detail/:id', component: ViewUserDetailComponent},
   {path: 'hubungi-kami', component: HubungiKamiComponent}
   //{path: 'hubungi-kami', component: HubungiKamiComponent}
 ];

@@ -2,9 +2,14 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { User } from '../models/user';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Location } from '@angular/common';
 import { UserService } from '../service/user.service';
+
+class UserID extends User {
+  id: string;
+  url: string;
+}
 
 @Component({
   selector: 'app-update-user',
@@ -15,11 +20,21 @@ export class UpdateUserComponent implements OnInit {
 
   user: User = new User();
   route_url: Array<string> = [];
+  users: UserID;
+  userList: Array<UserID> = [null];
+  selectedUser$: AngularFirestoreDocument<User>;
   username: string;
   id: string;
   name: string;
 
-  updateUserForm: FormGroup;
+  updateUserForm = new FormGroup({
+    address1: new FormControl(this.user.address1),
+    address2: new FormControl(this.user.address2),
+    postcode: new FormControl(this.user.postcode),
+    state: new FormControl(this.user.state),
+    phone: new FormControl(this.user.phone),
+    email: new FormControl(this.user.email),
+  });
 
   constructor(
     private router: Router, 
@@ -48,24 +63,15 @@ export class UpdateUserComponent implements OnInit {
       this.user.username = data.username;
       this.user.password = data.password;
       this.user.password2 = data.password2;
-
-      this.updateUserForm = new FormGroup({
-        address1: new FormControl(this.user.address1),
-        address2: new FormControl(this.user.address2),
-        postcode: new FormControl(this.user.postcode),
-        state: new FormControl(this.user.state),
-        phone: new FormControl(this.user.phone),
-        email: new FormControl(this.user.email),
-      });
     });
   }
 
   ngOnInit(): void {
-    this.updateUser();
+    /*this.updateUser();
     const id = this.actRoute.snapshot.paramMap.get('id');
     this.userService.getUser(id).valueChanges().subscribe(data => {
       this.updateUserForm.setValue(data)
-    })
+    })*/
   }
 
   updateUser(){
@@ -77,18 +83,11 @@ export class UpdateUserComponent implements OnInit {
     this.user.phone = this.updateUserForm.value.phone;
     this.user.email = this.updateUserForm.value.email;
 
-    try {
-      if(this.user.email !== ""){
+    try{
       this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
       window.alert("User telah Dikemas Kini!");
       this.updateUserForm.reset();
-      this.router.navigate(['/view-user-detail']);
-      }
-      else{
-        window.alert("Error! ");
-      }
-    }
-    catch(err){
+    }catch(err){
       console.log(err);
     }
   }

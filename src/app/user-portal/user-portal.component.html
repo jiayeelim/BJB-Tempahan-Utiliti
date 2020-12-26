@@ -11,7 +11,7 @@
     <div class="sign_in_up" style="flex-grow: 1; text-align: right">
       Selamat Datang <h2>{{name}}</h2>
       <a href="/home" (click)="logout()">LOG KELUAR</a> ||
-      <a href="/view-user-detail">KEMASKINI AKUAN</a>
+      <a [routerLink]="['/view-user-detail',user.id]">KEMASKINI AKUAN</a>
 </div>
   </div>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../service/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../models/user';
 
 class UserID extends User {
@@ -22,11 +22,15 @@ export class ViewUserDetailComponent implements OnInit {
   username: string;
   selectedUser$: AngularFirestoreDocument<User>;
   route_url: Array<string> = [];
+  id: string;
 
   constructor(
     private router:Router,
     private firestore: AngularFirestore,
     public userService: UserService) {
+
+    this.route_url = this.router.url.split('/');
+    this.id = this.route_url[2];
 
       this.username = localStorage.getItem('token');
       
