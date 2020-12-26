@@ -29,6 +29,9 @@ import { ViewUtilityComponent} from './view-utility/view-utility.component';
 import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
+import { ViewUserDetailComponent } from './view-user-detail/view-user-detail.component';
 
 //Module
 import { ReactiveFormsModule } from '@angular/forms';
@@ -37,12 +40,9 @@ import { RegisterService } from './service/register.service';
 import { RuangService } from './service/ruang.service';
 import { ReservationService } from './service/reservation.service';
 import { AuthService } from "./service/auth.service";
-import { LoginAdminComponent } from './login-admin/login-admin.component';
-import { ViewUserDetailComponent } from './view-user-detail/view-user-detail.component';
 import { UserService } from './service/user.service';
+import { HubungiKamiService } from './service/hubungi-kami.service'
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
-
-
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
 const appRoutes: Routes = [
@@ -71,6 +71,7 @@ const appRoutes: Routes = [
     LoginAdminComponent,
     UpdateUserComponent,
     ViewUserDetailComponent,
+    HubungiKamiComponent,
     //HubungiKamiComponent,
 
     //PasswordPatternDirective,
@@ -92,7 +93,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     AngularFireStorageModule
   ],
-  providers: [AuthGuard, RegisterService, RuangService, AuthService, UserService],
+  providers: [AuthGuard, RegisterService, RuangService, AuthService, UserService, HubungiKamiService, ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

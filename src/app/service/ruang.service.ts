@@ -8,18 +8,7 @@ import { Ruang } from '../models/ruang';
 })
 export class RuangService {
 
-  //image: AngularFireList<any>;
-
   constructor(public fireservices:AngularFirestore, private firebase:AngularFireDatabase) { }
-
-  /*create_newRuang(Ruang)
-  {
-    return this.fireservices.collection('Ruang').add(Ruang);
-  }*/
-
-  /*get_allRuang(){
-    return this.fireservices.collection('Ruang').snapshotChanges();
-  }*/
 
   getRuangData(){
     return this.fireservices.collection<Ruang>('Ruang');

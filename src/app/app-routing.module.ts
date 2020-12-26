@@ -16,6 +16,7 @@ import { AddUtilityComponent} from './add-utility/add-utility.component';
 import { UpdateUtilityComponent} from './update-utility/update-utility.component';
 import { AdminPortalComponent} from './admin-portal/admin-portal.component';
 import { ViewUserDetailComponent} from './view-user-detail/view-user-detail.component';
+import { HubungiKamiComponent} from './hubungi-kami/hubungi-kami.component';
 import {} from '@angular/compiler';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'add-utility', component: AddUtilityComponent},
   {path: 'updateProduct/:ruangID', component: UpdateUtilityComponent},
   {path: 'admin-portal', component: AdminPortalComponent},
-  {path: 'view-user-detail', component: ViewUserDetailComponent}
+  {path: 'view-user-detail', component: ViewUserDetailComponent},
+  {path: 'hubungi-kami', component: HubungiKamiComponent}
   //{path: 'hubungi-kami', component: HubungiKamiComponent}
 ];
 
