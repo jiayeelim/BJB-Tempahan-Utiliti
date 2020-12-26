@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'login-admin', component: LoginAdminComponent},
   {path: 'update-user/:id', component: UpdateUserComponent},
   {path: 'insertReservation/:ruangID', component: InsertReservationComponent},
-  {path: 'updateReservation', component: UpdateReservationComponent},
+  {path: 'updateReservation/:reservationID', component: UpdateReservationComponent},
   {path: 'user-view-utility', component: UserViewUtilitiComponent},
   {path: 'viewReservation', component: ViewReservationComponent},
   {path: 'view-utility', component: ViewUtilityComponent},

@@ -8,6 +8,7 @@ export class Reservation
     enddate: Date | undefined;
     endtime:Time | undefined;
     ruangprice:number | undefined;
+    ruangpricePer: string;
     ruangname: string;
     quantity: number | undefined;
     discount:number;
