@@ -1,9 +1,10 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { User } from '../models/user';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Location } from '@angular/common';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-update-user',
@@ -18,18 +19,19 @@ export class UpdateUserComponent implements OnInit {
   id: string;
   name: string;
 
-  updateUserForm;
+  updateUserForm: FormGroup;
 
-  constructor(private router: Router, private firestore: AngularFirestore) {
+  constructor(
+    private router: Router, 
+    private actRoute: ActivatedRoute, 
+    private firestore: AngularFirestore,
+    private userService: UserService) {
 
     //console.log(this.router.url);
     this.route_url = this.router.url.split('/');
-    this.username = this.route_url[2];
+    this.id = this.route_url[2];
 
-    // get product id
-    console.log(this.username);
-
-    const query = this.firestore.collection<User>('User').doc(this.username).get();
+    const query = this.firestore.collection<User>('User').doc(this.id).get();
     //console.log(this.user.name);
 
     query.subscribe(value => {
@@ -56,45 +58,18 @@ export class UpdateUserComponent implements OnInit {
         email: new FormControl(this.user.email),
       });
     });
-
-    if(this.isLoggedIn()) {
-      this.name = localStorage.getItem('name');
-    }
-
-   }
+  }
 
   ngOnInit(): void {
-  }
-  @HostListener('unloaded')
-
-  isLoggedIn(){
-    if(localStorage.getItem('isLoggedIn') == "true"){
-      return true;
-    }
-
-    return false;
-  }
-
-  updatePhone(){
-    this.user.phone = this.updateUserForm.value.phone;
-
-    try{
-      if(this.updateUserForm.phone == "") {
-        this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
-        window.alert("Nombor Telefon Dikemas Kini!");
-        this.updateUserForm.reset();
-        this.router.navigate(['']);
-      }
-      else{
-        window.alert("Nombor Telefon Tidak Dapat Dikemas Kini");
-      }
-    } catch(err){
-      console.log(err);
-    }
+    this.updateUser();
+    const id = this.actRoute.snapshot.paramMap.get('id');
+    this.userService.getUser(id).valueChanges().subscribe(data => {
+      this.updateUserForm.setValue(data)
+    })
   }
 
   updateUser(){
-    this.user.name = this.updateUserForm.value.name;
+    //this.user.name = this.updateUserForm.value.name;
     this.user.address1 = this.updateUserForm.value.address1;
     this.user.address2 = this.updateUserForm.value.address2;
     this.user.state = this.updateUserForm.value.state;
@@ -102,10 +77,20 @@ export class UpdateUserComponent implements OnInit {
     this.user.phone = this.updateUserForm.value.phone;
     this.user.email = this.updateUserForm.value.email;
 
-    this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
-    window.alert("User telah Dikemas Kini!");
-    this.updateUserForm.reset();
-    this.router.navigate(['/view-user-detail']);
+    try {
+      if(this.user.email !== ""){
+      this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
+      window.alert("User telah Dikemas Kini!");
+      this.updateUserForm.reset();
+      this.router.navigate(['/view-user-detail']);
+      }
+      else{
+        window.alert("Error! ");
+      }
+    }
+    catch(err){
+      console.log(err);
+    }
   }
 
 }
