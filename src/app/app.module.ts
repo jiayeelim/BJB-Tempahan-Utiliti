@@ -32,6 +32,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { ViewUserDetailComponent } from './view-user-detail/view-user-detail.component';
+import { PertanyaanAdminComponent } from './pertanyaan-admin/pertanyaan-admin.component'
 
 //Module
 import { ReactiveFormsModule } from '@angular/forms';
@@ -41,7 +42,7 @@ import { RuangService } from './service/ruang.service';
 import { ReservationService } from './service/reservation.service';
 import { AuthService } from "./service/auth.service";
 import { UserService } from './service/user.service';
-import { HubungiKamiService } from './service/hubungi-kami.service'
+import { HubungiKamiService } from './service/hubungi-kami.service';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
@@ -72,6 +73,7 @@ const appRoutes: Routes = [
     UpdateUserComponent,
     ViewUserDetailComponent,
     HubungiKamiComponent,
+    PertanyaanAdminComponent,
     //HubungiKamiComponent,
 
     //PasswordPatternDirective,
