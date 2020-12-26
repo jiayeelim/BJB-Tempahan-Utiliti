@@ -92,7 +92,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     AngularFireStorageModule
   ],
-  providers: [AuthGuard, RegisterService, RuangService, AuthService, UserService],
+  providers: [AuthGuard, RegisterService, RuangService, AuthService, UserService, ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
