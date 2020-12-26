@@ -24,7 +24,7 @@
   <div class="registercontainer">  
   
     <div class="box_1">
-      <from [formGroup]="updateUserForm" (ngSubmit)="updateUser()" ngNativaValidate>
+      <from [formGroup]="updateUserForm" *ngIf="updateUserForm" (ngSubmit)="updateUser()" ngNativaValidate>
         <div class="title">
             <h1 align="center">Maklumat Peribadi</h1>
         </div>
@@ -32,22 +32,23 @@
         <hr class="line">
         <div class="row">
         <div class = "columnleft">
-          <label>Nama Penuh</label>
+          <font class = "title">Nama Penuh </font>>
         </div>
         <div class = "columnright">
-         <input type="text" formControlName="name" value="{{user.name}}" required>
+          <font class = "data">{{user.name}}</font>
         </div>
         </div>
         
         <hr class="line">
         <div class="row">
           <div class = "columnleft">
-            <font class = "title">Alamat Penuh </font>
+            <font class = "title">Alamat Penuh </font>>
           </div>
           <div class = "columnright">
-              {{user.address1}}, <br>                      
-              {{user.address2}} <br>
-              {{user.postcode}},{{user.state}} <br>
+            <input type="text" formControlName="address1" class="form-control" value="{{user.address1}}" required>                  
+            <input type="text" formControlName="address2" class="form-control" value="{{user.address2}}" required>    
+            <input type="text" formControlName="state" class="form-control" value="{{user.state}}" required>   
+            <input type="number" formControlName="postcode" class="form-control" value="{{user.postcode}}" required>     
           </div>
         </div>
 
@@ -57,7 +58,7 @@
             <font class = "title">Telefon Nombor</font>
           </div>
           <div class = "columnright">
-              {{user.phone}}
+            <input type="number" formControlName="phone" class="form-control" value="{{user.phone}}" required>    
           </div>
         </div>
 
@@ -67,11 +68,11 @@
             <font class = "title">E-mel</font>
           </div>
           <div class = "columnright">
-              {{user.email}} 
+            <input type="text" formControlName="email" class="form-control" value="{{user.email}}" required>    
           </div>
         </div>
         <hr class="line"> <br><br>
-        <input type = "submit" class="update" value="Kemas Kini">
+        <input type = "submit" class="update" value="Kemas Kini" id="reg_btn">
         </from>
     </div>
     </div>

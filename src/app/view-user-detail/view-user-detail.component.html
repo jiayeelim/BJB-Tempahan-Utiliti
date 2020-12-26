@@ -28,13 +28,14 @@
             <h1 align="center">Maklumat Peribadi</h1>
         </div>
 
+        <!--<div *ngFor="let user of userList">-->
         <hr class="line">
         <div class="row">
         <div class = "columnleft">
           <font class = "title">Nama Penuh</font>
         </div>
         <div class = "columnright">
-         <font class = "data">{{user.name}} </font>
+         <font class = "data">{{user.name}}</font>
         </div>
         </div>
         
@@ -70,9 +71,10 @@
           </div>
         </div>
         <hr class="line"> <br><br>
-        <input type = "submit" class="update" value="Kemas Kini" a [routerLink]="['/updateUser',user.username]">
+        <input type = "submit" class="update" value="Kemas Kini" id="fed_btn" [routerLink]="['/update-user',user.id]">
     </div>
     </div>
+  <!--</div>-->
 
  <!--Footer-->
  <div class="bjb_footer">

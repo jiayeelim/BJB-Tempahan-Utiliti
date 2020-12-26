@@ -47,7 +47,7 @@ export class UserViewUtilitiComponent implements OnInit {
 
           this.ruangList.push(this.ruang);
           //console.log(this.ruangList.length);
-          console.log(this.name);
+          //console.log(this.name);
         });
       })
     });

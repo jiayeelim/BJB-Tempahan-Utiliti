@@ -31,55 +31,55 @@
           <input type="submit" class="add" name="add" value="SENARAI TEMPAHAN RUANG" id="fed_btn" routerLink="/viewReservation">
       </div>
       <div class="utiliticontainer">
-        <form>
-    
-            <label>Maklumat Tentang Tempahan</label>
-            <textarea name="activitydescription" rows="6" cols="65" required></textarea><br><br>
+        <form [formGroup]="updateReservationForm" *ngIf="updateReservationForm" (ngSubmit)="updateReservation()" ngNativeValidate>
+          <h2 align="center">Kemaskini Tempahan</h2>
+          <label>Maklumat Tentang Tempahan</label>
+          <textarea formControlName="reservationDescription" rows="6" cols="65" value="{{item.reservationDescription}}" required></textarea><br><br>
 
-            <table>
-              <tr>
-              <td><label>Tarikh Mula</label></td>
-              <td><input type="date" name="startdate"></td>
-            
+          <table>
+            <tr>
+            <td><label>Tarikh Mula</label></td>
+            <td><input type="date" formControlName="startdate" value="{{item.starttime}}"></td>
+          
 
-              <td><label>Masa Mula</label></td>
-              <td><input type="time" name="starttime"></td>
-              </tr>
+            <td><label>Masa Mula</label></td>
+            <td><input type="time" formControlName="starttime" value="{{item.starttime}}"></td>
+            </tr>
 
-              <tr>
-              <td><label>Tarikh Tamat</label></td>
-              <td><input type="date" name="enddate"></td>
+            <tr>
+            <td><label>Tarikh Tamat</label></td>
+            <td><input type="date" formControlName="enddate" value="{{item.enddate}}"></td>
 
-              <td><label>Masa Tamat</label></td>
-              <td><input type="time" name="endtime"></td>
-              </tr>
-            </table>
-            
-            <br><br>
+            <td><label>Masa Tamat</label></td>
+            <td><input type="time" formControlName="endtime" value="{{item.endtime}}"></td>
+            </tr>
+          </table>
+          
+          <br><br>
 
-            <table>
-              <tr>
-              <td><label>Kadar Tempahan</label></td>
-              <td></td>
-              </tr>
+          <table>
+            <tr>
+            <td><label>Kadar Tempahan</label></td>
+            <td>RM {{item.ruangprice}} / {{item.ruangpricePer}}</td>
+            </tr>
 
-              <tr>
-              <td><label>Bayaran</label></td>
-              <td></td>
-              </tr>
+            <tr>
+            <td><label>Bayaran</label></td>
+            <td>RM</td>
+            </tr>
 
-              <tr>
-              <td><label>Diskaun</label></td>
-              <td></td>
-              </tr>
+            <tr>
+            <td><label>Diskaun</label></td>
+            <td>RM {{item.discount}} </td>
+            </tr>
 
-              <tr>
-              <td><label>Jumlah Bayaran</label></td>
-              <td></td>
-              </tr>
-            </table>
+            <tr>
+            <td><label>Jumlah Bayaran</label></td>
+            <td>RM bayaran-diskaun </td>
+            </tr>
+          </table>
 
-            <br><br>
+          <br><br>
     
             
             <input type="submit" value="Kemaskini Simpanan Tempahan" id="fed_btn">

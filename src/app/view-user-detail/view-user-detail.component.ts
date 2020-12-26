@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 
 class UserID extends User {
-  username: string;
+  id: string;
   url: string;
 }
 
@@ -21,6 +21,7 @@ export class ViewUserDetailComponent implements OnInit {
   userList: Array<UserID> = [null];
   username: string;
   selectedUser$: AngularFirestoreDocument<User>;
+  route_url: Array<string> = [];
 
   constructor(
     private router:Router,
@@ -33,7 +34,7 @@ export class ViewUserDetailComponent implements OnInit {
       //var query = userID.ref.where("username", "==", this.username);
       this.userList.pop();
 
-      firestore.collection('User').ref.where("username", "==", this.username)
+      /*firestore.collection('User').ref.where("username", "==", this.username)
       .get()
       .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -42,9 +43,10 @@ export class ViewUserDetailComponent implements OnInit {
       })
       .catch(function(error){
         console.log("Error", error);
-      });
+      });*/
 
-    const query = this.firestore.collection<User>('User').ref.where('username', '==', this.username);
+    //const query = this.firestore.collection<User>('User').ref.where('username', '==', this.username);
+    const query = this.userService.getUserID().ref;
 
     query.onSnapshot( doc => {
       doc.forEach( documentSnapshot => {
@@ -54,6 +56,7 @@ export class ViewUserDetailComponent implements OnInit {
           const id = value.payload.id;
 
           this.user = new UserID();
+          this.user.id = id;
           this.user.name = data.name;
           this.user.ic= data.ic;
           this.user.address1 = data.address1;
@@ -67,7 +70,7 @@ export class ViewUserDetailComponent implements OnInit {
 
           this.userList.push(this.user);
         });
-        });
+        })
       });
   }  
 

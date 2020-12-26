@@ -35,7 +35,7 @@
             <h1 align="center">Senarai Tempahan Ruang</h1>
         </div>
         
-       
+      
           <hr class="line">
           <div class="row">
               <div class="columnleft">
@@ -45,7 +45,7 @@
                   <font class="utilitytitle">{{ruangData.name}}</font><br>
                   {{ruangData.information}}<br><br>
               </div>
-                <b>Status: Tamat</b><br><br>
+                <b>Status: Tamat</b><br><br><br>
                 <hr width="10%" align="left">
                 <table>
                     <tr>
@@ -86,14 +86,15 @@
       
                     <tr>
                     <td><label>Jumlah Bayaran</label></td>
-                    <td><div class="price">RM150</div></td>
+                    <td><div class="price">RM200</div></td>
                     </tr>
                   </table>
                 <br><br><br>
 
-                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" routerLink="/updateReservation">
-                <input type="button" name="delete" value="Padam" id="fed_btn">
+                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" (click)="updateReservation(reservationData.id)">
+                <input type="button" name="delete" value="Padam" id="fed_btn" (click)="deleteReservation()">
             </div>
+          
         
 
          <!--

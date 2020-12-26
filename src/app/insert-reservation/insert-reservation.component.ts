@@ -20,7 +20,7 @@ export class InsertReservationComponent implements OnInit {
   
       createReservationForm = new FormGroup({
         reservationDescription: new FormControl(''),
-        startdate: new FormControl(''),
+        startdate: new FormControl(Date()),
         starttime: new FormControl(''),
         enddate: new FormControl(''),
         endtime:new FormControl(''),
@@ -71,7 +71,8 @@ export class InsertReservationComponent implements OnInit {
     this.newReservation.ruangname = this.ruang.name;
     this.newReservation.ruangprice = this.ruang.price;
     this.newReservation.discount = 0;
-    this.newReservation.quantity = this.calculateQuantity(this.ruang.pricePer, this.newReservation.startdate,this.newReservation.enddate, this.newReservation.starttime, this.newReservation.endtime);
+    this.newReservation.ruangpricePer = this.ruang.pricePer;
+    //this.newReservation.quantity = this.calculateQuantity(this.ruang.pricePer, this.newReservation.startdate,this.newReservation.enddate, this.newReservation.starttime, this.newReservation.endtime);
     //this.newReservation.total = (this.newReservation.ruangprice*this.newReservation.quantity);
 
 
@@ -97,18 +98,18 @@ export class InsertReservationComponent implements OnInit {
     })
   }
 
-  calculateQuantity(priceper, startdate, enddate,starttime,endtime)
-  {
-    if(priceper=='jam'){
-      var timestart = starttime.getTime();
-      var timeend = endtime.getTime();
-      return starttime-endtime;
-    }
-    else{
-      return Math.ceil(Math.abs(startdate - enddate) / (1000 * 60 * 60 * 24));
-    }
+  //calculateQuantity(priceper, startdate, enddate,starttime,endtime)
+  //{
+   // if(priceper=='jam'){
+   //   var timestart = starttime.getTime();
+   //   var timeend = endtime.getTime();
+   //   return starttime-endtime;
+   // }
+   // else{
+   //   return Math.ceil(Math.abs(startdate - enddate) / (1000 * 60 * 60 * 24));
+   // }
    
-  }
+  //}
   
 
   ngOnInit(): void 

@@ -13,6 +13,11 @@ class RuangWithId extends Ruang{
   url: string;
 }
 
+class ReservationWithId extends Reservation{
+  id: string;
+  url: string;
+}
+
 @Component({
   selector: 'app-view-reservation',
   templateUrl: './view-reservation.component.html',
@@ -22,7 +27,10 @@ export class ViewReservationComponent implements OnInit {
 
   name: string;
   ruangData: RuangWithId = new RuangWithId();
-  reservationData: Reservation = new Reservation();
+  reservationData: ReservationWithId = new ReservationWithId();
+
+  //ruangList: Array<RuangWithId> = [null];
+  //reservationList: Array<ReservationWithId> = [null];
 
 
   selectedReservation$: AngularFirestoreDocument<Reservation>;
@@ -33,14 +41,19 @@ export class ViewReservationComponent implements OnInit {
     this.name=localStorage.getItem('name');
 
     //}
-      
+    //this.reservationList.pop();
+    //this.ruangList.pop();
+
     const reservation_query = this.firestore.collection<Reservation>('Reservation').ref.where('name',"==",this.name);
     reservation_query.onSnapshot( doc =>{
       doc.forEach(documentSnapshot =>{
         this.selectedReservation$=this.firestore.doc(documentSnapshot.ref);
         this.selectedReservation$.snapshotChanges().subscribe( value =>{
           const data =value.payload.data();
+          const id = value.payload.id;
 
+          //this.reservationData = new ReservationWithId();
+          this.reservationData.id = id;
           this.reservationData.name = data.name;
           this.reservationData.phoneno = data.phoneno;
           this.reservationData.startdate = data.startdate;
@@ -50,6 +63,9 @@ export class ViewReservationComponent implements OnInit {
           this.reservationData.ruangprice = data.ruangprice;
           this.reservationData.discount = data.discount;
           this.reservationData.ruangname = data.ruangname;
+
+          //this.reservationList.push(this.reservationData);
+          //console.log(this.name);
         });
           //const data = documentSnapshot.data();
           //const id =value.payload.id;
@@ -59,15 +75,14 @@ export class ViewReservationComponent implements OnInit {
       });
     });
 
-    
 
-
-    const ruang_query = this.firestore.collection<Ruang>('Ruang').ref.where('name',"==", this.reservationData.ruangname);
+    /*const ruang_query = this.firestore.collection<Ruang>('Ruang').ref.where('name',"==", this.reservationData.ruangname);
     ruang_query.onSnapshot(doc =>{
       doc.forEach(documentSnapshot =>{
         this.selectedRuang$=this.firestore.doc(documentSnapshot.ref);
         this.selectedRuang$ . snapshotChanges().subscribe(value =>{
           const data2=value.payload.data();
+          this.ruangData=new RuangWithId;
           this.ruangData.name= data2.name;
           this.ruangData.information= data2.name;
           this.ruangData.image_url = data2.image_url;
@@ -76,11 +91,22 @@ export class ViewReservationComponent implements OnInit {
 
         });
       });
-    });
+    });*/
   }
 
 
   ngOnInit(): void {
+  }
+
+  updateReservation(reservationID){
+    this.router.navigate(['/updateReservation', reservationID]);
+  }
+
+  deleteReservation(){
+    var selection = confirm("Adakah anda pasti untuk padam tempahan ini?");
+    if(selection == true){
+      this.firestore.collection<Reservation>('Reservation').doc(this.reservationData.id).delete();
+    }
   }
 
 }
