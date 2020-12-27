@@ -32,7 +32,7 @@
         <hr class="line">
         <div class="row">
         <div class = "columnleft">
-          <font class = "title">Nama Penuh </font>>
+          <font class = "title">Nama Penuh </font>
         </div>
         <div class = "columnright">
           <font class = "data">{{user.name}}</font>
@@ -42,7 +42,7 @@
         <hr class="line">
         <div class="row">
           <div class = "columnleft">
-            <label>Alamat Penuh </label>>
+            <font class = "title">Alamat Penuh </font>
           </div>
           <div class = "columnright">
             <input type="text" formControlName="address1" value="{{user.address1}}" required>                  
@@ -55,7 +55,7 @@
         <hr class="line">
         <div class="row">
           <div class = "columnleft">
-            <label>Telefon Nombor</label>
+            <font class = "title">Telefon Nombor</font>
           </div>
           <div class = "columnright">
             <input type="number" formControlName="phone" value="{{user.phone}}" required>    
@@ -65,12 +65,25 @@
         <hr class="line">
         <div class="row">
           <div class = "columnleft">
-            <label>E-mel</label>
+            <font class = "title">E-mel</font>
           </div>
           <div class = "columnright">
             <input type="text" formControlName="email" value="{{user.email}}" required>    
           </div>
         </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Kata Laluan</font>
+          </div>
+          <div class = "columnright">
+            <input type="password" formControlName="password" placeholder="Kata Laluan Lama" required> <br>
+            <input type="password" formControlName="password" placeholder="Kata Laluan Baru" required> <br>
+            <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
+          </div>
+        </div>
+
         <hr class="line"> <br><br>
         <input type="submit" class="update" value="Kemas Kini" id="reg_btn">
         </from>

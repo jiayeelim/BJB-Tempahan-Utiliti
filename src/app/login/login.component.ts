@@ -57,6 +57,32 @@ export class LoginComponent implements OnInit{
       this.users_id.pop();
       this.userList.pop();
 
+      const query = this.userService.getUserID().ref;
+      query.onSnapshot( doc => {
+      doc.forEach( documentSnapshot => {
+        this.selectedUser$ = this.firestore.doc(documentSnapshot.ref);
+        this.selectedUser$.snapshotChanges().subscribe( value => {
+          const data = value.payload.data();
+          const id = value.payload.id;
+
+          this.user = new UserID();
+          this.user.id = id;
+          this.user.name = data.name;
+          this.user.ic= data.ic;
+          this.user.address1 = data.address1;
+          this.user.address2 = data.address2;
+          this.user.postcode = data.postcode;
+          this.user.state = data.state;
+          this.user.email = data.email;
+          this.user.phone = data.phone;
+          this.user.username = data.username;
+          this.user.password = data.password;
+
+          this.userList.push(this.user);
+        });
+        })
+      });
+
       this.user_data$ = this.authService.getUserData().snapshotChanges().pipe(
         map(changes => changes.map(a =>{
           const data = a.payload.doc.data() as User;
@@ -78,14 +104,8 @@ export class LoginComponent implements OnInit{
     }
 
   ngOnInit(): void{
-    /*this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });*/
     this.user_data$.subscribe();
-    //this.returnUrl = "";
     this.authService.logout();
-
   }
 
   // convenience getter for easy access to form fields
@@ -105,7 +125,7 @@ export class LoginComponent implements OnInit{
           localStorage.setItem('isLoggedIn','true');
           localStorage.setItem('token',this.loginForm.value.username);
           window.alert("Berjaya Log Masuk!!")
-          this.router.navigate(['/user-portal',this.user.id]);
+          this.router.navigate(['/user-portal',this.users_id[i]]);
 
           this.getUsername(this.user_username[i]);
         }

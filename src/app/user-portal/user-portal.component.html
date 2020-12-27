@@ -9,9 +9,9 @@
     </div>
     <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
     <div class="sign_in_up" style="flex-grow: 1; text-align: right">
-      Selamat Datang <h2>{{name}}</h2>
+      Selamat Datang <h2>{{user.name}}</h2>
       <a href="/home" (click)="logout()">LOG KELUAR</a> ||
-      <a [routerLink]="['/view-user-detail',user.id]">KEMASKINI AKUAN</a>
+      <input type = "submit" class="update" value="Kemas Kini" id="fed_btn" [routerLink]="['/view-user-detail', user.id]">
 </div>
   </div>
 
