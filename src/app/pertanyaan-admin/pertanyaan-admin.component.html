@@ -34,23 +34,48 @@
             <h1 align="center">Senarai Pertanyaan</h1>
         </div>
       
-      <!--<div *ngFor="let item of ruangList" >
+      <div class="box_2" *ngFor="let item of pertanyaan">
         <hr class="line">
+        <div align="center"><b>{{item.title}}</b></div>
         <div class="row">
-            <div class="columnleft">
-                <img class="img" [src]="item.image_url" alt="Image from Angular Storage">
-            </div>
-            <div class="columnright">
-                <font class="utilitytitle">{{item.name}}</font><br>
-                {{item.information}}<br><br>
-                <hr width="10%" align="left">
-                {{item.capacity}} orang<br>
-                <div class="price">RM {{item.price}} / {{item.pricePer}} </div>
-                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" [routerLink]="['/updateProduct',item.id]">
-            </div>
+          <div class="columnleft">
+              Nama
+          </div>
+          <div class="columnright">
+              : {{item.name}}
+          </div>
         </div>
-      </div> -->
-        <hr class="line">
+        <div class="row">
+          <div class="columnleft">
+              Telephone
+          </div>
+          <div class="columnright">
+              : {{item.telephone}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="columnleft">
+              E-mel
+          </div>
+          <div class="columnright">
+              : {{item.email}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="columnleft">
+              Message
+          </div>
+          <div class="columnright">
+              : {{item.message}}
+          </div>
+        </div>
+        <br><br><br>
+        <button>
+          <a href="mailto:{{item.email}}">E-mel</a>
+        </button>
+        <input type="button" name="delete" value="Padam" id="fed_btn" (click)="delete(item)">
+      </div> 
+      <hr class="line">
     </div>
   </div>
  

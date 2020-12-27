@@ -24,7 +24,7 @@
     </ul>
   </div>
 
-<!--Register Form-->
+<!--Hubungi Kami Form-->
 <div class="registercontainer">  
   
   <div class="box_1">
@@ -34,14 +34,14 @@
         <label>Nama</label>
         <input type="text" class="form-control" formControlName="name" placeholder="Masukkan nama anda" required><br><br>
         
-
         <label>E-mel</label><br>
         <input type="text" class="form-control" formControlName="email" placeholder="Masukkan e-mel" required><br><br>
-        <div class="text-danger"*ngIf="pertanyaanFormControl.email.touched && pertanyaanFormControl.email.errors?.email">Sila isi E-mel yang disahkan</div>
-
+        
         <label>Telephone</label><br>
-        <input type="number" class="form-control" formControlName="telephone" placeholder="Masukkan nombor telephone" required><br><br>
-        <div class="text-danger" *ngIf="pertanyaanFormControl.phone.touched && pertanyaanFormControl.phone.errors?.minlength">Sila isi Nombor Telefon yang disahkan</div>
+        <input type="tel" class="form-control" formControlName="telephone" placeholder="Masukkan nombor telephone" required><br><br>
+        
+        <label>Perkara Pertanyaan</label><br>
+        <input type="text" class="form-control" formControlName="title" placeholder="Masukkan title pertanyaan" required><br><br>
 
         <label>Mesej</label>
         <textarea formControlName="message" rows="5" cols="70" placeholder="Masukkan mesej" required></textarea><br><br>

@@ -18,6 +18,7 @@ export class HubungiKamiComponent implements OnInit {
     name: ['',Validators.required],
     email: ['',Validators.required],
     telephone: ['',Validators.required],
+    title: ['',Validators.required],
     message: ['',Validators.required],
   })
 
@@ -25,11 +26,11 @@ export class HubungiKamiComponent implements OnInit {
 
   constructor(private hubungiKamiService:HubungiKamiService, private formBuilder: FormBuilder, private router:Router){}
   
-  
   addNewPertanyaan(){
     this.newPertanyaan.name=this.pertanyaanForm.value.name;
     this.newPertanyaan.email=this.pertanyaanForm.value.email;
     this.newPertanyaan.telephone=this.pertanyaanForm.value.telephone;
+    this.newPertanyaan.title=this.pertanyaanForm.value.title;
     this.newPertanyaan.message=this.pertanyaanForm.value.message;
 
     try
@@ -48,6 +49,7 @@ export class HubungiKamiComponent implements OnInit {
       window.alert("Pertanyaan telah BERJAYA dihantar! ");
       this.pertanyaanForm.reset();
       this.router.navigate(['home']);
+      //console.log(this.newPertanyaan)
     })
   }
 

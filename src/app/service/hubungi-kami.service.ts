@@ -25,4 +25,15 @@ export class HubungiKamiService {
     };
   }
 
+  getPertanyaanData(){
+    return this.fireservices.collection('Pertanyaan').snapshotChanges();
+  }
+
+  /*deletePertanyaan(pertanyaanId: string){
+    this.fireservices.doc('Pertanyaan' + pertanyaanId).delete();
+  }*/
+
+  /*deletePertanyaan(data) {
+    return this.fireservices.collection("Pertanyaan").doc(data.payload.doc.id).delete();
+ }*/
 }
