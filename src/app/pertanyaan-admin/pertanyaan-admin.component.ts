@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { AngularFireStorage } from '@angular/fire/storage'
 import { HubungiKamiService } from '../service/hubungi-kami.service'
 import { Pertanyaan } from '../models/hubungikami'
-import { resolve } from 'dns';
+//import { resolve } from 'dns';
 
 /*class PertanyaanWithId extends Pertanyaan{
   id: string;

@@ -66,6 +66,11 @@ input[type=password] {
   font-size: 15px;
 }
 
+.text-danger{
+  color:red;
+  font-size: small;
+}
+
 
 input[type=submit].update {
   width: 200px;
