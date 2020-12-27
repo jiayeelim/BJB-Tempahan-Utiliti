@@ -17,7 +17,8 @@ class UserID extends User {
 })
 export class UserPortalComponent implements OnInit {
 
-  user: User = new User();
+  //user: User = new User();
+  user: UserID;
   userList: Array<UserID> = [null];
   route_url: Array<string> = [];
   selectedUser$: AngularFirestoreDocument<User>;
@@ -32,6 +33,8 @@ export class UserPortalComponent implements OnInit {
     public userService: UserService,
     public authService: AuthService) {
 
+    this.userList.pop();
+
     this.route_url = this.router.url.split('/');
     this.id = this.route_url[2];
     console.log(this.id);
@@ -40,9 +43,12 @@ export class UserPortalComponent implements OnInit {
 
     query.subscribe(value => {
       const data = value.data();
+      const id = value.id;
 
+      this.user = new UserID();
       this.user.name = data.name;
       this.user.ic= data.ic;
+      this.user.id = id;
       this.user.address1 = data.address1;
       this.user.address2 = data.address2;
       this.user.postcode = data.postcode;
@@ -57,6 +63,7 @@ export class UserPortalComponent implements OnInit {
 
     if(this.isLoggedIn()) {
       this.name = localStorage.getItem('name');
+      this.id = localStorage.getItem('id');
     }
    }
 
