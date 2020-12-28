@@ -42,8 +42,20 @@
         <hr class="line">
         <div class="row">
           <div class = "columnleft">
-            <font class = "title">Alamat Penuh </font>
+            <font class = "title">Nombor Kad Pengenalan</font>
+            </div>
+            <div class = "columnright">
+            <input type="number" formControlName="ic" class="form-control"  minlength="12" maxlength="12" pattern="[0]{1}[1]{1}[0-9]{8,}" value="{{user.ic}}" required>
+            <div class="text-danger" *ngIf="updateFromControl.ic.touched && updateFromControl.ic.errors?.minLength && updateFromControl.ic.errors?.maxLength">Sila isi Nombor Kad Pengenalan yang disahkan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.ic.touched || submitted) && updateFromControl.ic.errors?.required">Nombor Kad Pengenalan diperlukan</div>
           </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+        <div class = "columnleft">
+          <font class = "title">Alamat</font>
+        </div>
           <div class = "columnright">
             <input type="text" oninput="this.value = this.value.toUpperCase()" formControlName="address1" value="{{user.address1}}" required> 
             <div class="text-danger" *ngIf="(updateFromControl.address1.touched || submitted) && updateFromControl.address1.errors?.required">Alamat1 diperlukan</div>
