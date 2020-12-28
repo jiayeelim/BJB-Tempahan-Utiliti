@@ -9,14 +9,14 @@
     </div>
     <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
     <div class="sign_in_up" style="flex-grow: 1; text-align: right">
-      <a href="/home"><b>LOG KELUAR</b></a>
+      <a routerLink = "/home"><b>LOG KELUAR</b></a>
     </div>
 </div>
 
 <!--Navigation Bar-->
 <div>
     <ul>
-      <li><a routerLink="/home">LAMAN UTAMA</a></li>
+      <li><a [routerLink]="['/user-portal', this.id]">LAMAN UTAMA</a></li>
     </ul>
 </div>
 
@@ -56,18 +56,18 @@
         </div>
           <div class = "columnright">
             <input type="text" oninput="this.value = this.value.toUpperCase()" formControlName="address1" value="{{user.address1}}" required> 
-            <div class="text-danger" *ngIf="(updateFromControl.address1.touched || submitted) && updateFromControl.address1.errors?.required">Alamat1 diperlukan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.address1.touched || submitted) && updateFromControl.address1.errors.required">Alamat1 diperlukan</div>
 
             <input type="text" formControlName="address2" oninput="this.value = this.value.toUpperCase()" value="{{user.address2}}" required>  
-            <div class="text-danger" *ngIf="(updateFromControl.address2.touched || submitted) && updateFromControl.address2.errors?.required">Alamat2 diperlukan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.address2.touched || submitted) && updateFromControl.address2.errors.required">Alamat2 diperlukan</div>
 
             <select formControlName="state" class="form-control"  required>
               <option *ngFor="let state of stateList">{{state}}</option>
             </select>
 
             <input type="number" formControlName="postcode" value="{{user.postcode}}" required>
-            <div class="text-danger" *ngIf="(updateFromControl.postcode.touched || submitted) && updateFromControl.postcode.errors?.required">Poskod diperlukan</div>
-            <div *ngIf="updateFromControl.postcode.touched && updateFromControl.postcode.errors?.minlength">Sila isi Poskod yang disahkan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.postcode.touched || submitted) && updateFromControl.postcode.errors.required">Poskod diperlukan</div>
+            <div *ngIf="updateFromControl.postcode.touched && updateFromControl.postcode.errors.minlength">Sila isi Poskod yang disahkan</div>
           </div>
         </div>
 
@@ -78,8 +78,8 @@
           </div>
           <div class = "columnright">
             <input type="number" formControlName="phone" minlength=10 maxlength=11 value="{{user.phone}}" required> 
-            <div class="text-danger" *ngIf="(updateFromControl.phone.touched || submitted) && updateFromControl.phone.errors?.required">Nombor Telefon diperlukan</div>
-            <div class="text-danger" *ngIf="updateFromControl.phone.touched && updateFromControl.phone.errors?.minlength">Sila isi Nombor Telefon yang disahkan</div>   
+            <div class="text-danger" *ngIf="(updateFromControl.phone.touched || submitted) && updateFromControl.phone.errors.required">Nombor Telefon diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.phone.touched && updateFromControl.phone.errors.minlength">Sila isi Nombor Telefon yang disahkan</div>   
           </div>
         </div>
 
@@ -101,8 +101,8 @@
           </div>
           <div class = "columnright">
             <input type="text" formControlName="email" value="{{user.email}}" required> 
-            <div class="text-danger" *ngIf="(updateFromControl.email.touched || submitted) && updateFromControl.email.errors?.required">E-mel diperlukan</div>
-            <div class="text-danger"*ngIf="updateFromControl.email.touched && updateFromControl.email.errors?.email">Sila isi E-mel yang disahkan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.email.touched || submitted) && updateFromControl.email.errors.required">E-mel diperlukan</div>
+            <div class="text-danger"*ngIf="updateFromControl.email.touched && updateFromControl.email.errors.email">Sila isi E-mel yang disahkan</div>
           </div>
         </div>
 
@@ -112,9 +112,7 @@
             <font class = "title">Nama Pengguna</font>
           </div>
           <div class = "columnright">
-            <input type="text" formControlName="username" value="{{user.username}}" required>
-            <div class="text-danger" *ngIf="(updateFromControl.username.touched || submitted) && updateFromControl.username.errors?.required">Username diperlukan</div>
-            <div class="text-danger" *ngIf="updateFromControl.username.touched && updateFromControl.username.errors?.userNameNotAvailable">Username teleh digunakan</div>
+            <font class="data">{{user.username}}</font>
           </div>
         </div>
 
@@ -126,12 +124,12 @@
           <div class = "columnright">
             <input type="password" formControlName="password" placeholder="Kata Laluan Lama" required> <br>
             <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
-            <div class="text-danger" *ngIf="(updateFromControl.password.touched || submitted) && updateFromControl.password.errors?.required">Kata Laluan diperlukan</div>
-            <div class="text-danger" *ngIf="updateFromControl.password.touched && updateFromControl.password.errors?.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
+            <div class="text-danger" *ngIf="(updateFromControl.password.touched || submitted) && updateFromControl.password.errors.required">Kata Laluan diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.password.touched && updateFromControl.password.errors.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
              huruf dan 1 nombor</div> <br>
             <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
-            <div class="text-danger" *ngIf="(updateFromControl.password2.touched || submitted)&& updateFromControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
-            <div class="text-danger" *ngIf="updateFromControl.password2.touched && updateFromControl.password2.errors?.passwordMismatch">Kata Laluan mesti sepandan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.password2.touched || submitted)&& updateFromControl.password2.errors.required">Kata Laluan Baru diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.password2.touched && updateFromControl.password2.errors.passwordMismatch">Kata Laluan mesti sepandan</div>
           </div>
         </div>
 
