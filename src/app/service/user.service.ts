@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireObject, AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
+
 @Injectable({
   providedIn: 'root'
 })

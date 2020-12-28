@@ -35,7 +35,7 @@
           <font class = "title">Nama Penuh</font>
         </div>
         <div class = "columnright">
-         <font class = "data">{{user.name}}</font>
+         <font class = "data">{{users.name}}</font>
         </div>
         </div>
         
@@ -45,9 +45,9 @@
             <font class = "title">Alamat Penuh </font>
           </div>
           <div class = "columnright">
-              {{user.address1}}, <br>                      
-              {{user.address2}} <br>
-              {{user.postcode}},{{user.state}} <br>
+              {{users.address1}}, <br>                      
+              {{users.address2}} <br>
+              {{users.postcode}},{{users.state}} <br>
           </div>
         </div>
 
@@ -57,7 +57,7 @@
             <font class = "title">Telefon Nombor</font>
           </div>
           <div class = "columnright">
-              {{user.phone}}
+              {{users.phone}}
           </div>
         </div>
 
@@ -67,11 +67,11 @@
             <font class = "title">E-mel</font>
           </div>
           <div class = "columnright">
-              {{user.email}} 
+              {{users.email}} 
           </div>
         </div>
         <hr class="line"> <br><br>
-        <input type = "submit" class="update" value="Kemas Kini" id="fed_btn" [routerLink]="['/update-user',user.id]">
+        <input type = "submit" class="update" value="Kemas Kini" id="fed_btn" [routerLink]="['/update-user',id]">
     </div>
     </div>
   <!--</div>-->

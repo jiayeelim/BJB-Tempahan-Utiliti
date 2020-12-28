@@ -24,7 +24,7 @@
   <div class="registercontainer">  
   
     <div class="box_1">
-      <from [formGroup]="updateUserForm" *ngIf="updateUserForm" (ngSubmit)="updateUser()" ngNativaValidate>
+      <from [formGroup]="updateUserForm" (ngSubmit)="updateUser()" ngNativaValidate>
         <div class="title">
             <h1 align="center">Maklumat Peribadi</h1>
         </div>
@@ -32,7 +32,7 @@
         <hr class="line">
         <div class="row">
         <div class = "columnleft">
-          <font class = "title">Nama Penuh </font>>
+          <font class = "title">Nama Penuh </font>
         </div>
         <div class = "columnright">
           <font class = "data">{{user.name}}</font>
@@ -42,13 +42,32 @@
         <hr class="line">
         <div class="row">
           <div class = "columnleft">
-            <font class = "title">Alamat Penuh </font>>
+            <font class = "title">Nombor Kad Pengenalan</font>
+            </div>
+            <div class = "columnright">
+            <font class = "data">{{user.ic}}</font>
           </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+        <div class = "columnleft">
+          <font class = "title">Alamat</font>
+        </div>
           <div class = "columnright">
-            <input type="text" formControlName="address1" class="form-control" value="{{user.address1}}" required>                  
-            <input type="text" formControlName="address2" class="form-control" value="{{user.address2}}" required>    
-            <input type="text" formControlName="state" class="form-control" value="{{user.state}}" required>   
-            <input type="number" formControlName="postcode" class="form-control" value="{{user.postcode}}" required>     
+            <input type="text" oninput="this.value = this.value.toUpperCase()" formControlName="address1" value="{{user.address1}}" required> 
+            <div class="text-danger" *ngIf="(updateFromControl.address1.touched || submitted) && updateFromControl.address1.errors?.required">Alamat1 diperlukan</div>
+
+            <input type="text" formControlName="address2" oninput="this.value = this.value.toUpperCase()" value="{{user.address2}}" required>  
+            <div class="text-danger" *ngIf="(updateFromControl.address2.touched || submitted) && updateFromControl.address2.errors?.required">Alamat2 diperlukan</div>
+
+            <select formControlName="state" class="form-control"  required>
+              <option *ngFor="let state of stateList">{{state}}</option>
+            </select>
+
+            <input type="number" formControlName="postcode" value="{{user.postcode}}" required>
+            <div class="text-danger" *ngIf="(updateFromControl.postcode.touched || submitted) && updateFromControl.postcode.errors?.required">Poskod diperlukan</div>
+            <div *ngIf="updateFromControl.postcode.touched && updateFromControl.postcode.errors?.minlength">Sila isi Poskod yang disahkan</div>
           </div>
         </div>
 
@@ -58,8 +77,21 @@
             <font class = "title">Telefon Nombor</font>
           </div>
           <div class = "columnright">
-            <input type="number" formControlName="phone" class="form-control" value="{{user.phone}}" required>    
+            <input type="number" formControlName="phone" minlength=10 maxlength=11 value="{{user.phone}}" required> 
+            <div class="text-danger" *ngIf="(updateFromControl.phone.touched || submitted) && updateFromControl.phone.errors?.required">Nombor Telefon diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.phone.touched && updateFromControl.phone.errors?.minlength">Sila isi Nombor Telefon yang disahkan</div>   
           </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Adakah anda Penduduk Kangkar Pulai?</font>
+          </div>
+          <div class = "columnright">
+          <input type="radio" formControlName="resident" class="radio-group"  value="Yes">Ya
+          <input type="radio" formControlName="resident" class="radio-group" value="No">Bukan
+        </div>
         </div>
 
         <hr class="line">
@@ -68,11 +100,43 @@
             <font class = "title">E-mel</font>
           </div>
           <div class = "columnright">
-            <input type="text" formControlName="email" class="form-control" value="{{user.email}}" required>    
+            <input type="text" formControlName="email" value="{{user.email}}" required> 
+            <div class="text-danger" *ngIf="(updateFromControl.email.touched || submitted) && updateFromControl.email.errors?.required">E-mel diperlukan</div>
+            <div class="text-danger"*ngIf="updateFromControl.email.touched && updateFromControl.email.errors?.email">Sila isi E-mel yang disahkan</div>
           </div>
         </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Nama Pengguna</font>
+          </div>
+          <div class = "columnright">
+            <input type="text" formControlName="username" value="{{user.username}}" required>
+            <div class="text-danger" *ngIf="(updateFromControl.username.touched || submitted) && updateFromControl.username.errors?.required">Username diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.username.touched && updateFromControl.username.errors?.userNameNotAvailable">Username teleh digunakan</div>
+          </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Kata Laluan</font>
+          </div>
+          <div class = "columnright">
+            <input type="password" formControlName="password" placeholder="Kata Laluan Lama" required> <br>
+            <input type="password" formControlName="password" placeholder="Kata Laluan Baru" required>
+            <div class="text-danger" *ngIf="(updateFromControl.password.touched || submitted) && updateFromControl.password.errors?.required">Kata Laluan diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.password.touched && updateFromControl.password.errors?.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
+             huruf dan 1 nombor</div> <br>
+            <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
+            <div class="text-danger" *ngIf="(updateFromControl.password2.touched || submitted)&& updateFromControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.password2.touched && updateFromControl.password2.errors?.passwordMismatch">Kata Laluan mesti sepandan</div>
+          </div>
+        </div>
+
         <hr class="line"> <br><br>
-        <input type = "submit" class="update" value="Kemas Kini" id="reg_btn">
+        <input type="submit" class="update" value="Kemas Kini" id="reg_btn">
         </from>
     </div>
     </div>

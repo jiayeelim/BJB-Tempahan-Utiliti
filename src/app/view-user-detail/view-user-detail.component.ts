@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../service/user.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../models/user';
 
 class UserID extends User {
@@ -16,17 +16,21 @@ class UserID extends User {
 })
 export class ViewUserDetailComponent implements OnInit {
 
-  //user: User = new User();
+  users: User = new User();
   user: UserID;
   userList: Array<UserID> = [null];
   username: string;
   selectedUser$: AngularFirestoreDocument<User>;
   route_url: Array<string> = [];
+  id: string;
 
   constructor(
     private router:Router,
     private firestore: AngularFirestore,
     public userService: UserService) {
+
+    this.route_url = this.router.url.split('/');
+    this.id = this.route_url[2];
 
       this.username = localStorage.getItem('token');
       
@@ -47,6 +51,23 @@ export class ViewUserDetailComponent implements OnInit {
 
     //const query = this.firestore.collection<User>('User').ref.where('username', '==', this.username);
     const query = this.userService.getUserID().ref;
+    const query_ = this.firestore.collection<User>('User').doc(this.id).get();
+
+    query_.subscribe( value => {
+      const data = value.data();
+
+      this.users.name = data.name;
+      this.users.ic= data.ic;
+      this.users.address1 = data.address1;
+      this.users.address2 = data.address2;
+      this.users.postcode = data.postcode;
+      this.users.state = data.state;
+      this.users.email = data.email;
+      this.users.phone = data.phone;
+      this.users.username = data.username;
+      this.users.password = data.password;
+      this.users.password2 = data.password2;
+    })
 
     query.onSnapshot( doc => {
       doc.forEach( documentSnapshot => {
