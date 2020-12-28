@@ -7,6 +7,8 @@ import { Ruang } from '../models/ruang'
 import { Router } from '@angular/router';
 import { ReservationService } from '../service/reservation.service';
 import { Reservation } from '../models/reservation';
+import { ReserveId } from '../models/reserveid';
+import { Time } from '@angular/common';
 
 class RuangWithId extends Ruang{
   id: string;
@@ -18,6 +20,21 @@ class ReservationWithId extends Reservation{
   url: string;
 }
 
+class tempReservelist{
+  reserveID: string;
+  name: string;
+  startdate: Date;
+  starttime: Time;
+  enddate: Date;
+  endtime: Time;
+  //quantity: number;
+  ruangname: string;
+  ruangprice: number;
+  discount: number;
+  ruangpricePer: string;
+
+}
+
 @Component({
   selector: 'app-view-reservation',
   templateUrl: './view-reservation.component.html',
@@ -25,26 +42,60 @@ class ReservationWithId extends Reservation{
 })
 export class ViewReservationComponent implements OnInit {
 
+  reservelist;
   name: string;
-  ruangData: RuangWithId = new RuangWithId();
-  reservationData: ReservationWithId = new ReservationWithId();
+  reserveid: tempReservelist;
+  reserveidList: tempReservelist[];
+  rname: string="123";
+  //ruangData: RuangWithId = new RuangWithId();
+  //reservationData: ReservationWithId = new ReservationWithId();
 
   //ruangList: Array<RuangWithId> = [null];
   //reservationList: Array<ReservationWithId> = [null];
 
 
-  selectedReservation$: AngularFirestoreDocument<Reservation>;
-  selectedRuang$: AngularFirestoreDocument<Ruang>;
+  //selectedReservation$: AngularFirestoreDocument<Reservation>;
+  //selectedRuang$: AngularFirestoreDocument<Ruang>;
 
   constructor(private router:Router, private ruangServices: RuangService, private firestore: AngularFirestore, private storage: AngularFireStorage, public reservationService:ReservationService) { 
-    //if(localStorage.getItem('isLoggedIn')=='true'){
+    if(localStorage.getItem('isLoggedIn')=='true'&& !this.reservationService.triggered){
+    
     this.name=localStorage.getItem('name');
 
-    //}
+    }
     //this.reservationList.pop();
     //this.ruangList.pop();
+    
 
-    const reservation_query = this.firestore.collection<Reservation>('Reservation').ref.where('name',"==",this.name);
+    this.reservelist = this.reservationService;
+    this.reserveidList = [];
+    this.reservationService.getReserveID(this.rname);
+    
+    console.log(this.reservationService.reserveID_list.length);
+
+    for(let i=0; i<this.reservationService.reserveID_list.length; i++){
+      this.firestore.collection<Reservation>('Reservation').doc(this.reservationService.reserveID_list[i].reservationID).get().subscribe(field =>{
+        const data = field.data();
+        console.log(this.rname);
+
+        this.reserveid = new tempReservelist();
+        this.reserveid.reserveID = field.id;
+        this.reserveid.name = data.name;
+        this.reserveid.startdate = data.startdate;
+        this.reserveid.starttime = data.starttime;
+        this.reserveid.enddate = data.enddate;
+        this.reserveid.endtime = data.endtime;
+        this.reserveid.discount = data.discount;
+        this.reserveid.ruangname = data.ruangname;
+        this.reserveid.ruangprice = data.ruangprice;
+        this.reserveid.ruangpricePer = data.ruangpricePer;
+        console.log(this.rname);
+
+        this.reserveidList.push(this.reserveid);
+      });
+    }
+
+   /* const reservation_query = this.firestore.collection<Reservation>('Reservation').ref.where('name',"==",this.name);
     reservation_query.onSnapshot( doc =>{
       doc.forEach(documentSnapshot =>{
         this.selectedReservation$=this.firestore.doc(documentSnapshot.ref);
@@ -105,7 +156,7 @@ export class ViewReservationComponent implements OnInit {
   deleteReservation(){
     var selection = confirm("Adakah anda pasti untuk padam tempahan ini?");
     if(selection == true){
-      this.firestore.collection<Reservation>('Reservation').doc(this.reservationData.id).delete();
+      this.firestore.collection<Reservation>('Reservation').doc(this.reserveid.reserveID).delete();
     }
   }
 

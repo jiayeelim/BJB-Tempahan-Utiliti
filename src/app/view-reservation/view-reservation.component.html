@@ -37,32 +37,33 @@
         
       
           <hr class="line">
-          <div class="row">
-              <div class="columnleft">
-                  <img class="img" [src]="ruangData.image_url" alt="Image from Angular Storage">
+          <div class="row" >
+            <div class="reservation" *ngFor="let item of reserveidList">
+              <div class="columnleft" >
+                  <!--<img class="img" [src]="ruangData.image_url" alt="Image from Angular Storage">-->
               </div>
               <div class="columnright">
-                  <font class="utilitytitle">{{ruangData.name}}</font><br>
-                  {{ruangData.information}}<br><br>
+                  <font class="utilitytitle">{{item.ruangname}}</font><br>
+                  <!--{{item.information}}<br><br>-->
               </div>
                 <b>Status: Tamat</b><br><br><br>
                 <hr width="10%" align="left">
                 <table>
                     <tr>
                     <td><label>Tarikh Mula</label></td>
-                    <td>{{reservationData.startdate}}</td>
+                    <td>{{item.startdate}}</td>
                   
       
                     <td><label>Masa Mula</label></td>
-                    <td>{{reservationData.starttime}}</td>
+                    <td>{{item.starttime}}</td>
                     </tr>
       
                     <tr>
                     <td><label>Tarikh Tamat</label></td>
-                    <td>{{reservationData.enddate}}</td>
+                    <td>{{item.enddate}}</td>
       
                     <td><label>Masa Tamat</label></td>
-                    <td>{{reservationData.endtime}}</td>
+                    <td>{{item.endtime}}</td>
                     </tr>
                 </table>
 
@@ -71,7 +72,7 @@
                 <table>
                     <tr>
                     <td><label>Kadar Tempahan</label></td>
-                    <td><div class="price">RM {{ruangData.price}}  / {{ruangData.pricePer}}</div></td>
+                    <td><div class="price">RM {{item.ruangprice}}  / {{item.ruangpricePer}}</div></td>
                     </tr>
       
                     <tr>
@@ -81,7 +82,7 @@
       
                     <tr>
                     <td><label>Diskaun</label></td>
-                    <td><div class="price">RM {{reservationData.discount}} </div></td>
+                    <td><div class="price">RM {{item.discount}} </div></td>
                     </tr>
       
                     <tr>
@@ -91,9 +92,10 @@
                   </table>
                 <br><br><br>
 
-                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" (click)="updateReservation(reservationData.id)">
+                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" (click)="updateReservation(item.reserveID)">
                 <input type="button" name="delete" value="Padam" id="fed_btn" (click)="deleteReservation()">
             </div>
+          </div>
           
         
 

@@ -6,16 +6,20 @@ import { ReservationService } from '../service/reservation.service';
 import { RuangService } from '../service/ruang.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { FormGroup, FormControl } from '@angular/forms';
-import {Reservation } from '../models/reservation';
+import { Reservation } from '../models/reservation';
+import { ReserveId } from '../models/reserveid';
+import { Reservelist } from '../models/reservelist';
 import { Observable } from 'rxjs';
 import { Ruang } from '../models/ruang';
 import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-insert-reservation',
   templateUrl: './insert-reservation.component.html',
   styleUrls: ['./insert-reservation.component.css']
 })
+
 export class InsertReservationComponent implements OnInit {
   
       createReservationForm = new FormGroup({
@@ -38,6 +42,12 @@ export class InsertReservationComponent implements OnInit {
       ruang: Ruang = new Ruang();
       ruangID: string;
       route_url: Array<string> = [];
+
+      //name: string;
+      reservationData$: Observable<Reservation[]>;
+
+
+      reserveList: Reservelist = new Reservelist();
     
  
       //ruangData$: Observable <Ruang[]> ;
@@ -56,13 +66,24 @@ export class InsertReservationComponent implements OnInit {
   
   })
       this.newReservation.discount = 0;
+
+      if(localStorage.getItem('isLoggedIn')=='true'){
+        this.newReservation.name = localStorage.getItem('name');
+        this.newReservation.phoneno = localStorage.getItem('phone');
+        //get existing reservation or create new one
+        this.reservationService.reservelist.reservername = this.newReservation.name;
+        this.reservationService.getReserveID(this.newReservation.name);
+      }
+      //else{
+        // redirect to account page to prompt login/register action
+      //  window.alert('Sila log masuk.');
+      //  this.router.navigate(['/login']);
    }
+
+   
   
   addNewReservation()
   {
-    if(localStorage.getItem('isLoggedIn')=='true'){
-    this.newReservation.name = localStorage.getItem('name');
-    this.newReservation.phoneno = localStorage.getItem('phone');
     this.newReservation.reservationDescription = this.createReservationForm.value.reservationDescription;
     this.newReservation.startdate = this.createReservationForm.value.startdate;
     this.newReservation.starttime = this.createReservationForm.value.starttime;
@@ -85,16 +106,24 @@ export class InsertReservationComponent implements OnInit {
     {
       console.log(err);
     }
-  }
+
 
 
   }
 
   createNewReservation()
   {
-    this.reservationService.newReservationData().add(Object.assign({},this.newReservation)).then(()=>{
+    var rID : ReserveId = new ReserveId();
+    const newId = this.firebase.createId();
+    rID.reservationID = newId;
+    this.firebase.collection('Reservation').doc(newId).set(Object.assign({},this.newReservation)).then(()=>{
       window.alert("Tempahan Ruang telah BERJAYA! ");
       this.createReservationForm.reset();
+      this.reservationService.reserveID_list.push(rID);
+      this.reservationService.reservelist.reservationlist = this.reservationService.reserveID_list.map((obj)=>{return Object.assign({},obj)});
+
+      this.firebase.collection<Reservelist>('Reservelist').doc(this.reservationService.reservationlistID).set(Object.assign({}, this.reservationService.reservelist));
+
     })
   }
 
