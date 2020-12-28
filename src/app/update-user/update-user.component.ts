@@ -29,7 +29,7 @@ export class UpdateUserComponent implements OnInit {
   name: string;
   user_username: Array<string> = [null];
 
-  /*updateUserForm = this.formBuilder.group({
+  updateUserForm = this.formBuilder.group({
     name: ['',Validators.required],
     username: ['',[Validators.required]],
     ic: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
@@ -44,8 +44,7 @@ export class UpdateUserComponent implements OnInit {
     resident: ['', [Validators.required]],
   }, {
     validator: this.registerService.MatchPassword('password', 'comfirmPassword')
-  })*/
-  updateUserForm;
+  })
 
   submitted = false;
   stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Malacca', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
@@ -123,7 +122,7 @@ export class UpdateUserComponent implements OnInit {
           this.user.email = this.updateUserForm.value.email;
           this.user.username = this.updateUserForm.value.username;
           this.user.password = this.updateUserForm.value.password;
-          this.user.password2 = this.updateUserForm.value.password2;
+          //this.user.password2 = this.updateUserForm.value.password2;
   
           try{
             this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));

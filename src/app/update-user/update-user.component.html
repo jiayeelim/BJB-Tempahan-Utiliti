@@ -123,7 +123,7 @@
           </div>
           <div class = "columnright">
             <input type="password" formControlName="password" placeholder="Kata Laluan Lama" required> <br>
-            <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
+            <input type="password" formControlName="password" placeholder="Kata Laluan Baru" required>
             <div class="text-danger" *ngIf="(updateFromControl.password.touched || submitted) && updateFromControl.password.errors.required">Kata Laluan diperlukan</div>
             <div class="text-danger" *ngIf="updateFromControl.password.touched && updateFromControl.password.errors.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
              huruf dan 1 nombor</div> <br>
