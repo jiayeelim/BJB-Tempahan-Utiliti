@@ -97,5 +97,6 @@ const appRoutes: Routes = [
   ],
   providers: [AuthGuard, RegisterService, RuangService, AuthService, UserService, HubungiKamiService, ReservationService],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }
