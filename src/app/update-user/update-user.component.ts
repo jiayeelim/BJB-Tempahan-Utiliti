@@ -91,7 +91,7 @@ export class UpdateUserComponent implements OnInit {
         phone: new FormControl(this.user.phone),
         password: new FormControl(this.user.password),
         username: new FormControl(this.user.username),
-      })
+      });
     });
   }
 
@@ -122,7 +122,7 @@ export class UpdateUserComponent implements OnInit {
           this.user.email = this.updateUserForm.value.email;
           this.user.username = this.updateUserForm.value.username;
           this.user.password = this.updateUserForm.value.password;
-          //this.user.password2 = this.updateUserForm.value.password2;
+          this.user.password2 = this.updateUserForm.value.password2;
   
           try{
             this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
