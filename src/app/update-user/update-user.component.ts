@@ -28,8 +28,9 @@ export class UpdateUserComponent implements OnInit {
   id: string;
   name: string;
   user_username: Array<string> = [null];
+  updateUserForm;
 
-  updateUserForm = this.formBuilder.group({
+  /*updateUserForm = this.formBuilder.group({
     name: ['',Validators.required],
     username: ['',[Validators.required]],
     ic: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
@@ -44,7 +45,7 @@ export class UpdateUserComponent implements OnInit {
     resident: ['', [Validators.required]],
   }, {
     validator: this.registerService.MatchPassword('password', 'comfirmPassword')
-  })
+  });*/
 
   submitted = false;
   stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Malacca', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
@@ -90,6 +91,7 @@ export class UpdateUserComponent implements OnInit {
         email: new FormControl(this.user.email),
         phone: new FormControl(this.user.phone),
         password: new FormControl(this.user.password),
+        password2: new FormControl(this.user.password),
         username: new FormControl(this.user.username),
       });
     });
@@ -100,7 +102,7 @@ export class UpdateUserComponent implements OnInit {
 
   updateUser(){
 
-    let status: boolean;
+    /*let status: boolean;
     status = true;
 
       if(this.updateUserForm.value.password == this.user.password){
@@ -111,7 +113,7 @@ export class UpdateUserComponent implements OnInit {
       }
    
     if(status){
-        if(this.updateUserForm.value.password == this.updateUserForm.value.password2){
+        if(this.updateUserForm.value.password == this.updateUserForm.value.password2){*/
           this.user.name = this.updateUserForm.value.name;
           this.user.ic = this.updateUserForm.value.ic;
           this.user.address1 = this.updateUserForm.value.address1;
@@ -127,17 +129,18 @@ export class UpdateUserComponent implements OnInit {
           try{
             this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
             window.alert("User telah Dikemas Kini!");
+            this.router.navigate(['/view-user-detail', this.id]);
             this.updateUserForm.reset();
            }catch(err){
-        console.log(err);
+          window.alert("Sila Isikan Maklumat yang Tepat");
         }}
-      else{
+      /*else{
         window.alert("Kata Laluan mesti sepandan");
       }
       }
       else{
         window.alert("Kata Laluan Lama Mesti Sepandan!");
-      }}
+      }}*/
       
   get updateFromControl() {return this.updateUserForm.controls; }
 

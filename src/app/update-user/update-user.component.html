@@ -116,7 +116,7 @@
           </div>
         </div>
 
-        <hr class="line">
+        <!--<hr class="line">
         <div class="row">
           <div class = "columnleft">
             <font class = "title">Kata Laluan</font>
@@ -128,10 +128,10 @@
             <div class="text-danger" *ngIf="updateFromControl.password.touched && updateFromControl.password.errors.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
              huruf dan 1 nombor</div> <br>
             <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
-            <div class="text-danger" *ngIf="(updateFromControl.password2.touched || submitted)&& updateFromControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.password2.touched || submitted) && updateFromControl.password2.errors.required">Kata Laluan Baru diperlukan</div>
             <div class="text-danger" *ngIf="updateFromControl.password2.touched && updateFromControl.password2.errors.passwordMismatch">Kata Laluan mesti sepandan</div>
           </div>
-        </div>
+        </div>-->
 
         <hr class="line"> <br><br>
         <input type="submit" class="update" value="Kemas Kini" id="reg_btn">
