@@ -24,7 +24,7 @@
   <div class="registercontainer">  
   
     <div class="box_1">
-      <from [formGroup]="updateUserForm" (ngSubmit)="updateUser()" ngNativaValidate>
+      <form [formGroup]="updateUserForm" (ngSubmit)="updateUser()" ngNativaValidate>
         <div class="title">
             <h1 align="center">Maklumat Peribadi</h1>
         </div>
@@ -125,7 +125,7 @@
           </div>
           <div class = "columnright">
             <input type="password" formControlName="password" placeholder="Kata Laluan Lama" required> <br>
-            <input type="password" formControlName="password" placeholder="Kata Laluan Baru" required>
+            <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
             <div class="text-danger" *ngIf="(updateFromControl.password.touched || submitted) && updateFromControl.password.errors?.required">Kata Laluan diperlukan</div>
             <div class="text-danger" *ngIf="updateFromControl.password.touched && updateFromControl.password.errors?.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
              huruf dan 1 nombor</div> <br>
@@ -137,7 +137,7 @@
 
         <hr class="line"> <br><br>
         <input type="submit" class="update" value="Kemas Kini" id="reg_btn">
-        </from>
+        </form>
     </div>
     </div>
 
