@@ -87,16 +87,16 @@ export class UpdateUserComponent implements OnInit {
 
   updateUser(){
 
-    let status: boolean;
+    /*let status: boolean;
     status = true;
 
     for(let i=0; i<this.user_username.length; i++){
       if(this.updateUserForm.value.username == this.user_username[i]){
         status = false;
       }
-    }
+    }*/
    
-    if(status){
+    //if(status){
       if(this.updateUserForm.value.password == this.user.password){
         if(this.updateUserForm.value.password == this.updateUserForm.value.password2){
           this.user.address1 = this.updateUserForm.value.address1;
@@ -107,6 +107,7 @@ export class UpdateUserComponent implements OnInit {
           this.user.email = this.updateUserForm.value.email;
           this.user.username = this.updateUserForm.value.username;
           this.user.password = this.updateUserForm.value.password;
+          this.user.password2 = this.updateUserForm.value.password2;
   
           try{
             this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
@@ -123,10 +124,9 @@ export class UpdateUserComponent implements OnInit {
         window.alert("Kata Laluan mesti sepandan");
       }
       }
-      else{
-        window.alert("Minta Maaf. Nama Pengguna Ini Telah Digunakan");
-      }
-    }
+      //else{
+      //  window.alert("Minta Maaf. Nama Pengguna Ini Telah Digunakan");
+      //}
       
 
   get updateFromControl() {return this.updateUserForm.controls; }
