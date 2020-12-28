@@ -93,6 +93,7 @@ export class UpdateUserComponent implements OnInit {
         this.user.postcode = this.updateUserForm.value.postcode;
         this.user.phone = this.updateUserForm.value.phone;
         this.user.email = this.updateUserForm.value.email;
+        this.user.username = this.updateUserForm.value.username;
         this.user.password = this.updateUserForm.value.password;
 
         try{

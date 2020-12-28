@@ -35,7 +35,8 @@
           <font class = "title">Nama Penuh </font>
         </div>
         <div class = "columnright">
-          <font class = "data">{{user.name}}</font>
+          <input type="text" oninput="this.value = this.value.toUpperCase()" formControlName="name" value="{{user.name}}"  required>
+          <div class="text-danger" *ngIf="(updateFromControl.name.touched || submitted) && updateFromControl.name.errors?.required">Name Pernuh diperlukan</div>
         </div>
         </div>
         
@@ -88,12 +89,35 @@
         <hr class="line">
         <div class="row">
           <div class = "columnleft">
+            <font class = "title">Adakah anda Penduduk Kangkar Pulai?</font>
+          </div>
+          <div class = "columnright">
+          <input type="radio" formControlName="resident" class="radio-group"  value="Yes">Ya
+          <input type="radio" formControlName="resident" class="radio-group" value="No">Bukan
+        </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
             <font class = "title">E-mel</font>
           </div>
           <div class = "columnright">
             <input type="text" formControlName="email" value="{{user.email}}" required> 
             <div class="text-danger" *ngIf="(updateFromControl.email.touched || submitted) && updateFromControl.email.errors?.required">E-mel diperlukan</div>
             <div class="text-danger"*ngIf="updateFromControl.email.touched && updateFromControl.email.errors?.email">Sila isi E-mel yang disahkan</div>
+          </div>
+        </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Nama Pengguna</font>
+          </div>
+          <div class = "columnright">
+            <input type="text" formControlName="username" value="{{user.username}}" required>
+            <div class="text-danger" *ngIf="(updateFromControl.username.touched || submitted) && updateFromControl.username.errors?.required">Username diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.username.touched && updateFromControl.username.errors?.userNameNotAvailable">Username teleh digunakan</div>
           </div>
         </div>
 
