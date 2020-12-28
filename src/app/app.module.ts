@@ -95,11 +95,7 @@ const appRoutes: Routes = [
     AngularFireAuthModule,
     AngularFireStorageModule
   ],
-<<<<<<< Updated upstream
   providers: [AuthGuard, RegisterService, RuangService, AuthService, UserService, HubungiKamiService, ReservationService],
-=======
-  providers: [AuthGuard, RegisterService, RuangService, AuthService, UserService, ReservationService],
->>>>>>> Stashed changes
   bootstrap: [AppComponent]
 
 })
