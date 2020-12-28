@@ -35,8 +35,7 @@
           <font class = "title">Nama Penuh </font>
         </div>
         <div class = "columnright">
-          <input type="text" oninput="this.value = this.value.toUpperCase()" formControlName="name" value="{{user.name}}"  required>
-          <div class="text-danger" *ngIf="(updateFromControl.name.touched || submitted) && updateFromControl.name.errors?.required">Name Pernuh diperlukan</div>
+          <font class = "data">{{user.name}}</font>
         </div>
         </div>
         
@@ -46,9 +45,7 @@
             <font class = "title">Nombor Kad Pengenalan</font>
             </div>
             <div class = "columnright">
-            <input type="number" formControlName="ic" class="form-control"  minlength="12" maxlength="12" pattern="[0]{1}[1]{1}[0-9]{8,}" value="{{user.ic}}" required>
-            <div class="text-danger" *ngIf="updateFromControl.ic.touched && updateFromControl.ic.errors?.minLength && updateFromControl.ic.errors?.maxLength">Sila isi Nombor Kad Pengenalan yang disahkan</div>
-            <div class="text-danger" *ngIf="(updateFromControl.ic.touched || submitted) && updateFromControl.ic.errors?.required">Nombor Kad Pengenalan diperlukan</div>
+            <font class = "data">{{user.ic}}</font>
           </div>
         </div>
 

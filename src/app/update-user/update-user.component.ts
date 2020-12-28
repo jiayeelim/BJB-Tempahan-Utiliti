@@ -27,6 +27,7 @@ export class UpdateUserComponent implements OnInit {
   username: string;
   id: string;
   name: string;
+  user_username: Array<string> = [null];
 
   updateUserForm = this.formBuilder.group({
     name: ['',Validators.required],
@@ -85,28 +86,48 @@ export class UpdateUserComponent implements OnInit {
   }
 
   updateUser(){
-   
-      if(this.updateUserForm.value.password == this.updateUserForm.value.password2){
-        this.user.address1 = this.updateUserForm.value.address1;
-        this.user.address2 = this.updateUserForm.value.address2;
-        this.user.state = this.updateUserForm.value.state;
-        this.user.postcode = this.updateUserForm.value.postcode;
-        this.user.phone = this.updateUserForm.value.phone;
-        this.user.email = this.updateUserForm.value.email;
-        this.user.username = this.updateUserForm.value.username;
-        this.user.password = this.updateUserForm.value.password;
 
-        try{
-          this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
-          window.alert("User telah Dikemas Kini!");
-          this.updateUserForm.reset();
-         }catch(err){
-      console.log(err);
-      }}
+    let status: boolean;
+    status = true;
+
+    for(let i=0; i<this.user_username.length; i++){
+      if(this.updateUserForm.value.username == this.user_username[i]){
+        status = false;
+      }
+    }
+   
+    if(status){
+      if(this.updateUserForm.value.password == this.user.password){
+        if(this.updateUserForm.value.password == this.updateUserForm.value.password2){
+          this.user.address1 = this.updateUserForm.value.address1;
+          this.user.address2 = this.updateUserForm.value.address2;
+          this.user.state = this.updateUserForm.value.state;
+          this.user.postcode = this.updateUserForm.value.postcode;
+          this.user.phone = this.updateUserForm.value.phone;
+          this.user.email = this.updateUserForm.value.email;
+          this.user.username = this.updateUserForm.value.username;
+          this.user.password = this.updateUserForm.value.password;
+  
+          try{
+            this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
+            window.alert("User telah Dikemas Kini!");
+            this.updateUserForm.reset();
+           }catch(err){
+        console.log(err);
+        }}
+        else{
+          window.alert("Kata Laluan mesti sepandan");
+        }
+      }
       else{
         window.alert("Kata Laluan mesti sepandan");
       }
+      }
+      else{
+        window.alert("Minta Maaf. Nama Pengguna Ini Telah Digunakan");
+      }
     }
+      
 
   get updateFromControl() {return this.updateUserForm.controls; }
 
