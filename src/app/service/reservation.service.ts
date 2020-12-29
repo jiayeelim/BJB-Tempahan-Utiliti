@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-
+import { Time } from '@angular/common';
 import { Reservation } from '../models/reservation';
 import { ReserveId } from '../models/reserveid';
 import { Reservelist } from '../models/reservelist';
@@ -8,6 +8,21 @@ import { Reservelist } from '../models/reservelist';
 class tempReserveId{
   reservationID: string;
   name: string;
+}
+
+class tempReservelist{
+  reserveID: string;
+  name: string;
+  startdate: Date;
+  starttime: Time;
+  enddate: Date;
+  endtime: Time;
+  //quantity: number;
+  ruangname: string;
+  ruangprice: number;
+  discount: number;
+  ruangpricePer: string;
+
 }
 
 @Injectable({
@@ -21,12 +36,15 @@ export class ReservationService {
   name: string;
   reservelist: Reservelist = new Reservelist();
   reserveID: ReserveId = new ReserveId();
-  reserveID_list: ReserveId[]=[];
+  reserveID_list: ReserveId[];
 
   reservation: tempReserveId;
   reservationList: tempReserveId[]=[];
 
-  
+  reserveid: tempReservelist;
+  reserveidList: tempReservelist[]=[];
+
+  rID: string;
 
     constructor(public fireservices:AngularFirestore) { }
 
@@ -47,7 +65,9 @@ export class ReservationService {
         else{
           querySnapshot.forEach(documentSnapshot =>{
             this.reservationlistID = documentSnapshot.id;
+            console.log(this.reservationlistID);
             this.fetchReservationDetails(this.reservationlistID);
+            return this.reservationlistID;
           });
         }
       });
@@ -56,6 +76,7 @@ export class ReservationService {
 
     fetchReservationDetails(reservationlistID){
       this.reserveID_list = [];
+      this.reserveidList = [];
       const query = this.fireservices.collection<Reservelist>('Reservelist').doc(reservationlistID);
 
       query.get().subscribe(field =>{
@@ -64,8 +85,31 @@ export class ReservationService {
 
           var $reserveid = new ReserveId();
           $reserveid.reservationID = value.reservationID;
+          this.rID=value.reservationID;
+          console.log(this.rID);
+          
+          this.fireservices.collection<Reservation>('Reservation').doc(this.rID).get().subscribe(field =>{
+            const data = field.data();
+            //console.log(this.rname);
+    
+            this.reserveid = new tempReservelist();
+            this.reserveid.reserveID = field.id;
+            this.reserveid.name = data.name;
+            this.reserveid.startdate = data.startdate;
+            this.reserveid.starttime = data.starttime;
+            this.reserveid.enddate = data.enddate;
+            this.reserveid.endtime = data.endtime;
+            this.reserveid.discount = data.discount;
+            this.reserveid.ruangname = data.ruangname;
+            this.reserveid.ruangprice = data.ruangprice;
+            this.reserveid.ruangpricePer = data.ruangpricePer;
+            
+    
+            this.reserveidList.push(this.reserveid);
+          });
 
           this.reserveID_list.push($reserveid);
+          console.log(this.reserveID_list.length);
         });
       });
     }
@@ -75,10 +119,10 @@ export class ReservationService {
 
       for(let i=0; i< this.reserveID_list.length; i++){
         if(this.reserveID_list[i].reservationID !=reservation_id){
-          var tempReserveId = new Reservelist();
-          tempReserveId.reservelistID = this.reserveID_list[i].reservationID;
+          var tempReserveId = new ReserveId();
+          tempReserveId.reservationID = this.reserveID_list[i].reservationID;
 
-          newList.push(tempReserveId)
+          newList.push(tempReserveId);
         }
       }
       var tempReservelist= new Reservelist();
@@ -88,7 +132,7 @@ export class ReservationService {
       this.fireservices.collection<Reservelist>('Reservalist').doc(reservelist_id).set(Object.assign({}, tempReservelist)).then(()=>{
         window.alert('Tempahan telah berjaya dipadamkan!');
         window.location.reload();
-      })
+      });
     }
   
     /*newReservationData()

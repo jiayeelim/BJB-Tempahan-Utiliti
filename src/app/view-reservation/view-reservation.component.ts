@@ -47,6 +47,8 @@ export class ViewReservationComponent implements OnInit {
   reserveid: tempReservelist;
   reserveidList: tempReservelist[];
   rname: string="123";
+
+  
   //ruangData: RuangWithId = new RuangWithId();
   //reservationData: ReservationWithId = new ReservationWithId();
 
@@ -58,9 +60,9 @@ export class ViewReservationComponent implements OnInit {
   //selectedRuang$: AngularFirestoreDocument<Ruang>;
 
   constructor(private router:Router, private ruangServices: RuangService, private firestore: AngularFirestore, private storage: AngularFireStorage, public reservationService:ReservationService) { 
-    if(localStorage.getItem('isLoggedIn')=='true'&& !this.reservationService.triggered){
-    
+    if( localStorage.getItem('isLoggedIn')=='true'&&!this.reservationService.triggered){  
     this.name=localStorage.getItem('name');
+    console.log(this.name);
 
     }
     //this.reservationList.pop();
@@ -69,11 +71,17 @@ export class ViewReservationComponent implements OnInit {
 
     this.reservelist = this.reservationService;
     this.reserveidList = [];
+    //this.reservationService.reservelist.reservername = this.rname;
     this.reservationService.getReserveID(this.rname);
     
+  
+    
     console.log(this.reservationService.reserveID_list.length);
-
-    for(let i=0; i<this.reservationService.reserveID_list.length; i++){
+    console.log(this.rname);
+    
+      
+/*
+    for(let i=0; i<this.reservelist.reserveID_list.length; i++){
       this.firestore.collection<Reservation>('Reservation').doc(this.reservationService.reserveID_list[i].reservationID).get().subscribe(field =>{
         const data = field.data();
         console.log(this.rname);
@@ -89,7 +97,7 @@ export class ViewReservationComponent implements OnInit {
         this.reserveid.ruangname = data.ruangname;
         this.reserveid.ruangprice = data.ruangprice;
         this.reserveid.ruangpricePer = data.ruangpricePer;
-        console.log(this.rname);
+        
 
         this.reserveidList.push(this.reserveid);
       });

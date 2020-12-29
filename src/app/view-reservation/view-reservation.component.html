@@ -38,15 +38,15 @@
       
           <hr class="line">
           <div class="row" >
-            <div class="reservation" *ngFor="let item of reserveidList">
-              <div class="columnleft" >
-                  <!--<img class="img" [src]="ruangData.image_url" alt="Image from Angular Storage">-->
-              </div>
+            <div class="reservation" *ngFor="let item of this.reservationService.reserveidList">
+               <!--<div class="columnleft" >
+                 <img class="img" [src]="ruangData.image_url" alt="Image from Angular Storage">
+              </div>-->
               <div class="columnright">
                   <font class="utilitytitle">{{item.ruangname}}</font><br>
                   <!--{{item.information}}<br><br>-->
               </div>
-                <b>Status: Tamat</b><br><br><br>
+                <b>Status: Pending</b><br><br><br>
                 <hr width="10%" align="left">
                 <table>
                     <tr>
