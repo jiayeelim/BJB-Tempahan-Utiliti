@@ -28,8 +28,9 @@ export class UpdateUserComponent implements OnInit {
   id: string;
   name: string;
   user_username: Array<string> = [null];
+  updateUserForm;
 
-  updateUserForm = this.formBuilder.group({
+  /*updateUserForm = this.formBuilder.group({
     name: ['',Validators.required],
     username: ['',[Validators.required]],
     ic: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
@@ -44,7 +45,7 @@ export class UpdateUserComponent implements OnInit {
     resident: ['', [Validators.required]],
   }, {
     validator: this.registerService.MatchPassword('password', 'comfirmPassword')
-  })
+  });*/
 
   submitted = false;
   stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Malacca', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
@@ -79,6 +80,20 @@ export class UpdateUserComponent implements OnInit {
       this.user.username = data.username;
       this.user.password = data.password;
       this.user.password2 = data.password2;
+
+      this.updateUserForm = new FormGroup({
+        name: new FormControl(this.user.name),
+        ic: new FormControl(this.user.ic),
+        address1: new FormControl(this.user.address1),
+        address2: new FormControl(this.user.address2),
+        postcode: new FormControl(this.user.postcode),
+        state: new FormControl(this.user.state),
+        email: new FormControl(this.user.email),
+        phone: new FormControl(this.user.phone),
+        password: new FormControl(this.user.password),
+        password2: new FormControl(this.user.password),
+        username: new FormControl(this.user.username),
+      });
     });
   }
 
@@ -90,15 +105,17 @@ export class UpdateUserComponent implements OnInit {
     /*let status: boolean;
     status = true;
 
-    for(let i=0; i<this.user_username.length; i++){
-      if(this.updateUserForm.value.username == this.user_username[i]){
+      if(this.updateUserForm.value.password == this.user.password){
+        status = true;
+      }
+      else{
         status = false;
       }
-    }*/
    
-    //if(status){
-      if(this.updateUserForm.value.password == this.user.password){
-        if(this.updateUserForm.value.password == this.updateUserForm.value.password2){
+    if(status){
+        if(this.updateUserForm.value.password == this.updateUserForm.value.password2){*/
+          this.user.name = this.updateUserForm.value.name;
+          this.user.ic = this.updateUserForm.value.ic;
           this.user.address1 = this.updateUserForm.value.address1;
           this.user.address2 = this.updateUserForm.value.address2;
           this.user.state = this.updateUserForm.value.state;
@@ -107,28 +124,24 @@ export class UpdateUserComponent implements OnInit {
           this.user.email = this.updateUserForm.value.email;
           this.user.username = this.updateUserForm.value.username;
           this.user.password = this.updateUserForm.value.password;
-          this.user.password2 = this.updateUserForm.value.password2;
+          //this.user.password2 = this.updateUserForm.value.password2;
   
           try{
             this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
             window.alert("User telah Dikemas Kini!");
+            this.router.navigate(['/view-user-detail', this.id]);
             this.updateUserForm.reset();
            }catch(err){
-        console.log(err);
+          window.alert("Sila Isikan Maklumat yang Tepat");
         }}
-        else{
-          window.alert("Kata Laluan mesti sepandan");
-        }
-      }
-      else{
+      /*else{
         window.alert("Kata Laluan mesti sepandan");
       }
       }
-      //else{
-      //  window.alert("Minta Maaf. Nama Pengguna Ini Telah Digunakan");
-      //}
+      else{
+        window.alert("Kata Laluan Lama Mesti Sepandan!");
+      }}*/
       
-
   get updateFromControl() {return this.updateUserForm.controls; }
 
 }
