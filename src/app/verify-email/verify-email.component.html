@@ -1,0 +1,38 @@
+<html>
+    <!--Banner-->
+<div class="header flex_to_corner">
+    <div style="flex-grow: 1">
+      <img class="BJB_logo" src="/assets/image/BJB logo.png" alt="BJB logo">
+    </div>
+    <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
+    <div class="sign_in_up" style="flex-grow: 1; text-align: right">
+        <a routerLink="/login">LOG MASUK</a> ||
+        <a routerLink="/register"  >DAFTAR</a>
+  </div>
+</div>
+
+<!--Navigation Bar-->
+<div>
+    <ul>
+      <li><a href="/home">LAMAN UTAMA</a></li>
+      <li class="dropdown">
+        <a routerLink="/user-view-utility" class="dropbtn">SENARAI RUANG</a>
+      </li>
+      <li><a href="#">TENTANG KAMI</a></li>
+      <li><a href="#">HUBUNGI KAMI</a></li>
+    </ul>
+  </div>
+
+<!--Content Start Here-->
+
+<div class = "registercontainer">
+    <div class="box_1">
+        <h2>Thank You for Registering</h2>
+        <div *ngIf="authService.userData as user">
+            <p>We have sent a confirmation email to <strong>{{user.email}}</strong></p>
+
+        </div>
+
+    </div>
+</div>
+</html>

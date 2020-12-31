@@ -46,10 +46,51 @@ export class AuthService {
     return false;
   }
 
+  SendVerificationMail() {
+    return this.afAuth.currentUser
+    .then(u => u.sendEmailVerification())
+    .then(() => {
+      this.router.navigate(['verify-email']);
+    })
+  }
+
+  forgotPassword(passwordResetEmail) {
+    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
+    .then(() => {
+      window.alert('Password reset email sent, check your inbox.');
+    }).catch((error) => {
+      window.alert(error)
+    })
+  }
+
+  SetUserData(user){
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.id}`);
+    const userData: User = {
+      id: user.id,
+      name: user.name,
+      ic: user.ic,
+      address1: user.address1,
+      address2: user.address2,
+      email: user.email,
+      password: user.password,
+      password2: user.password2,
+      phone: user.phobe,
+      postcode: user.postcode,
+      resident: user.resident,
+      state: user.state,
+      username: user.username,
+      emailVerifird: user.emailVerifird,
+    }
+    return userRef.set(userData, {
+      merge: true
+    })
+  }
+
   // Sign out 
-  logout() : void {
-    localStorage.setItem('isLoggedIn', 'false');
-    localStorage.removeItem('token');
-    localStorage.removeItem('name');
+  logout() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      this.router.navigate(['login']);
+    })
   }
 }

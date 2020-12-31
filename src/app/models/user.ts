@@ -11,4 +11,6 @@ export class User {
     email: string;
     phone: number;
     resident: string;
+    emailVerifird: boolean;
+    id: string;
 }

@@ -17,7 +17,9 @@ import { UpdateUtilityComponent} from './update-utility/update-utility.component
 import { AdminPortalComponent} from './admin-portal/admin-portal.component';
 import { ViewUserDetailComponent} from './view-user-detail/view-user-detail.component';
 import { HubungiKamiComponent} from './hubungi-kami/hubungi-kami.component';
-import { PertanyaanAdminComponent} from './pertanyaan-admin/pertanyaan-admin.component'
+import { PertanyaanAdminComponent} from './pertanyaan-admin/pertanyaan-admin.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import {} from '@angular/compiler';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 
@@ -41,6 +43,8 @@ const routes: Routes = [
   {path: 'view-user-detail/:id', component: ViewUserDetailComponent},
   {path: 'hubungi-kami', component: HubungiKamiComponent},
   {path: 'pertanyaan-admin', component: PertanyaanAdminComponent},
+  {path: 'forgot-password', component: ForgotPasswordComponent},
+  {path: 'verify-email', component: VerifyEmailComponent}
 
   //{path: 'hubungi-kami', component: HubungiKamiComponent}
 ];

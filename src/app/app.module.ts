@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'; 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
@@ -43,6 +44,8 @@ import { ReservationService } from './service/reservation.service';
 import { AuthService } from "./service/auth.service";
 import { UserService } from './service/user.service';
 import { HubungiKamiService } from './service/hubungi-kami.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
@@ -74,6 +77,8 @@ const appRoutes: Routes = [
     ViewUserDetailComponent,
     HubungiKamiComponent,
     PertanyaanAdminComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
     //HubungiKamiComponent,
 
     //PasswordPatternDirective,
@@ -84,6 +89,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
