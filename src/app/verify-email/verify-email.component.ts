@@ -22,6 +22,7 @@ export class VerifyEmailComponent implements OnInit {
   selectedUser$: AngularFirestoreDocument<User>;
   username: string;
   id: string;
+  updatePasswordForm;
 
   constructor(
     private router: Router,
@@ -54,6 +55,21 @@ export class VerifyEmailComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  updatePassword(){
+    if(this.updatePasswordForm.value.password == this.updatePasswordForm.value.password2){
+      this.user.password = this.updatePasswordForm.value.password;
+    }
+
+    try{
+      this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
+      window.alert("Kata Laluan telah Dikemas Kini!");
+      this.router.navigate(['/login']);
+      this.updatePasswordForm.reset();
+    }catch(err){
+      window.alert("Sila Isikan Maklumat yang Tepat");
+    }
   }
 
 }

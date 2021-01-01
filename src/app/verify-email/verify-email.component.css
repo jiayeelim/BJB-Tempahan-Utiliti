@@ -68,3 +68,22 @@ h2{
     font-weight: bold;
   }
   
+  .line{
+    color: rgb(190, 190, 190);
+  }
+
+  .row {
+    display: flex;
+  }
+  
+  .columnleft {
+    flex-basis: 500px;
+    padding: 10px;
+    margin-left: 60px;
+  }
+  
+  .columnright {
+    flex-basis: 300px;
+    padding: 5px;
+  }
+  
