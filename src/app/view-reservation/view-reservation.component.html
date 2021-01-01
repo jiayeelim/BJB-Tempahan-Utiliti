@@ -37,7 +37,7 @@
         
       
           <hr class="line">
-          <div class="row" >
+          <!--<div class="row" >-->
             <div class="reservation" *ngFor="let item of this.reservationService.reserveidList">
                <!--<div class="columnleft" >
                  <img class="img" [src]="ruangData.image_url" alt="Image from Angular Storage">
@@ -45,8 +45,7 @@
               <div class="columnright">
                   <font class="utilitytitle">{{item.ruangname}}</font><br>
                   <!--{{item.information}}<br><br>-->
-              </div>
-                <b>Status: Pending</b><br><br><br>
+                  <b>Status: Pending</b><br><br><br>
                 <hr width="10%" align="left">
                 <table>
                     <tr>
@@ -95,127 +94,10 @@
                 <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" (click)="updateReservation(item.reserveID)">
                 <input type="button" name="delete" value="Padam" id="fed_btn" (click)="deleteReservation()">
             </div>
-          </div>
-          
-        
-
-         <!--
+          <!-- </div> -->
         <hr class="line">
-        <div class="row">
-            <div class="columnleft">
-                <img class="img" src="/assets/image/badminton.png"> 
-            </div>
-            <div class="columnright">
-                <font class="utilitytitle">Gelanggang Badminton dalam Bangsa Johor Bahagia</font><br>
-                Maklumat Tentang Tempahan: -<br>
-                <b>Status: Aktif</b><br><br>
-                <hr width="10%" align="left">
-                <table>
-                    <tr>
-                    <td><label>Tarikh Mula</label></td>
-                    <td>08/02/2021</td>
-                  
-      
-                    <td><label>Masa Mula</label></td>
-                    <td>8:00am</td>
-                    </tr>
-      
-                    <tr>
-                    <td><label>Tarikh Tamat</label></td>
-                    <td>08/02/2021</td>
-      
-                    <td><label>Masa Tamat</label></td>
-                    <td>10:00am</td>
-                    </tr>
-                </table>
-
-                <br><br>
+              </div>
                 
-                <table>
-                    <tr>
-                    <td><label>Kadar Tempahan</label></td>
-                    <td><div class="price">RM3/jam</div></td>
-                    </tr>
-      
-                    <tr>
-                    <td><label>Bayaran</label></td>
-                    <td><div class="price">RM6</div></td>
-                    </tr>
-      
-                    <tr>
-                    <td><label>Diskaun</label></td>
-                    <td><div class="price">RM0</div></td>
-                    </tr>
-      
-                    <tr>
-                    <td><label>Jumlah Bayaran</label></td>
-                    <td><div class="price">RM6</div></td>
-                    </tr>
-                  </table>
-                <br><br><br>
-                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn">
-                <input type="button" name="delete" value="Padam" id="fed_btn">
-            </div>
-        </div>
-
-        <hr class="line">
-        <div class="row">
-            <div class="columnleft">
-                <img class="img" src="/assets/image/homestay1.jpg"> 
-            </div>
-            <div class="columnright">
-                <font class="utilitytitle">Homestay dalam Bangsa Johor Bahagia</font><br>
-                Maklumat Tentang Tempahan: -<br>
-                <b>Status: Aktif</b><br><br>
-                <hr width="10%" align="left">
-                <table>
-                    <tr>
-                    <td><label>Tarikh Mula</label></td>
-                    <td>25/12/2020</td>
-                  
-      
-                    <td><label>Masa Mula</label></td>
-                    <td>8:00am</td>
-                    </tr>
-      
-                    <tr>
-                    <td><label>Tarikh Tamat</label></td>
-                    <td>27/12/2020</td>
-      
-                    <td><label>Masa Tamat</label></td>
-                    <td>6:00pm</td>
-                    </tr>
-                </table>
-
-                <br><br>
-                
-                <table>
-                    <tr>
-                    <td><label>Kadar Tempahan</label></td>
-                    <td><div class="price">RM200/hari</div></td>
-                    </tr>
-      
-                    <tr>
-                    <td><label>Bayaran</label></td>
-                    <td><div class="price">RM600</div></td>
-                    </tr>
-      
-                    <tr>
-                    <td><label>Diskaun</label></td>
-                    <td><div class="price">RM100</div></td>
-                    </tr>
-      
-                    <tr>
-                    <td><label>Jumlah Bayaran</label></td>
-                    <td><div class="price">RM500</div></td>
-                    </tr>
-                  </table>
-                <br><br><br>
-                <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn">
-                <input type="button" name="delete" value="Padam" id="fed_btn">
-            </div>
-        </div>-->
-        <hr class="line">
     </div>
   </div>
  
