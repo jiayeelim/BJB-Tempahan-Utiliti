@@ -44,7 +44,7 @@ const routes: Routes = [
   {path: 'hubungi-kami', component: HubungiKamiComponent},
   {path: 'pertanyaan-admin', component: PertanyaanAdminComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'verify-email', component: VerifyEmailComponent}
+  {path: 'verify-email/:id', component: VerifyEmailComponent}
 
   //{path: 'hubungi-kami', component: HubungiKamiComponent}
 ];
