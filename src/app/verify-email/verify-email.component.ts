@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { Router, ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { User } from '../models/user';
 
@@ -16,7 +17,8 @@ class UserID extends User {
 })
 export class VerifyEmailComponent implements OnInit {
 
-  user: UserID;
+  user: User = new User();
+  users: UserID;
   userList: Array<UserID> = [null];
   route_url: Array<string> = [];
   selectedUser$: AngularFirestoreDocument<User>;
@@ -36,12 +38,9 @@ export class VerifyEmailComponent implements OnInit {
 
     query.subscribe(value => {
       const data = value.data();
-      const id = value.id;
 
-      this.user = new UserID();
       this.user.name = data.name;
       this.user.ic= data.ic;
-      this.user.id = id;
       this.user.address1 = data.address1;
       this.user.address2 = data.address2;
       this.user.postcode = data.postcode;
@@ -51,8 +50,13 @@ export class VerifyEmailComponent implements OnInit {
       this.user.username = data.username;
       this.user.password = data.password;
       this.user.password2 = data.password2;
+
+      this.updatePasswordForm = new FormGroup({
+        password: new FormControl(this.user.password),
+        password2: new FormControl(this.user.password),
     });
-   }
+  });
+  }
 
   ngOnInit(): void {
   }
@@ -60,7 +64,6 @@ export class VerifyEmailComponent implements OnInit {
   updatePassword(){
     if(this.updatePasswordForm.value.password == this.updatePasswordForm.value.password2){
       this.user.password = this.updatePasswordForm.value.password;
-    }
 
     try{
       this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
@@ -71,5 +74,9 @@ export class VerifyEmailComponent implements OnInit {
       window.alert("Sila Isikan Maklumat yang Tepat");
     }
   }
+  else{
+    window.alert("Kata Laluan mesti sepandan");
+  }
+}
 
 }

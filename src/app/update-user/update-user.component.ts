@@ -30,33 +30,13 @@ export class UpdateUserComponent implements OnInit {
   user_username: Array<string> = [null];
   updateUserForm;
 
-  /*updateUserForm = this.formBuilder.group({
-    name: ['',Validators.required],
-    username: ['',[Validators.required]],
-    ic: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
-    address1: ['', [Validators.required]],
-    address2: ['', [Validators.required]],
-    postcode: ['', [Validators.required]],
-    email: ['', [Validators.required, Validators.email]],
-    phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
-    state: ['', [Validators.required]],
-    password: ['', Validators.compose([Validators.required, this.registerService.patternValidator()])],
-    password2: ['', [Validators.required]],
-    resident: ['', [Validators.required]],
-  }, {
-    validator: this.registerService.MatchPassword('password', 'comfirmPassword')
-  });*/
-
   submitted = false;
   stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Malacca', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
 
   constructor(
     private router: Router, 
-    private actRoute: ActivatedRoute, 
     private firestore: AngularFirestore,
-    private formBuilder: FormBuilder,
-    public registerService:RegisterService, 
-    private userService: UserService) {
+    public registerService:RegisterService) {
 
     //console.log(this.router.url);
     this.route_url = this.router.url.split('/');
@@ -102,18 +82,6 @@ export class UpdateUserComponent implements OnInit {
 
   updateUser(){
 
-    /*let status: boolean;
-    status = true;
-
-      if(this.updateUserForm.value.password == this.user.password){
-        status = true;
-      }
-      else{
-        status = false;
-      }
-   
-    if(status){
-        if(this.updateUserForm.value.password == this.updateUserForm.value.password2){*/
           this.user.name = this.updateUserForm.value.name;
           this.user.ic = this.updateUserForm.value.ic;
           this.user.address1 = this.updateUserForm.value.address1;
