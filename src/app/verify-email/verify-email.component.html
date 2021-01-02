@@ -32,9 +32,14 @@
         <hr class="line">
         <label>Kata Laluan Baru</label>
         <input type="password" class="formControl" formControlName="password" placeholder="kata laluan baru" required>
+        <div class="text-danger" *ngIf="(updatePasswordFormControl.password.touched || submitted) && updatePasswordFormControl.password.errors?.required">Kata Laluan diperlukan</div>
+        <div class="text-danger" *ngIf="updatePasswordFormControl.password.touched && updatePasswordFormControl.password.errors?.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
+        huruf dan 1 nombor</div>
 
         <label>Taip Semula Kata Laluan Baru</label>
         <input type="password" class="form-control" formControlName="password2"  placeholder="kata laluan baru" required>
+        <div class="text-danger" *ngIf="(updatePasswordFormControl.password2.touched || submitted)&& updatePasswordFormControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
+        <div class="text-danger" *ngIf="updatePasswordFormControl.password2.touched && updatePasswordFormControl.password2.errors?.passwordMismatch">Kata Laluan mesti sepandan</div>
 
         <input type="submit" name="submit" value="Kemas Kini" id="reg_btn">
       </form>

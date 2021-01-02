@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
+import { RegisterService } from '../service/register.service';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { User } from '../models/user';
 
@@ -24,11 +25,18 @@ export class VerifyEmailComponent implements OnInit {
   selectedUser$: AngularFirestoreDocument<User>;
   username: string;
   id: string;
-  updatePasswordForm;
+  submitted = false;
+
+  updatePasswordForm = this.formBuilder.group({
+    password: ['', Validators.compose([Validators.required, this.registerService.patternValidator()])],
+    password2: ['', [Validators.required]],
+  })
 
   constructor(
     private router: Router,
     private firestore: AngularFirestore,
+    public registerService:RegisterService, 
+    private formBuilder: FormBuilder,
     public authService: AuthService) {
 
     this.route_url = this.router.url.split('/');
@@ -51,19 +59,23 @@ export class VerifyEmailComponent implements OnInit {
       this.user.password = data.password;
       this.user.password2 = data.password2;
 
-      this.updatePasswordForm = new FormGroup({
+      /*this.updatePasswordForm = new FormGroup({
         password: new FormControl(this.user.password),
         password2: new FormControl(this.user.password),
-    });
+    });*/
   });
   }
 
   ngOnInit(): void {
   }
 
+  get updatePasswordFormControl() { return this.updatePasswordForm.controls;}
+
   updatePassword(){
+    console.log(this.user);
     if(this.updatePasswordForm.value.password == this.updatePasswordForm.value.password2){
       this.user.password = this.updatePasswordForm.value.password;
+      this.user.password2 = this.updatePasswordForm.value.password;
 
     try{
       this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
