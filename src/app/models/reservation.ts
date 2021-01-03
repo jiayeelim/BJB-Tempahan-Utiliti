@@ -3,10 +3,10 @@ import { Time } from '@angular/common';
 export class Reservation
 {
     reservationDescription: string;
-    startdate: Date | undefined;
-    starttime: Time | undefined;
-    enddate: Date | undefined;
-    endtime:Time | undefined;
+    startdate: any | undefined;
+    starttime: any | undefined;
+    enddate: any | undefined;
+    endtime: any | undefined;
     ruangprice:number | undefined;
     ruangpricePer: string;
     ruangname: string;

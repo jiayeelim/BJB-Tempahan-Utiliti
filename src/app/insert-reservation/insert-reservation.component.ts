@@ -68,16 +68,18 @@ export class InsertReservationComponent implements OnInit {
       this.newReservation.discount = 0;
 
       if(localStorage.getItem('isLoggedIn')=='true'){
-        this.newReservation.name = localStorage.getItem('name');
+        //this.newReservation.name = localStorage.getItem('name');
+        this.newReservation.name = '123';
         this.newReservation.phoneno = localStorage.getItem('phone');
         //get existing reservation or create new one
         this.reservationService.reservelist.reservername = this.newReservation.name;
         this.reservationService.getReserveID(this.newReservation.name);
       }
-      //else{
+      else{
         // redirect to account page to prompt login/register action
-      //  window.alert('Sila log masuk.');
-      //  this.router.navigate(['/login']);
+       window.alert('Sila log masuk.');
+       this.router.navigate(['/login']);
+      }
    }
 
    
@@ -85,17 +87,26 @@ export class InsertReservationComponent implements OnInit {
   addNewReservation()
   {
     this.newReservation.reservationDescription = this.createReservationForm.value.reservationDescription;
-    this.newReservation.startdate = this.createReservationForm.value.startdate;
-    this.newReservation.starttime = this.createReservationForm.value.starttime;
-    this.newReservation.enddate = this.createReservationForm.value.enddate;
-    this.newReservation.endtime = this.createReservationForm.value.endtime;
+    //this.newReservation.startdate = this.createReservationForm.value.startdate;
+    //this.newReservation.starttime = this.createReservationForm.value.starttime;
+    //this.newReservation.enddate = this.createReservationForm.value.enddate;
+    //this.newReservation.endtime = this.createReservationForm.value.endtime;
     this.newReservation.ruangname = this.ruang.name;
     this.newReservation.ruangprice = this.ruang.price;
     this.newReservation.discount = 0;
     this.newReservation.ruangpricePer = this.ruang.pricePer;
-    //this.newReservation.quantity = this.calculateQuantity(this.ruang.pricePer, this.newReservation.startdate,this.newReservation.enddate, this.newReservation.starttime, this.newReservation.endtime);
-    //this.newReservation.total = (this.newReservation.ruangprice*this.newReservation.quantity);
 
+    const startDate = this.createReservationForm.value.startdate.toString().split('-');
+    const endDate = this.createReservationForm.value.enddate.toString().split('-');
+    const startTime = this.createReservationForm.value.starttime.toString().split(':');
+    const endTime = this.createReservationForm.value.endtime.toString().split(':');
+
+    this.newReservation.startdate = new Date(startDate[0], startDate[1], startDate[2], startTime[0], startTime[1]);
+    this.newReservation.enddate = new Date(endDate[0], endDate[1], endDate[2], endTime[0], endTime[1]);
+
+    this.newReservation.quantity = this.calculateQuantity(this.ruang.pricePer, this.newReservation.startdate,this.newReservation.enddate);
+    this.newReservation.total = (this.newReservation.ruangprice*this.newReservation.quantity)-this.newReservation.discount;
+    console.log(this.newReservation.quantity);
 
     try
     {
@@ -127,18 +138,21 @@ export class InsertReservationComponent implements OnInit {
     })
   }
 
-  //calculateQuantity(priceper, startdate, enddate,starttime,endtime)
-  //{
-   // if(priceper=='jam'){
-   //   var timestart = starttime.getTime();
-   //   var timeend = endtime.getTime();
-   //   return starttime-endtime;
-   // }
-   // else{
-   //   return Math.ceil(Math.abs(startdate - enddate) / (1000 * 60 * 60 * 24));
-   // }
+  calculateQuantity(priceper, startdate, enddate)
+  {
    
-  //}
+    if(priceper=='jam'){
+      var delta=Math.abs(enddate-startdate)/1000;
+      var hours = Math.floor( delta / 60 / 60 );
+     
+      return hours;
+    }
+    else{
+      var days= Math.round((enddate-startdate)/(1000*60*60*24));
+      return days
+    }
+   
+  }
   
 
   ngOnInit(): void 

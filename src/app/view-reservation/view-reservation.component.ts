@@ -27,7 +27,7 @@ class tempReservelist{
   starttime: Time;
   enddate: Date;
   endtime: Time;
-  //quantity: number;
+  quantity: number;
   ruangname: string;
   ruangprice: number;
   discount: number;
@@ -47,6 +47,7 @@ export class ViewReservationComponent implements OnInit {
   reserveid: tempReservelist;
   reserveidList: tempReservelist[];
   rname: string="123";
+
 
   
   //ruangData: RuangWithId = new RuangWithId();
@@ -73,13 +74,8 @@ export class ViewReservationComponent implements OnInit {
     this.reserveidList = [];
     //this.reservationService.reservelist.reservername = this.rname;
     this.reservationService.getReserveID(this.rname);
-    
-  
-    
-    console.log(this.reservationService.reserveID_list.length);
-    console.log(this.rname);
-    
-      
+    //this.reservationService.fetchReservationDetails(ID);
+    //console.log(ID);
 /*
     for(let i=0; i<this.reservelist.reserveID_list.length; i++){
       this.firestore.collection<Reservation>('Reservation').doc(this.reservationService.reserveID_list[i].reservationID).get().subscribe(field =>{
@@ -161,10 +157,13 @@ export class ViewReservationComponent implements OnInit {
     this.router.navigate(['/updateReservation', reservationID]);
   }
 
-  deleteReservation(){
+  deleteReservation(reservationID){
     var selection = confirm("Adakah anda pasti untuk padam tempahan ini?");
     if(selection == true){
-      this.firestore.collection<Reservation>('Reservation').doc(this.reserveid.reserveID).delete();
+      console.log(reservationID);
+      this.reservelist.deleteReservation(this.reservationService.reservationlistID,reservationID);
+      this.firestore.collection<Reservation>('Reservation').doc(reservationID).delete();
+      
     }
   }
 

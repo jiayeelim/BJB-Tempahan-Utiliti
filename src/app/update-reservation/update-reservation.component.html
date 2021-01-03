@@ -39,11 +39,11 @@
           <table>
             <tr>
             <td><label>Tarikh Mula</label></td>
-            <td><input type="date" formControlName="startdate" value="{{item.starttime}}"></td>
+            <td><input type="date" formControlName="startdate" value="{{item.startdate}}"></td>
           
 
             <td><label>Masa Mula</label></td>
-            <td><input type="time" formControlName="starttime" value="{{item.starttime}}"></td>
+            <td><input type="time" formControlName="starttime" value="{{item.starttime }}"></td>
             </tr>
 
             <tr>
@@ -51,7 +51,7 @@
             <td><input type="date" formControlName="enddate" value="{{item.enddate}}"></td>
 
             <td><label>Masa Tamat</label></td>
-            <td><input type="time" formControlName="endtime" value="{{item.endtime}}"></td>
+            <td><input type="time" formControlName="endtime" value="{{item.endtime }}"></td>
             </tr>
           </table>
           
@@ -65,7 +65,7 @@
 
             <tr>
             <td><label>Bayaran</label></td>
-            <td>RM</td>
+            <td>RM {{item.ruangprice*item.quantity}}</td>
             </tr>
 
             <tr>
@@ -75,7 +75,7 @@
 
             <tr>
             <td><label>Jumlah Bayaran</label></td>
-            <td>RM bayaran-diskaun </td>
+            <td>RM {{item.total}} </td>
             </tr>
           </table>
 

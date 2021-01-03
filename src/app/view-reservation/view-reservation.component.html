@@ -50,19 +50,19 @@
                 <table>
                     <tr>
                     <td><label>Tarikh Mula</label></td>
-                    <td>{{item.startdate}}</td>
+                    <td>{{item.startdate| date:'dd-MM-yyyy'}}</td>
                   
       
                     <td><label>Masa Mula</label></td>
-                    <td>{{item.starttime}}</td>
+                    <td>{{item.startdate | date:'shortTime'}}</td>
                     </tr>
       
                     <tr>
                     <td><label>Tarikh Tamat</label></td>
-                    <td>{{item.enddate}}</td>
+                    <td>{{item.enddate| date:'dd-MM-yyyy'}}</td>
       
                     <td><label>Masa Tamat</label></td>
-                    <td>{{item.endtime}}</td>
+                    <td>{{item.enddate| date:'shortTime'}}</td>
                     </tr>
                 </table>
 
@@ -76,7 +76,7 @@
       
                     <tr>
                     <td><label>Bayaran</label></td>
-                    <td><div class="price">RM200</div></td>
+                    <td><div class="price">RM {{item.ruangprice*item.quantity}}</div></td>
                     </tr>
       
                     <tr>
@@ -86,13 +86,13 @@
       
                     <tr>
                     <td><label>Jumlah Bayaran</label></td>
-                    <td><div class="price">RM200</div></td>
+                    <td><div class="price">RM {{item.total}}</div></td>
                     </tr>
                   </table>
                 <br><br><br>
 
                 <input type="submit" class="update" name="update" value="Kemaskini" id="fed_btn" (click)="updateReservation(item.reserveID)">
-                <input type="button" name="delete" value="Padam" id="fed_btn" (click)="deleteReservation()">
+                <input type="button" name="delete" value="Padam" id="fed_btn" (click)="deleteReservation(item.reserveID)">
             </div>
           <!-- </div> -->
         <hr class="line">

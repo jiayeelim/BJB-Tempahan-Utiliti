@@ -13,15 +13,16 @@ class tempReserveId{
 class tempReservelist{
   reserveID: string;
   name: string;
-  startdate: Date;
-  starttime: Time;
-  enddate: Date;
-  endtime: Time;
-  //quantity: number;
+  startdate: any;
+  starttime: any;
+  enddate: any;
+  endtime: any;
+  quantity: number;
   ruangname: string;
   ruangprice: number;
   discount: number;
   ruangpricePer: string;
+  total: number;
 
 }
 
@@ -41,7 +42,7 @@ export class ReservationService {
   reservation: tempReserveId;
   reservationList: tempReserveId[]=[];
 
-  reserveid: tempReservelist;
+  reserveid1: tempReservelist;
   reserveidList: tempReservelist[]=[];
 
   rID: string;
@@ -66,8 +67,10 @@ export class ReservationService {
           querySnapshot.forEach(documentSnapshot =>{
             this.reservationlistID = documentSnapshot.id;
             console.log(this.reservationlistID);
+            //return this.reservationlistID;
             this.fetchReservationDetails(this.reservationlistID);
-            return this.reservationlistID;
+            
+            
           });
         }
       });
@@ -92,20 +95,27 @@ export class ReservationService {
             const data = field.data();
             //console.log(this.rname);
     
-            this.reserveid = new tempReservelist();
-            this.reserveid.reserveID = field.id;
-            this.reserveid.name = data.name;
-            this.reserveid.startdate = data.startdate;
-            this.reserveid.starttime = data.starttime;
-            this.reserveid.enddate = data.enddate;
-            this.reserveid.endtime = data.endtime;
-            this.reserveid.discount = data.discount;
-            this.reserveid.ruangname = data.ruangname;
-            this.reserveid.ruangprice = data.ruangprice;
-            this.reserveid.ruangpricePer = data.ruangpricePer;
+            this.reserveid1 = new tempReservelist();
+            this.reserveid1.reserveID = field.id;
+            this.reserveid1.name = data.name;
+            //var startDateTime = data.startdate.toDate().toString().split(' ');
+            //this.reserveid1.startdate = startDateTime[1] + ' ' + startDateTime[2] + ' ' + startDateTime[3];
+            //this.reserveid1.starttime = startDateTime[4];
+            this.reserveid1.startdate =data.startdate.toDate();
+            this.reserveid1.enddate = data.enddate.toDate();
+            //var endDateTime = data.enddate.toDate().toString().split(' ');
+            //this.reserveid1.enddate = endDateTime[1] + ' ' + endDateTime[2] + ' ' + endDateTime[3];
+            //this.reserveid1.endtime = endDateTime[4];
+        
+            this.reserveid1.discount = data.discount;
+            this.reserveid1.ruangname = data.ruangname;
+            this.reserveid1.ruangprice = data.ruangprice;
+            this.reserveid1.ruangpricePer = data.ruangpricePer;
+            this.reserveid1.quantity = data.quantity;
+            this.reserveid1.total = data.total;
             
     
-            this.reserveidList.push(this.reserveid);
+            this.reserveidList.push(this.reserveid1);
           });
 
           this.reserveID_list.push($reserveid);
@@ -123,14 +133,16 @@ export class ReservationService {
           tempReserveId.reservationID = this.reserveID_list[i].reservationID;
 
           newList.push(tempReserveId);
+          console.log(tempReserveId.reservationID);
         }
       }
       var tempReservelist= new Reservelist();
-      tempReservelist.reservername= localStorage.getItem('name');
+      //tempReservelist.reservername= localStorage.getItem('name');
+      tempReservelist.reservername='123';
       tempReservelist.reservationlist= newList.map((obj)=>{return Object.assign({},obj)});
 
-      this.fireservices.collection<Reservelist>('Reservalist').doc(reservelist_id).set(Object.assign({}, tempReservelist)).then(()=>{
-        window.alert('Tempahan telah berjaya dipadamkan!');
+      this.fireservices.collection<Reservelist>('Reservelist').doc(reservelist_id).set(Object.assign({}, tempReservelist)).then(()=>{
+        //window.alert('Tempahan telah berjaya dipadamkan!');
         window.location.reload();
       });
     }
