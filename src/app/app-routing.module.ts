@@ -21,6 +21,8 @@ import { PertanyaanAdminComponent} from './pertanyaan-admin/pertanyaan-admin.com
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import {} from '@angular/compiler';
+import { AdminViewReservationComponent } from './admin-view-reservation/admin-view-reservation.component';
+import { AdminUpdateReservationComponent } from './admin-update-reservation/admin-update-reservation.component';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 
 const routes: Routes = [
@@ -44,7 +46,9 @@ const routes: Routes = [
   {path: 'hubungi-kami', component: HubungiKamiComponent},
   {path: 'pertanyaan-admin', component: PertanyaanAdminComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
-  {path: 'verify-email/:id', component: VerifyEmailComponent}
+  {path: 'verify-email/:id', component: VerifyEmailComponent},
+  {path: 'admin-viewReservation', component: AdminViewReservationComponent},
+  {path: 'admin-updateReservation/:id', component: AdminUpdateReservationComponent}
 
   //{path: 'hubungi-kami', component: HubungiKamiComponent}
 ];

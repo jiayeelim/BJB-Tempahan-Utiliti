@@ -15,6 +15,7 @@ export class Reservation
     total:number;
     name: string;
     phoneno: string;
+    status: string;
 
 }
 

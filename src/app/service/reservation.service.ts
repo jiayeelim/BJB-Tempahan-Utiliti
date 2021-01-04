@@ -23,6 +23,7 @@ class tempReservelist{
   discount: number;
   ruangpricePer: string;
   total: number;
+  status: string;
 
 }
 
@@ -111,6 +112,7 @@ export class ReservationService {
             this.reserveid1.ruangname = data.ruangname;
             this.reserveid1.ruangprice = data.ruangprice;
             this.reserveid1.ruangpricePer = data.ruangpricePer;
+            this.reserveid1.status = data.status;
             this.reserveid1.quantity = data.quantity;
             this.reserveid1.total = data.total;
             
@@ -147,8 +149,7 @@ export class ReservationService {
       });
     }
   
-    /*newReservationData()
-    {
+    getReservationData(){
       return this.fireservices.collection<Reservation>('Reservation');
-    }*/
+    }
   }

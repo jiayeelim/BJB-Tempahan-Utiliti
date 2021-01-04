@@ -46,6 +46,8 @@ import { UserService } from './service/user.service';
 import { HubungiKamiService } from './service/hubungi-kami.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { AdminViewReservationComponent } from './admin-view-reservation/admin-view-reservation.component';
+import { AdminUpdateReservationComponent } from './admin-update-reservation/admin-update-reservation.component';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
@@ -79,6 +81,8 @@ const appRoutes: Routes = [
     PertanyaanAdminComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
+    AdminViewReservationComponent,
+    AdminUpdateReservationComponent,
     //HubungiKamiComponent,
 
     //PasswordPatternDirective,

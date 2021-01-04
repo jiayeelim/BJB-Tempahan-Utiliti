@@ -1,0 +1,102 @@
+<html>
+ <!--Banner-->
+ <div class="header flex_to_corner">
+    <div style="flex-grow: 1">
+      <img class="BJB_logo" src="/assets/image/BJB logo.png" alt="BJB logo">
+    </div>
+    <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
+    <div class="sign_in_up" style="flex-grow: 1; text-align: right">
+        Selamat Datang admin ||
+        <a href="#">LOG KELUAR</a>
+  </div>
+  </div>
+
+<!--Navigation Bar-->
+<div>
+  <ul>
+    <li><a routerLink="/admin-portal">LAMAN UTAMA</a></li>
+    <li class="dropdown">
+      <a routerLink="/view-utility">SENARAI RUANG</a>
+    </li>
+    <li><a routerLink="/admin-viewReservation">SERANAI TEMPAHAN RUANG</a></li>
+    <li><a href="/pertanyaan-admin">PERTANYAAN</a></li>
+  </ul>
+</div>
+
+<!--Register Form-->
+<div class="registercontainer">  
+  
+  <div class="utiliticontainer">
+    <form [formGroup]="updateReservationform" *ngIf="updateReservationform" (ngSubmit)='updateReservation()' ngNativeValidate>
+        <h2 align="center">Kemaskini Tempahan</h2><br>
+        <label><b>Maklumat Tentang Tempahan: {{item.reservationDescription}}</b></label><br>
+        <br><br>
+
+        <table>
+            <tr>
+            <td><label>Tarikh Mula</label></td>
+            <td><input type="date" formControlName="startdate" value="{{item.startdate}}"></td>
+          
+
+            <td><label>Masa Mula</label></td>
+            <td><input type="time" formControlName="starttime" value="{{item.starttime}}"></td>
+            </tr>
+
+            <tr>
+            <td><label>Tarikh Tamat</label></td>
+            <td><input type="date" formControlName="enddate" value="{{item.enddate}}"></td>
+
+            <td><label>Masa Tamat</label></td>
+            <td><input type="time" formControlName="endtime" value="{{item.endtime}}"></td>
+            </tr>
+          </table>
+          
+          <br><br>
+
+          <table>
+            <tr>
+            <td><label>Kadar Tempahan</label></td>
+            <td>RM {{item.ruangprice}} / {{item.ruangpricePer}}</td>
+            </tr>
+
+            <tr>
+            <td><label>Bayaran</label></td>
+            <td>RM {{item.ruangprice*item.quantity}}</td>
+            </tr>
+
+            <tr>
+            <td><label>Diskaun</label></td>
+            <td>RM <input type="number" formControlName="discount" value="{{item.discount}}" min="1" max="(item.ruangprice*item.quantity)"></td>
+            </tr>
+
+            <tr>
+            <td><label>Jumlah Bayaran</label></td>
+            <td>RM {{item.total}} </td>
+            </tr>
+          </table>
+
+          <br><br>
+
+          <label>Sila pilih status</label><br>
+          <select formControlName="status" required>
+            <option value="Pending" selected>Pending</option>
+            <option value="Aktif">Aktif</option>
+          </select><br><br>
+
+        <input type="submit" value="Kemaskini Simpanan Tempahan" id="fed_btn">
+
+    </form>
+    </div>
+</div>
+
+
+
+<!--Footer-->
+<div class="bjb_footer">
+    <a href="https://www.facebook.com/kbjbkangkarpulai/" target="_blank"><img class="footer" src="/assets/image/facebook.jpg"></a>
+    <a href="mailto:bjbkangkarpulai@gmail.com" target="_blank"><img class="footer" src="/assets/image/gmail.jpg"></a>
+  </div>
+  <div class="bjb_footer">
+    © 2020 Bark Chic, Inc. All rights reserved
+  </div>
+</html>
