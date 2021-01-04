@@ -41,6 +41,7 @@
       <!--<label>Tarikh Lahir:</label><br>
       <input type="date" name="dob" required><br><br>-->
 
+      <br>
       <label>Tempat Tinggal:</label><br><br>
       <label>Alamat 1</label>
       <input type="text" oninput="this.value = this.value.toUpperCase()" class="form-control" formControlName="address1" placeholder="contoh: Jalan Bahagia" required>
@@ -56,11 +57,12 @@
       <div *ngIf="registerFormControl.postcode.touched && registerFormControl.postcode.errors?.minlength">Sila isi Poskod yang disahkan</div>
 
       <label>Negeri</label>
-      <select formControlName="state" class="form-control"  required>
+      <select formControlName="state" required>
         <option *ngFor="let state of stateList">{{state}}</option>
       </select>
       <div class="text-danger" *ngIf="(registerFormControl.state.touched || submitted) && registerFormControl.state.errors?.required">State diperlukan</div><br>
 
+      <br>
       <label>Adakah anda Penduduk Kangkar Pulai?</label><br>
       <input type="radio" formControlName="resident" class="radio-group"  value="Yes">Ya<br>
       <input type="radio" formControlName="resident" class="radio-group" value="No">Bukan<br><br>

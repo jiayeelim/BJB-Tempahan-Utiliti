@@ -57,7 +57,7 @@ export class ForgotPasswordComponent implements OnInit {
     for(let i=0; i<this.users_id.length; i++){
       if(this.forgotpasswordForm.value.email == this.user_email[i]){
         status = true;
-        window.alert("Veritation Email Sent!!")
+        window.alert("E-mel Pengesahan Berjaya Dihantarkan !!")
         console.log(this.users_id[i]);
         this.router.navigate(['/verify-email', this.users_id[i]]);
       }
