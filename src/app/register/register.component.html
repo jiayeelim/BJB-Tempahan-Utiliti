@@ -56,14 +56,14 @@
       <div *ngIf="registerFormControl.postcode.touched && registerFormControl.postcode.errors?.minlength">Sila isi Poskod yang disahkan</div>
 
       <label>Negeri</label>
-        <select formControlName="state" class="form-control"  required>
-          <option *ngFor="let state of stateList">{{state}}</option>
-        </select>
+      <select formControlName="state" class="form-control"  required>
+        <option *ngFor="let state of stateList">{{state}}</option>
+      </select>
       <div class="text-danger" *ngIf="(registerFormControl.state.touched || submitted) && registerFormControl.state.errors?.required">State diperlukan</div><br>
 
       <label>Adakah anda Penduduk Kangkar Pulai?</label><br>
       <input type="radio" formControlName="resident" class="radio-group"  value="Yes">Ya<br>
-        <input type="radio" formControlName="resident" class="radio-group" value="No">Bukan<br><br>
+      <input type="radio" formControlName="resident" class="radio-group" value="No">Bukan<br><br>
 
       <label>E-mel</label>
       <input type="text" formControlName="email" class="form-control" placeholder="contoh: abc@gmail.com" required>
