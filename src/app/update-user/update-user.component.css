@@ -115,3 +115,47 @@ input[type=button] {
   flex-basis: 300px;
   padding: 5px;
 }
+
+/*--Responsive Page--*/
+/*--For mobile--*/
+@media only screen and (max-width: 600px){
+
+  .BJB_logo{
+    width: 50px;
+    height: 80px;
+}
+
+h1{
+    font-size: 25px;
+}
+
+.sign_in_up{
+    font-size: 15px;
+}
+
+.columnleft {
+  flex-basis: 100px;
+  margin-left: 5px;
+  padding: 10px;
+}
+
+.columnright {
+  flex-basis: 155px;
+  padding: 10px;
+}
+
+input[type=submit].update {
+  width: 200px;
+  background-color: rgb(17, 156, 187);
+  font-size: larger;
+  color: white;
+  padding: 6px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  right: 45px;
+  bottom: 10px;
+}
+}

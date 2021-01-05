@@ -94,3 +94,34 @@ button a{
     bottom: 0%;
     right: 0%;
   }
+
+/*--Responsive Page--*/
+/*--For mobile--*/
+@media only screen and (max-width: 600px){
+
+  .BJB_logo{
+    width: 50px;
+    height: 80px;
+}
+
+h1{
+    font-size: 25px;
+}
+
+.sign_in_up{
+    font-size: 15px;
+}
+
+  .columnleft {
+    flex: 50%;
+    padding: 5px;
+    padding-left: 20%;
+    margin: auto;
+}
+
+.columnright {
+    flex: 50%;
+    padding: 5px;
+    position: relative;
+}
+}
