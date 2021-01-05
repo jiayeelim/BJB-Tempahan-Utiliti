@@ -11,7 +11,7 @@
     background-color: rgb(255, 255, 255);
     padding: 20px;
     margin: auto;
-    width: 80%;
+    width: 650px;
     opacity: 90%;
     position: relative;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -77,4 +77,34 @@ input[type=submit].update {
 .columnright {
     flex-basis: 300px;
     padding: 5px;
+}
+
+/*--Responsive Page--*/
+/*--For mobile--*/
+@media only screen and (max-width: 600px){
+  .BJB_logo{
+      width: 50px;
+      height: 50px;
+  }
+
+  h1{
+      font-size: 25px;
+  }
+
+  .sign_in_up{
+      font-size: x-small;
+  }
+
+  p{
+      margin: 0px;
+  }
+
+  .box_1{
+    width: 350px;
+  }
+
+  input[type=submit].update {
+    width: 100px;
+    
+  }
 }

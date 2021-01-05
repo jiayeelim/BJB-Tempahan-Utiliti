@@ -46,3 +46,60 @@ input select, textarea {
     border-collapse: collapse;
     width: 100%;
   }
+
+/*--Responsive Page--*/
+/*--For mobile--*/
+@media only screen and (max-width: 600px){
+  .BJB_logo{
+      width: 50px;
+      height: 50px;
+  }
+
+  h1{
+      font-size: x-small;
+  }
+
+  .sign_in_up{
+      font-size: x-small;
+  }
+  
+  input[type=submit].add {
+    width: 100px;
+    background-color: rgb(17, 156, 187);
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    font-size: x-small;
+  }
+
+  .box_1{
+    width: 350px;
+  }
+
+  p{
+      margin: 0px;
+  }
+
+  .utiliticontainer{
+    width: 350px;
+  }
+  
+  input[type=date], input[type=time] {
+    width: 100px;
+    padding: 0px 0px; 
+    margin: 0px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: x-small;
+  }
+
+  
+}

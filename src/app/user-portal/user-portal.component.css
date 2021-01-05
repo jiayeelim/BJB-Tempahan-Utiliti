@@ -1,0 +1,20 @@
+/*--Responsive Page--*/
+/*--For mobile--*/
+@media only screen and (max-width: 600px){
+    .BJB_logo{
+        width: 50px;
+        height: 50px;
+    }
+
+    h1{
+        font-size: 15px;
+    }
+
+    .sign_in_up{
+        font-size: x-small;
+    }
+
+    p{
+        margin: 0px;
+    }
+}
