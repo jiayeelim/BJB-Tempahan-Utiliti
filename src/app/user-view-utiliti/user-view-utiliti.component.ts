@@ -23,12 +23,19 @@ export class UserViewUtilitiComponent implements OnInit {
   selectedRuang$: AngularFirestoreDocument<Ruang>;
   ruang: RuangWithId;
   ruangList: Array<RuangWithId> = [null];
+  route_url: Array<string> = [];
+  id: string;
 
-  constructor(private router:Router, private ruangServices: RuangService, private firestore: AngularFirestore, private storage: AngularFireStorage){
+  constructor(
+    private router:Router, 
+    private ruangServices: RuangService, 
+    private firestore: AngularFirestore, 
+    private storage: AngularFireStorage){
 
     this.ruangList.pop();
 
     const query = this.ruangServices.getRuangData().ref;
+   
     query.onSnapshot( doc => {
       doc.forEach( documentSnapshot => {
         this.selectedRuang$ = this.firestore.doc(documentSnapshot.ref);
