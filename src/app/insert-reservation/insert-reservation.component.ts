@@ -42,8 +42,9 @@ export class InsertReservationComponent implements OnInit {
       ruang: Ruang = new Ruang();
       ruangID: string;
       route_url: Array<string> = [];
+      status: string="Pending";
 
-      //name: string;
+    
       reservationData$: Observable<Reservation[]>;
 
 
@@ -95,6 +96,7 @@ export class InsertReservationComponent implements OnInit {
     this.newReservation.ruangprice = this.ruang.price;
     this.newReservation.discount = 0;
     this.newReservation.ruangpricePer = this.ruang.pricePer;
+    this.newReservation.status = this.status;
 
     const startDate = this.createReservationForm.value.startdate.toString().split('-');
     const endDate = this.createReservationForm.value.enddate.toString().split('-');
@@ -106,7 +108,7 @@ export class InsertReservationComponent implements OnInit {
 
     this.newReservation.quantity = this.calculateQuantity(this.ruang.pricePer, this.newReservation.startdate,this.newReservation.enddate);
     this.newReservation.total = (this.newReservation.ruangprice*this.newReservation.quantity)-this.newReservation.discount;
-    console.log(this.newReservation.quantity);
+    //console.log(this.newReservation.quantity);
 
     try
     {

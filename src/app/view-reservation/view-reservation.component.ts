@@ -52,7 +52,7 @@ export class ViewReservationComponent implements OnInit {
   name: string;
   reserveid: tempReservelist;
   reserveidList: tempReservelist[];
-  rname: string;
+  
 
   reserves: Reservation = new Reservation();
   reservationData: reservationID;
@@ -188,6 +188,7 @@ export class ViewReservationComponent implements OnInit {
       this.users.password = data.password;
       this.users.password2 = data.password2;
       this.user.resident = data.resident;
+      this.user.phone = data.phone;
     })
 
     query.onSnapshot( doc => {
