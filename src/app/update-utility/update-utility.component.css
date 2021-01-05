@@ -84,3 +84,42 @@ textarea{
     background-repeat: no-repeat;
     padding: 20px;
   }
+
+  .previewimg{
+    width: 350px;
+    height: 250px;
+  }
+
+  @media only screen and (max-width: 600px){
+
+    .BJB_logo{
+      width: 50px;
+      height: 80px;
+  }
+  
+  h1{
+      font-size: 25px;
+  }
+  
+  .sign_in_up{
+      font-size: 15px;
+  }
+  
+    .box_1{
+      width: 350px;
+    }
+  
+    input[type=number]{
+      width: 70%;
+    }
+  
+    select{
+      width: 70%;
+    }
+    
+    .previewimg{
+      width: 300px;
+      height: 200px;
+    }
+
+  }

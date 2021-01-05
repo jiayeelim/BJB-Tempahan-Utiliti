@@ -97,3 +97,32 @@ input[type=submit].update {
     bottom: 0%;
     right: 100px;
   }
+
+  /*--Responsive Page--*/
+/*--For mobile--*/
+@media only screen and (max-width: 600px){
+
+  .BJB_logo{
+    width: 50px;
+    height: 80px;
+}
+
+h1.title{
+    font-size: 25px;
+}
+
+.sign_in_up{
+    font-size: 15px;
+}
+
+  .img{
+    width: 250px;
+    border-radius: 4px;
+  }
+
+  input[type=submit].add {
+    width: 60px;
+    font-size: 15px;
+    padding: 5px;
+  }
+}
