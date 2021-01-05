@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AuthGuard } from './auth.guard';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent} from './home/home.component';
@@ -37,7 +38,7 @@ const routes: Routes = [
   {path: 'insertReservation/:ruangID', component: InsertReservationComponent},
   {path: 'updateReservation/:reservationID', component: UpdateReservationComponent},
   {path: 'user-view-utility', component: UserViewUtilitiComponent},
-  {path: 'viewReservation', component: ViewReservationComponent},
+  {path: 'viewReservation/:id', component: ViewReservationComponent},
   {path: 'view-utility', component: ViewUtilityComponent},
   {path: 'add-utility', component: AddUtilityComponent},
   {path: 'updateProduct/:ruangID', component: UpdateUtilityComponent},

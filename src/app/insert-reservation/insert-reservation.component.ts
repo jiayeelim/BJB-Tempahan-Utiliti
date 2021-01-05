@@ -68,8 +68,8 @@ export class InsertReservationComponent implements OnInit {
       this.newReservation.discount = 0;
 
       if(localStorage.getItem('isLoggedIn')=='true'){
-        //this.newReservation.name = localStorage.getItem('name');
-        this.newReservation.name = '123';
+        this.newReservation.name = localStorage.getItem('name');
+        //this.newReservation.name = '123';
         this.newReservation.phoneno = localStorage.getItem('phone');
         //get existing reservation or create new one
         this.reservationService.reservelist.reservername = this.newReservation.name;

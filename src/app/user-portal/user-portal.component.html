@@ -22,8 +22,7 @@
       <li class="dropdown">
         <a class="active" routerLink="/user-view-utility" class="dropbtn">SENARAI RUANG</a>
       </li>
-      <li><a href="#">TENTANG KAMI</a></li>
-      <li><a href="#">HUBUNGI KAMI</a></li>
+      <li><a class="active" [routerLink]="['/viewReservation', user.id]" class="dropbtn">SENARAI TEMPAHAN RUANG</a></li>
     </ul>
   </div>
 

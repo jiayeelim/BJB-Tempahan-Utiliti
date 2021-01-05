@@ -38,13 +38,13 @@ export class AuthService {
   }
 
 
-  isLoggedIn(){
+  /*isLoggedIn(){
     if(localStorage.getItem('isLoggedIn') == "true"){
       return true;
     }
 
     return false;
-  }
+  }*/
 
   SendVerificationMail() {
     return this.afAuth.currentUser
@@ -88,9 +88,12 @@ export class AuthService {
 
   // Sign out 
   logout() {
-    return this.afAuth.signOut().then(() => {
+    /*return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['login']);
-    })
+    })*/
+    localStorage.setItem('isLoggedIn', 'false');
+    localStorage.removeItem('token');
+    this.router.navigate(['login']);
   }
 }

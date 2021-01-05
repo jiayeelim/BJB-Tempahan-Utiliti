@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RuangService } from '../service/ruang.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage'
-import { Observable } from 'rxjs';
+import { UserService } from '../service/user.service';
+import { User } from '../models/user';
 import { Ruang } from '../models/ruang'
 import { Router } from '@angular/router';
 import { ReservationService } from '../service/reservation.service';
@@ -10,12 +11,17 @@ import { Reservation } from '../models/reservation';
 import { ReserveId } from '../models/reserveid';
 import { Time } from '@angular/common';
 
-class RuangWithId extends Ruang{
+class ruangID extends Ruang{
   id: string;
   url: string;
 }
 
-class ReservationWithId extends Reservation{
+class UserID extends User {
+  id: string;
+  url: string;
+}
+
+class reservationID extends Reservation{
   id: string;
   url: string;
 }
@@ -46,9 +52,16 @@ export class ViewReservationComponent implements OnInit {
   name: string;
   reserveid: tempReservelist;
   reserveidList: tempReservelist[];
-  rname: string="123";
+  rname: string;
 
-
+  reserves: Reservation = new Reservation();
+  reservationData: reservationID;
+  reserveList: Array<reservationID> = [null];
+  route_url: Array<string> = [];
+  id: string;
+  users: User = new User();
+  user: UserID;
+  userList: Array<UserID> = [null];
   
   //ruangData: RuangWithId = new RuangWithId();
   //reservationData: ReservationWithId = new ReservationWithId();
@@ -57,30 +70,42 @@ export class ViewReservationComponent implements OnInit {
   //reservationList: Array<ReservationWithId> = [null];
 
 
-  //selectedReservation$: AngularFirestoreDocument<Reservation>;
+  selectedReservation$: AngularFirestoreDocument<Reservation>;
+  selectedUser$: AngularFirestoreDocument<User>;
   //selectedRuang$: AngularFirestoreDocument<Ruang>;
 
-  constructor(private router:Router, private ruangServices: RuangService, private firestore: AngularFirestore, private storage: AngularFireStorage, public reservationService:ReservationService) { 
+  constructor(
+    private router:Router, 
+    private ruangServices: RuangService, 
+    private firestore: AngularFirestore, 
+    private storage: AngularFireStorage, 
+    public userService: UserService,
+    public reservationService:ReservationService) { 
+
+      this.route_url = this.router.url.split('/');
+      this.id = this.route_url[2];
+      console.log(this.id);
+
     if( localStorage.getItem('isLoggedIn')=='true'&&!this.reservationService.triggered){  
     this.name=localStorage.getItem('name');
     console.log(this.name);
 
     }
-    //this.reservationList.pop();
+    this.reserveList.pop();
     //this.ruangList.pop();
     
 
     this.reservelist = this.reservationService;
     this.reserveidList = [];
     //this.reservationService.reservelist.reservername = this.rname;
-    this.reservationService.getReserveID(this.rname);
+    this.reservationService.getReserveID(this.name);
     //this.reservationService.fetchReservationDetails(ID);
     //console.log(ID);
-/*
+
     for(let i=0; i<this.reservelist.reserveID_list.length; i++){
       this.firestore.collection<Reservation>('Reservation').doc(this.reservationService.reserveID_list[i].reservationID).get().subscribe(field =>{
         const data = field.data();
-        console.log(this.rname);
+        console.log(this.name);
 
         this.reserveid = new tempReservelist();
         this.reserveid.reserveID = field.id;
@@ -99,7 +124,7 @@ export class ViewReservationComponent implements OnInit {
       });
     }
 
-   /* const reservation_query = this.firestore.collection<Reservation>('Reservation').ref.where('name',"==",this.name);
+    const reservation_query = this.firestore.collection<Reservation>('Reservation').ref.where('name',"==",this.name);
     reservation_query.onSnapshot( doc =>{
       doc.forEach(documentSnapshot =>{
         this.selectedReservation$=this.firestore.doc(documentSnapshot.ref);
@@ -124,9 +149,6 @@ export class ViewReservationComponent implements OnInit {
         });
           //const data = documentSnapshot.data();
           //const id =value.payload.id;
-          
-        
-        
       });
     });
 
@@ -147,6 +169,52 @@ export class ViewReservationComponent implements OnInit {
         });
       });
     });*/
+
+    const query = this.userService.getUserID().ref;
+    const query_ = this.firestore.collection<User>('User').doc(this.id).get();
+
+    query_.subscribe( value => {
+      const data = value.data();
+
+      this.users.name = data.name;
+      this.users.ic= data.ic;
+      this.users.address1 = data.address1;
+      this.users.address2 = data.address2;
+      this.users.postcode = data.postcode;
+      this.users.state = data.state;
+      this.users.email = data.email;
+      this.users.phone = data.phone;
+      this.users.username = data.username;
+      this.users.password = data.password;
+      this.users.password2 = data.password2;
+      this.user.resident = data.resident;
+    })
+
+    query.onSnapshot( doc => {
+      doc.forEach( documentSnapshot => {
+        this.selectedUser$ = this.firestore.doc(documentSnapshot.ref);
+        this.selectedUser$.snapshotChanges().subscribe( value => {
+          const data = value.payload.data();
+          const id = value.payload.id;
+
+          this.user = new UserID();
+          this.user.id = id;
+          this.user.name = data.name;
+          this.user.ic= data.ic;
+          this.user.address1 = data.address1;
+          this.user.address2 = data.address2;
+          this.user.postcode = data.postcode;
+          this.user.state = data.state;
+          this.user.email = data.email;
+          this.user.phone = data.phone;
+          this.user.username = data.username;
+          this.user.password = data.password;
+          this.user.resident = data.resident;
+
+          this.userList.push(this.user);
+        });
+        })
+      });
   }
 
 
