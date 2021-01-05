@@ -92,6 +92,7 @@ export class UpdateReservationComponent implements OnInit {
       this.firestore.collection('Reservation').doc(this.reservationID).update(Object.assign({}, this.item1));
       window.alert("Kemaskini tempahan telah BERJAYA! ");
       this.updateReservationForm.reset();
+      this.router.navigate(['viewReservation']);
     }
 
     catch (err)

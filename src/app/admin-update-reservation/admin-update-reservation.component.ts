@@ -89,6 +89,7 @@ export class AdminUpdateReservationComponent implements OnInit {
       this.firestore.collection('Reservation').doc(this.reservationID).update(Object.assign({}, this.item1));
       window.alert("Kemaskini tempahan telah BERJAYA! ");
       this.updateReservationform.reset();
+      this.router.navigate(['admin-viewReservation']);
     }
 
     catch (err)
