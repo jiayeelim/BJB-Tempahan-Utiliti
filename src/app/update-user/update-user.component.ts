@@ -31,7 +31,7 @@ export class UpdateUserComponent implements OnInit {
   updateUserForm;
 
   submitted = false;
-  stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Malacca', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
+  stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Melaka', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
 
   constructor(
     private router: Router, 
@@ -60,6 +60,7 @@ export class UpdateUserComponent implements OnInit {
       this.user.username = data.username;
       this.user.password = data.password;
       this.user.password2 = data.password2;
+      this.user.resident = data.resident;
 
       this.updateUserForm = new FormGroup({
         name: new FormControl(this.user.name),
@@ -73,6 +74,7 @@ export class UpdateUserComponent implements OnInit {
         password: new FormControl(this.user.password),
         password2: new FormControl(this.user.password),
         username: new FormControl(this.user.username),
+        resident: new FormControl(this.user.resident),
       });
     });
   }
@@ -92,6 +94,7 @@ export class UpdateUserComponent implements OnInit {
           this.user.email = this.updateUserForm.value.email;
           this.user.username = this.updateUserForm.value.username;
           this.user.password = this.updateUserForm.value.password;
+          this.user.resident = this.updateUserForm.value.resident;
           //this.user.password2 = this.updateUserForm.value.password2;
   
           try{

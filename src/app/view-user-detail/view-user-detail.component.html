@@ -38,6 +38,16 @@
          <font class = "data">{{users.name}}</font>
         </div>
         </div>
+
+        <hr class="line">
+        <div class="row">
+        <div class = "columnleft">
+          <font class = "title">Nombor Kad Pengenalan</font>
+        </div>
+        <div class = "columnright">
+         <font class = "data">{{users.ic}}</font>
+        </div>
+        </div>
         
         <hr class="line">
         <div class="row">
@@ -70,6 +80,17 @@
               {{users.email}} 
           </div>
         </div>
+
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Nama Pengguna</font>
+          </div>
+          <div class = "columnright">
+              {{users.username}}
+          </div>
+        </div>
+
         <hr class="line"> <br><br>
         <input type = "submit" class="update" value="Kemas Kini" id="fed_btn" [routerLink]="['/update-user',id]">
     </div>

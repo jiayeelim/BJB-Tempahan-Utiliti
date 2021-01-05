@@ -67,6 +67,7 @@ export class ViewUserDetailComponent implements OnInit {
       this.users.username = data.username;
       this.users.password = data.password;
       this.users.password2 = data.password2;
+      this.user.resident = data.resident;
     })
 
     query.onSnapshot( doc => {
@@ -88,6 +89,7 @@ export class ViewUserDetailComponent implements OnInit {
           this.user.phone = data.phone;
           this.user.username = data.username;
           this.user.password = data.password;
+          this.user.resident = data.resident;
 
           this.userList.push(this.user);
         });

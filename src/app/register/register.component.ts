@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit{
   returnUrl: string;
 
   submitted = false;
-  stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Malacca', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
+  stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Melaka', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
 
   constructor(
     public activatedRoute: ActivatedRoute, 
@@ -84,55 +84,6 @@ export class RegisterComponent implements OnInit{
         }))
       );    
      }
-
-  /*user: any;
-  username: string;
-  password: string;
-  password2: string;
-  name: string;
-  ic: number | undefined;
-  address1: string;
-  address2: string;
-  postcode: number | undefined;
-  state: string;
-  email: string;
-  phone: number | undefined;
-  message: void;
-  resident: string;
-
-  CreateUser(){
-    let User = {};
-    User['name'] = this.name;
-    User['username'] = this.username;
-    User['password'] = this.password;
-    User['password2'] = this.password2;
-    User['ic'] = this.ic;
-    User['address1'] = this.address1;
-    User['address2'] = this.address2;
-    User['postcode'] = this.postcode;
-    User['state'] = this.state;
-    User['email'] = this.email;
-    User['phone'] = this.phone;
-    User['resident'] = this.resident;
-
-    this.registerService.create_newUser(User).then(res =>{
-      this.username = "";
-      this.password = "";
-      this.password2 = "";
-      this.name = "";
-      this.email = "";
-      this.phone = undefined;
-      this.ic = undefined;
-      this.postcode = undefined;
-      this.state = "";
-      this.resident = "";
-      console.log(res);
-      this.message = alert("User data save DONE");
-
-  }).catch(error => {
-    console.log(error);
-  });
-}*/
 
 ngOnInit(): void{
   this.user_data$.subscribe(); 
