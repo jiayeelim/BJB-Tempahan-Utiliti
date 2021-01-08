@@ -18,7 +18,7 @@
   <!--Navigation Bar-->
   <div>
     <ul>
-      <li><a routerLink="/home">LAMAN UTAMA</a></li>
+      <li><a [routerLink]="['/user-portal', this.id]">LAMAN UTAMA</a></li>
       <li >
         <a routerLink="/user-view-utility" class="dropbtn">SENARAI RUANG</a>
       </li>
