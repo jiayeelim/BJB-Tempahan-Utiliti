@@ -28,7 +28,21 @@ export class UpdateUserComponent implements OnInit {
   id: string;
   name: string;
   user_username: Array<string> = [null];
-  updateUserForm;
+  //updateUserForm;
+  updateUserForm = this.formBuilder.group({
+    name: ['',Validators.required],
+    username: ['',[Validators.required]],
+    ic: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
+    address1: ['', [Validators.required]],
+    address2: ['', [Validators.required]],
+    postcode: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    phone: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+    state: ['', [Validators.required]],
+    password: ['', Validators.compose([Validators.required, this.registerService.patternValidator()])],
+    password2: ['', [Validators.required]],
+    resident: ['', [Validators.required]],
+  })
 
   submitted = false;
   stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Melaka', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
@@ -36,12 +50,14 @@ export class UpdateUserComponent implements OnInit {
   constructor(
     private router: Router, 
     private firestore: AngularFirestore,
+    private formBuilder: FormBuilder,
     public registerService:RegisterService) {
 
     //console.log(this.router.url);
     this.route_url = this.router.url.split('/');
     this.id = this.route_url[2];
     console.log(this.id);
+    console.log(this.user.password);
 
     const query = this.firestore.collection<User>('User').doc(this.id).get();
     //console.log(this.user.name);
@@ -58,8 +74,8 @@ export class UpdateUserComponent implements OnInit {
       this.user.email = data.email;
       this.user.phone = data.phone;
       this.user.username = data.username;
-      this.user.password = data.password;
-      this.user.password2 = data.password2;
+      this.user.password = "";
+      this.user.password2 = "";
       this.user.resident = data.resident;
 
       this.updateUserForm = new FormGroup({
@@ -84,6 +100,11 @@ export class UpdateUserComponent implements OnInit {
 
   updateUser(){
 
+    let status: boolean;
+    status = true;
+
+    if(this.updateUserForm.value.password == this.updateUserForm.value.password2){
+
           this.user.name = this.updateUserForm.value.name;
           this.user.ic = this.updateUserForm.value.ic;
           this.user.address1 = this.updateUserForm.value.address1;
@@ -95,7 +116,7 @@ export class UpdateUserComponent implements OnInit {
           this.user.username = this.updateUserForm.value.username;
           this.user.password = this.updateUserForm.value.password;
           this.user.resident = this.updateUserForm.value.resident;
-          //this.user.password2 = this.updateUserForm.value.password2;
+          this.user.password2 = this.updateUserForm.value.password2;
   
           try{
             this.firestore.collection('User').doc(this.id).update(Object.assign({}, this.user));
@@ -105,11 +126,11 @@ export class UpdateUserComponent implements OnInit {
            }catch(err){
           window.alert("Sila Isikan Maklumat yang Tepat");
         }}
-      /*else{
+      else{
         window.alert("Kata Laluan mesti sepandan");
       }
       }
-      else{
+      /*else{
         window.alert("Kata Laluan Lama Mesti Sepandan!");
       }}*/
       

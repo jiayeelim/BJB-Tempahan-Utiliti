@@ -116,6 +116,20 @@
           </div>
         </div>
 
+        <hr class="line">
+        <div class="row">
+          <div class = "columnleft">
+            <font class = "title">Kata Laluan</font>
+          </div>
+          <div class = "columnright">
+            <!--<input type="password" formControlName="password" placeholder="Kata Laluan Lama" required>-->
+            <input type="password" formControlName="password" placeholder="Kata Laluan Baru" required>
+            <div class="text-danger" *ngIf="updateFromControl.password.touched && updateFromControl.password.errors?.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
+              huruf dan 1 nombor</div>      
+            <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
+          </div>
+        </div>
+
         <hr class="line"> <br><br>
         <input type="submit" class="update" value="Kemas Kini" id="reg_btn">
         </form>
