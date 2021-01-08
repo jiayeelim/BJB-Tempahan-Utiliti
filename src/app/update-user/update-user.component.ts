@@ -56,8 +56,7 @@ export class UpdateUserComponent implements OnInit {
     //console.log(this.router.url);
     this.route_url = this.router.url.split('/');
     this.id = this.route_url[2];
-    console.log(this.id);
-    console.log(this.user.password);
+    console.log(this.id); 
 
     const query = this.firestore.collection<User>('User').doc(this.id).get();
     //console.log(this.user.name);

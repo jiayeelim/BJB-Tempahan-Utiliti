@@ -38,6 +38,7 @@ export class UserPortalComponent implements OnInit {
     this.route_url = this.router.url.split('/');
     this.id = this.route_url[2];
     console.log(this.id);
+    //console.log(this.user.name);
 
     const query = this.firestore.collection<User>('User').doc(this.id).get();
 
