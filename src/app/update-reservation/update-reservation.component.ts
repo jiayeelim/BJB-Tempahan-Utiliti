@@ -21,6 +21,7 @@ export class UpdateReservationComponent implements OnInit {
   item1: Reservation = new Reservation();
   route_url: Array<string> = [];
   reservationID: string;
+  upstatus: string="Pending";
 
   updateReservationForm;
 
@@ -86,6 +87,7 @@ export class UpdateReservationComponent implements OnInit {
 
     this.item1.quantity = this.calculateQuantity(this.item.ruangpricePer, this.item1.startdate,this.item1.enddate);
     this.item1.total = (this.item.ruangprice*this.item1.quantity)-this.item.discount;
+    this.item.status = this.upstatus;
 
     try
     {
