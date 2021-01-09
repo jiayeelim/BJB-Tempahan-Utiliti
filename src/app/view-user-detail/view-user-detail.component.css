@@ -1,83 +1,84 @@
 .registercontainer {
-    position: relative;
-    background-image: url("/assets/image/background image.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 20px;
-  }
+  position: relative;
+  background-image: url("/assets/image/background image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px;
+}
 
 .box_1{
-    border-radius: 5px;
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    margin: auto;
-    width: 650px;
-    opacity: 90%;
-    position: relative;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  margin: auto;
+  width: 80%;
+  opacity: 90%;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 
-  .line{
-    color: rgb(190, 190, 190);
+.line{
+  color: rgb(190, 190, 190);
 }
 
 .row {
-    display: flex;
-  }
-  
+  display: flex;
+}
+
 .title {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .data {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 
 input[type=submit].update {
-    width: 200px;
-    background-color: rgb(17, 156, 187);
-    font-size: larger;
-    color: white;
-    padding: 6px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    position: absolute;
-    right: 40%;
-    bottom: 0%;
-  }
+  width: 200px;
+  background-color: rgb(17, 156, 187);
+  font-size: larger;
+  color: white;
+  padding: 6px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  right: 40%;
+  bottom: 0%;
+}
 
-  input[type=button] {
-    width: 75px;
-    background-color: #ff0000;
-    color: white;
-    padding: 10px;
-    margin: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 0%;
-    right: 100px;
-  }
+input[type=button] {
+  width: 75px;
+  background-color: #ff0000;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0%;
+  right: 100px;
+}
 
-  .row {
-    display: flex;
-  }
-  
+.row {
+  display: flex;
+}
+
 .columnleft {
-    flex-basis: 500px;
-    padding: 10px;
-    margin-left: 60px;
+  flex-basis: 500px;
+  padding: 10px;
+  margin-left: 60px;
 }
 
 .columnright {
-    flex-basis: 300px;
-    padding: 5px;
+  flex-basis: 300px;
+  padding: 5px;
 }
+
 
 /*--Responsive Page--*/
 /*--For mobile--*/
@@ -106,5 +107,9 @@ input[type=submit].update {
   input[type=submit].update {
     width: 100px;
     
+  }
+
+  .columnright {
+    text-align: center;
   }
 }
