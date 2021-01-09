@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
 import { UserService } from '../service/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from '../models/user';
+import { Location } from '@angular/common';
 
 class UserID extends User {
   id: string;
@@ -27,10 +28,12 @@ export class ViewUserDetailComponent implements OnInit {
   constructor(
     private router:Router,
     private firestore: AngularFirestore,
+    private location: Location, 
     public userService: UserService) {
 
     this.route_url = this.router.url.split('/');
     this.id = this.route_url[2];
+    console.log(this.id);
 
       this.username = localStorage.getItem('token');
       
@@ -97,8 +100,11 @@ export class ViewUserDetailComponent implements OnInit {
       });
   }  
 
+  back(){
+    this.location.back();
+  }
+
   ngOnInit(){ 
-    this.userService.logout();
   }
 
 }

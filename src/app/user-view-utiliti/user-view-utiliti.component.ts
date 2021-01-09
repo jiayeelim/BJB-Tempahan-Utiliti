@@ -5,6 +5,7 @@ import { AngularFireStorage } from '@angular/fire/storage'
 import { Observable } from 'rxjs';
 import { Ruang } from '../models/ruang'
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 class RuangWithId extends Ruang{
   id: string;
@@ -29,7 +30,8 @@ export class UserViewUtilitiComponent implements OnInit {
   constructor(
     private router:Router, 
     private ruangServices: RuangService, 
-    private firestore: AngularFirestore, 
+    private firestore: AngularFirestore,
+    private location: Location, 
     private storage: AngularFireStorage){
 
     this.ruangList.pop();
@@ -58,6 +60,10 @@ export class UserViewUtilitiComponent implements OnInit {
         });
       })
     });
+  }
+
+  back(){
+    this.location.back();
   }
 
   ngOnInit(): void {

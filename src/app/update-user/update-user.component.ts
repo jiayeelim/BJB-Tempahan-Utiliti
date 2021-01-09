@@ -28,8 +28,8 @@ export class UpdateUserComponent implements OnInit {
   id: string;
   name: string;
   user_username: Array<string> = [null];
-  //updateUserForm;
-  updateUserForm = this.formBuilder.group({
+  updateUserForm;
+  /*updateUserForm = this.formBuilder.group({
     name: ['',Validators.required],
     username: ['',[Validators.required]],
     ic: ['', Validators.compose([Validators.required, Validators.minLength(12), Validators.maxLength(12)])],
@@ -42,7 +42,7 @@ export class UpdateUserComponent implements OnInit {
     password: ['', Validators.compose([Validators.required, this.registerService.patternValidator()])],
     password2: ['', [Validators.required]],
     resident: ['', [Validators.required]],
-  })
+  })*/
 
   submitted = false;
   stateList: any = ['Johor', 'Kedah', 'Kelantan', 'Melaka', 'Negeri Sembilan', 'Pahang', 'Penang', 'Perak', 'Sabah', 'Sarawak', 'Selangor', 'Terengganu']
@@ -51,6 +51,7 @@ export class UpdateUserComponent implements OnInit {
     private router: Router, 
     private firestore: AngularFirestore,
     private formBuilder: FormBuilder,
+    private location: Location, 
     public registerService:RegisterService) {
 
     //console.log(this.router.url);
@@ -80,18 +81,22 @@ export class UpdateUserComponent implements OnInit {
       this.updateUserForm = new FormGroup({
         name: new FormControl(this.user.name),
         ic: new FormControl(this.user.ic),
-        address1: new FormControl(this.user.address1),
-        address2: new FormControl(this.user.address2),
-        postcode: new FormControl(this.user.postcode),
-        state: new FormControl(this.user.state),
-        email: new FormControl(this.user.email),
-        phone: new FormControl(this.user.phone),
-        password: new FormControl(this.user.password),
-        password2: new FormControl(this.user.password),
+        address1: new FormControl(this.user.address1, [Validators.required]),
+        address2: new FormControl(this.user.address2, [Validators.required]),
+        postcode: new FormControl(this.user.postcode, [Validators.required]),
+        state: new FormControl(this.user.state, [Validators.required]),
+        email: new FormControl(this.user.email, [Validators.required, Validators.email]),
+        phone: new FormControl(this.user.phone, [Validators.required]),
+        password: new FormControl(this.user.password,  Validators.compose([Validators.required, this.registerService.patternValidator()])),
+        password2: new FormControl(this.user.password,  Validators.compose([Validators.required, this.registerService.patternValidator()])),
         username: new FormControl(this.user.username),
-        resident: new FormControl(this.user.resident),
+        resident: new FormControl(this.user.resident, [Validators.required]),
       });
     });
+  }
+
+  back(){
+    this.location.back();
   }
 
   ngOnInit(): void {
@@ -102,6 +107,10 @@ export class UpdateUserComponent implements OnInit {
     let status: boolean;
     status = true;
 
+    if(this.updateUserForm.value.address1 && this.updateUserForm.value.address2 && this.updateUserForm.value.state && this.updateUserForm.value.postcode){
+    if(this.updateUserForm.value.email){
+    if(this.updateUserForm.value.phone){
+    if(this.updateUserForm.value.password && this.updateUserForm.value.password2){
     if(this.updateUserForm.value.password == this.updateUserForm.value.password2){
 
           this.user.name = this.updateUserForm.value.name;
@@ -129,9 +138,19 @@ export class UpdateUserComponent implements OnInit {
         window.alert("Kata Laluan mesti sepandan");
       }
       }
-      /*else{
-        window.alert("Kata Laluan Lama Mesti Sepandan!");
-      }}*/
+      else{
+        window.alert("Kata Laluan Mesti Diisikan");
+      }}
+      else{
+        window.alert("Telefon Nombor Mesti Diisikan");
+      }}
+      else{
+        window.alert("Emel Mesti Diisikan");
+      }}
+      else{
+        window.alert("Alamat Peluh Mesti Diisikan");
+      }
+    }
       
   get updateFromControl() {return this.updateUserForm.controls; }
 

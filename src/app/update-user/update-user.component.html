@@ -8,15 +8,12 @@
       <img class="BJB_logo" src="/assets/image/BJB logo.png" alt="BJB logo">
     </div>
     <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
-    <div class="sign_in_up" style="flex-grow: 1; text-align: right">
-      <a routerLink = "/home"><b>LOG KELUAR</b></a>
-    </div>
 </div>
 
 <!--Navigation Bar-->
 <div>
     <ul>
-      <li><a [routerLink]="['/user-portal', this.id]">LAMAN UTAMA</a></li>
+      <li><a (click)="back()">LAMAN UTAMA</a></li>
     </ul>
 </div>
 
@@ -124,9 +121,12 @@
           <div class = "columnright">
             <!--<input type="password" formControlName="password" placeholder="Kata Laluan Lama" required>-->
             <input type="password" formControlName="password" placeholder="Kata Laluan Baru" required>
+            <div class="text-danger" *ngIf="(updateFromControl.password.touched || submitted)&& updateFromControl.password.errors?.required">Kata Laluan Baru diperlukan</div>
             <div class="text-danger" *ngIf="updateFromControl.password.touched && updateFromControl.password.errors?.invalidPassword">Kata laluan mestilah sekurang-kurangnya 8 aksara, 1 huruf besar, 1 huruf kecil
               huruf dan 1 nombor</div>      
             <input type="password" formControlName="password2" placeholder="Kata Laluan Baru" required>
+            <div class="text-danger" *ngIf="(updateFromControl.password2.touched || submitted)&& updateFromControl.password2.errors?.required">Kata Laluan Baru diperlukan</div>
+            
           </div>
         </div>
 

@@ -33,6 +33,11 @@ export class UserPortalComponent implements OnInit {
     public userService: UserService,
     public authService: AuthService) {
 
+      if(this.isLoggedIn()) {
+        this.name = localStorage.getItem('name');
+        this.id = localStorage.getItem('id');
+      }
+
     this.userList.pop();
 
     this.route_url = this.router.url.split('/');
@@ -60,13 +65,7 @@ export class UserPortalComponent implements OnInit {
       this.user.password = data.password;
       this.user.password2 = data.password2;
     });
-
-
-    if(this.isLoggedIn()) {
-      this.name = localStorage.getItem('name');
-      this.id = localStorage.getItem('id');
-    }
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -75,14 +74,19 @@ export class UserPortalComponent implements OnInit {
     if(localStorage.getItem('isLoggedIn') == "true"){
       return true;
     }
-
-    return false;
+    else{
+    window.alert('Sila log masuk.');
+    this.router.navigate(['/login']);
+    }
   }
 
-  logout(): void {
+  logout(){
+
+    var selection = confirm("Adakah anda pasti log keluar?");
+    if(selection == true){
     console.log("Logout");
     this.authService.logout();
-    this.router.navigate(['/login']);
-  }
+    this.router.navigate(['']);
+  }}
 
 }
