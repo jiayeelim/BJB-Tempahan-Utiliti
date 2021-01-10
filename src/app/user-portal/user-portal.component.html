@@ -10,7 +10,7 @@
     <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
     <div class="sign_in_up" style="flex-grow: 1; text-align: right">
       Selamat Datang <h2>{{user.name}}</h2>
-      <a *ngIf="isLoggedIn()" (click)="logout()">LOG KELUAR</a> ||
+      <a [routerLink]="['/user-portal', user.id]" *ngIf="isLoggedIn()" (click)="logout()">LOG KELUAR</a> ||
       <a [routerLink]="['/view-user-detail', user.id]">KEMAS KINI AKAUN</a>
 </div>
   </div>

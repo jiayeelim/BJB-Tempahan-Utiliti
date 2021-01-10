@@ -15,10 +15,26 @@ export class AdminPortalComponent implements OnInit {
     //this.username = localStorage.getItem('token');
   }
 
+  isLoggedIn(){
+    if(localStorage.getItem('isLoggedIn') == "true"){
+      return true;
+    }
+    else{
+    window.alert('Sila log masuk.');
+    this.router.navigate(['/login']);
+    }
+  }
+
   logout(): void {
+    /*console.log("Logout");
+    this.authService.logout();
+    this.router.navigate(['/login']);*/
+    var selection = confirm("Adakah anda pasti log keluar?");
+    if(selection == true){
     console.log("Logout");
     this.authService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
+  }
   }
 
 }
