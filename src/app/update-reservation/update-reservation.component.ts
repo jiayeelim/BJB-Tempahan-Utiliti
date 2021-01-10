@@ -94,7 +94,7 @@ export class UpdateReservationComponent implements OnInit {
       this.firestore.collection('Reservation').doc(this.reservationID).update(Object.assign({}, this.item1));
       window.alert("Kemaskini tempahan telah BERJAYA! ");
       this.updateReservationForm.reset();
-      this.router.navigate(['viewReservation']);
+      parent.history.go(-2);
     }
 
     catch (err)
@@ -144,6 +144,10 @@ export class UpdateReservationComponent implements OnInit {
       return days
     }
    
+  }
+
+  back(){
+    parent.history.go(-2);
   }
   
 

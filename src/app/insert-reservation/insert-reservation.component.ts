@@ -162,5 +162,9 @@ export class InsertReservationComponent implements OnInit {
 
   }
 
+  back(){
+    parent.history.go(-2);
+  }
+
 
 }
