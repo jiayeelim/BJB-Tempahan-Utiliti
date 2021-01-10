@@ -53,18 +53,18 @@
         </div>
           <div class = "columnright">
             <input type="text" oninput="this.value = this.value.toUpperCase()" formControlName="address1" value="{{user.address1}}" required> 
-            <div class="text-danger" *ngIf="(updateFromControl.address1.touched || submitted) && updateFromControl.address1.errors.required">Alamat1 diperlukan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.address1.touched || submitted) && updateFromControl.address1.errors?.required">Alamat1 diperlukan</div>
 
             <input type="text" formControlName="address2" oninput="this.value = this.value.toUpperCase()" value="{{user.address2}}" required>  
-            <div class="text-danger" *ngIf="(updateFromControl.address2.touched || submitted) && updateFromControl.address2.errors.required">Alamat2 diperlukan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.address2.touched || submitted) && updateFromControl.address2.errors?.required">Alamat2 diperlukan</div>
 
             <select formControlName="state" class="form-control"  required>
               <option *ngFor="let state of stateList">{{state}}</option>
             </select>
 
             <input type="number" formControlName="postcode" value="{{user.postcode}}" required>
-            <div class="text-danger" *ngIf="(updateFromControl.postcode.touched || submitted) && updateFromControl.postcode.errors.required">Poskod diperlukan</div>
-            <div *ngIf="updateFromControl.postcode.touched && updateFromControl.postcode.errors.minlength">Sila isi Poskod yang disahkan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.postcode.touched || submitted) && updateFromControl.postcode.errors?.required">Poskod diperlukan</div>
+            <div *ngIf="updateFromControl.postcode.touched && updateFromControl.postcode.errors?.minlength">Sila isi Poskod yang disahkan</div>
           </div>
         </div>
 
@@ -75,8 +75,8 @@
           </div>
           <div class = "columnright">
             <input type="number" formControlName="phone" minlength=10 maxlength=11 value="{{user.phone}}" required> 
-            <div class="text-danger" *ngIf="(updateFromControl.phone.touched || submitted) && updateFromControl.phone.errors.required">Nombor Telefon diperlukan</div>
-            <div class="text-danger" *ngIf="updateFromControl.phone.touched && updateFromControl.phone.errors.minlength">Sila isi Nombor Telefon yang disahkan</div>   
+            <div class="text-danger" *ngIf="(updateFromControl.phone.touched || submitted) && updateFromControl.phone.errors?.required">Nombor Telefon diperlukan</div>
+            <div class="text-danger" *ngIf="updateFromControl.phone.touched && updateFromControl.phone.errors?.minlength">Sila isi Nombor Telefon yang disahkan</div>   
           </div>
         </div>
 
@@ -98,8 +98,8 @@
           </div>
           <div class = "columnright">
             <input type="text" formControlName="email" value="{{user.email}}" required> 
-            <div class="text-danger" *ngIf="(updateFromControl.email.touched || submitted) && updateFromControl.email.errors.required">E-mel diperlukan</div>
-            <div class="text-danger"*ngIf="updateFromControl.email.touched && updateFromControl.email.errors.email">Sila isi E-mel yang disahkan</div>
+            <div class="text-danger" *ngIf="(updateFromControl.email.touched || submitted) && updateFromControl.email.errors?.required">E-mel diperlukan</div>
+            <div class="text-danger"*ngIf="updateFromControl.email.touched && updateFromControl.email.errors?.email">Sila isi E-mel yang disahkan</div>
           </div>
         </div>
 
