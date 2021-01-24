@@ -11,12 +11,12 @@
 <!--Navigation Bar-->
 <div>
     <ul>
-      <li><a href="/home">LAMAN UTAMA</a></li>
+      <li><a routerLink="/home">LAMAN UTAMA</a></li>
       <li class="dropdown">
         <a routerLink="/user-view-utility" class="dropbtn">SENARAI RUANG</a>
       </li>
       <li><a href="#">TENTANG KAMI</a></li>
-      <li><a href="#">HUBUNGI KAMI</a></li>
+      <li><a routerLink="/hubungi-kami">HUBUNGI KAMI</a></li>
     </ul>
   </div>
 
@@ -45,11 +45,11 @@
             <input type="submit" value="Log Masuk">
 
             <div class="sign_in_up" style="flex-grow: 1; text-align: center">
-                <p>Tiada Akaun? <a class="click-here" href='/register' target="_blank">Klik Sini</a> Untuk Daftar Akaun Anda!</p>
+                <p>Tiada Akaun? <a class="click-here" routerLink='/register' target="_blank">Klik Sini</a> Untuk Daftar Akaun Anda!</p>
                 <p><b>OR</b></p>
-                <p>Log Masuk Sebagai <a class="click-here" href='/login-admin' target="_blank">ADMIN</a></p>
+                <p>Log Masuk Sebagai <a class="click-here" routerLink='/login-admin' target="_blank">ADMIN</a></p>
                 <p><b>OR</b></p>
-                <p><a class="click-here" href='/forgot-password' target="_blank">Terlupa Kata Laluan?</a></p>
+                <p><a class="click-here" routerLink='/forgot-password' target="_blank">Terlupa Kata Laluan?</a></p>
             </div>
 
         </form>

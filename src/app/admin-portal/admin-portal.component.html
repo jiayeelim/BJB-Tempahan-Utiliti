@@ -10,7 +10,7 @@
     <div style="flex-grow: 8; text-align:left"><h1>BJB TEMPAHAN UTILITI</h1></div>
     <div class="sign_in_up" style="flex-grow: 1; text-align: right">
         Selamat Datang admin ||
-        <a href="/admin-portal" *ngIf="isLoggedIn()" (click)="logout()">LOG KELUAR</a>
+        <a routerLink="/admin-portal" *ngIf="isLoggedIn()" (click)="logout()">LOG KELUAR</a>
   </div>
   </div>
 
@@ -22,7 +22,7 @@
         <a routerLink="/view-utility">SENARAI UTILITI</a>
       </li>
       <li><a routerLink="/admin-viewReservation">SERANAI TEMPAHAN RUANG</a></li>
-      <li><a href="/pertanyaan-admin">PERTANYAAN</a></li>
+      <li><a routerLink="/pertanyaan-admin">PERTANYAAN</a></li>
     </ul>
   </div>
 
