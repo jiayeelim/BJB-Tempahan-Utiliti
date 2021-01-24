@@ -38,19 +38,16 @@ export class AuthService {
   }
 
 
-  /*isLoggedIn(){
-    if(localStorage.getItem('isLoggedIn') == "true"){
-      return true;
-    }
-
-    return false;
-  }*/
-
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user'));
+    return (user !== null && user.emailVerified !== false) ? true : false;
+  }
+  
   SendVerificationMail() {
     return this.afAuth.currentUser
     .then(u => u.sendEmailVerification())
     .then(() => {
-      this.router.navigate(['verify-email']);
+      this.router.navigate(['verify-email-address']);
     })
   }
 
@@ -111,6 +108,7 @@ export class AuthService {
       merge: true
     })
   }
+
 
   // Sign out 
   logout(): void {
