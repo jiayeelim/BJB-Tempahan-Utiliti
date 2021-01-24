@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '../models/user';
-//import { auth } from '../../node_modules/@firebase/auth';
+//import { auth } from '@firebase/auth';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
@@ -52,6 +52,32 @@ export class AuthService {
     .then(() => {
       this.router.navigate(['verify-email']);
     })
+  }
+
+  // Sign in with email/password
+  SignIn(email, password) {
+    return this.afAuth.signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['home']);
+        });
+        this.SetUserData(result.user);
+      }).catch((error) => {
+        window.alert(error.message)
+      })
+  }
+
+  // Sign up with email/password
+  SignUp(email, password) {
+    return this.afAuth.createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        /* Call the SendVerificaitonMail() function when new user sign 
+        up and returns promise */
+        //this.SendVerificationMail();
+        this.SetUserData(result.user);
+      }).catch((error) => {
+        window.alert(error.message)
+      })
   }
 
   forgotPassword(passwordResetEmail) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from '../service/auth.service';
@@ -28,6 +29,7 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public userService: UserService,
+    public afAuth: AngularFireAuth,
     private firestore: AngularFirestore,
     private router: Router) {
 
@@ -59,6 +61,7 @@ export class ForgotPasswordComponent implements OnInit {
         status = true;
         window.alert("E-mel Pengesahan Berjaya Dihantarkan !!")
         console.log(this.users_id[i]);
+        //this.router.navigate(['/auth']);
         this.router.navigate(['/verify-email', this.users_id[i]]);
       }
     }
@@ -67,6 +70,15 @@ export class ForgotPasswordComponent implements OnInit {
       window.alert("Error Email!");
     }
       this.forgotpasswordForm.reset();
+  }
+
+  forgotPassword(passwordResetEmail) {
+    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
+    .then(() => {
+      window.alert('Password reset email sent, check your inbox.');
+    }).catch((error) => {
+      window.alert(error)
+    })
   }
 
 }

@@ -42,7 +42,7 @@
                 <div *ngIf="f.password.errors.required">Password is required></div>
               </div>
             <!--</div>-->
-            <input type="submit" value="Log Masuk">
+            <input type="submit" value="Log Masuk" (click)= "authService.SignIn(username.value, password.value)">
 
             <div class="sign_in_up" style="flex-grow: 1; text-align: center">
                 <p>Tiada Akaun? <a class="click-here" href='/register' target="_blank">Klik Sini</a> Untuk Daftar Akaun Anda!</p>
