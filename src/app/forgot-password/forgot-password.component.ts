@@ -70,7 +70,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.user_data$.subscribe();
+    //this.user_data$.subscribe();
   }
 
   forgotpassword(passwordResetEmail){
@@ -95,16 +95,11 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   forgotPassword(passwordResetEmail) {
+    
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
-
-      let status: boolean;
-      status = false;
-      for(let i=0; i<this.users_id.length; i++){
-        if(this.forgotpasswordForm.value.email == this.user_email[i]){
-          status = true;
-      window.alert('Password reset email sent, check your inbox.');
-      this.router.navigate(['/verify-email-address', this.user.id[i]]);}}
+          window.alert('Password reset email sent, check your inbox.');
+          this.router.navigate(['/verify-email-address']);
     }).catch((error) => {
       window.alert(error)
     })

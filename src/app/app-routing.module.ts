@@ -49,7 +49,7 @@ const routes: Routes = [
   {path: 'pertanyaan-admin', component: PertanyaanAdminComponent},
   {path: 'forgot-password', component: ForgotPasswordComponent},
   {path: 'verify-email/:id', component: VerifyEmailComponent},
-  {path: 'verify-email-address/:id', component: VerifyEmailAddressComponent},
+  {path: 'verify-email-address', component: VerifyEmailAddressComponent},
   {path: 'admin-viewReservation', component: AdminViewReservationComponent},
   {path: 'admin-updateReservation/:id', component: AdminUpdateReservationComponent}
 

@@ -64,18 +64,6 @@ export class VerifyEmailAddressComponent implements OnInit {
       this.user.password2 = data.password2;
     });
 
-    this.user_data$ = this.authService.getUserData().snapshotChanges().pipe(
-      map(changes => changes.map(a =>{
-        const data = a.payload.doc.data() as User;
-        const id = a.payload.doc.id;
-
-        this.user_email.push(data.email);
-        this.users_id.push(id);
-
-        console.log(data.email)
-        console.log(id)
-        return {id,...data};
-   })));
    }
 
   ngOnInit(): void {
