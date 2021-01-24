@@ -48,6 +48,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AdminViewReservationComponent } from './admin-view-reservation/admin-view-reservation.component';
 import { AdminUpdateReservationComponent } from './admin-update-reservation/admin-update-reservation.component';
+import { VerifyEmailAddressComponent } from './verify-email-address/verify-email-address.component';
 //import { HubungiKamiComponent } from './hubungi-kami/hubungi-kami.component';
 //import { SizeDetectorComponent } from './size-detector/size-detector.component';
 
@@ -83,6 +84,7 @@ const appRoutes: Routes = [
     VerifyEmailComponent,
     AdminViewReservationComponent,
     AdminUpdateReservationComponent,
+    VerifyEmailAddressComponent,
     //HubungiKamiComponent,
 
     //PasswordPatternDirective,
