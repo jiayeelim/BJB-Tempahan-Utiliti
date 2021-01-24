@@ -99,7 +99,7 @@ export class ForgotPasswordComponent implements OnInit {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
           window.alert('Password reset email sent, check your inbox.');
-          this.router.navigate(['/verify-email-address']);
+          this.router.navigate(['/home']);
     }).catch((error) => {
       window.alert(error)
     })
