@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RuangService } from '../service/ruang.service';
+import { AuthService } from '../service/auth.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage'
 import { Ruang } from '../models/ruang'
@@ -23,7 +24,12 @@ export class ViewUtilityComponent implements OnInit {
   ruang: RuangWithId;
   ruangList: Array<RuangWithId> = [null];
 
-  constructor(private router:Router, private ruangServices: RuangService, private firestore: AngularFirestore, private storage: AngularFireStorage){
+  constructor(
+    private router:Router, 
+    private ruangServices: RuangService, 
+    private firestore: AngularFirestore, 
+    private storage: AngularFireStorage,
+    public authService: AuthService){
 
     this.ruangList.pop();
 
@@ -54,4 +60,13 @@ export class ViewUtilityComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  logout(){
+
+    var selection = confirm("Adakah anda pasti log keluar?");
+    if(selection == true){
+    console.log("Logout");
+    this.authService.logout();
+    this.router.navigate(['']);
+  }}
 }
