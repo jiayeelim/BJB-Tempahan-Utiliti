@@ -118,6 +118,8 @@ export class AuthService {
     })*/
     localStorage.setItem('isLoggedIn', 'false');
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('name');
     this.router.navigate(['login']);
   }
 }
