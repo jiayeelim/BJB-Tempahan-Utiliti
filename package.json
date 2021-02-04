@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~11.0.1",
     "@angular/router": "~11.0.1",
     "@auth0/angular-jwt": "^5.0.2",
+    "@zeit/ng-deploy": "^0.3.0",
     "firebase": "^8.1.2",
     "firebase-functions": "^3.13.1",
     "rxjs": "~6.6.0",

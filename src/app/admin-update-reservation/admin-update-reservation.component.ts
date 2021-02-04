@@ -14,6 +14,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class AdminUpdateReservationComponent implements OnInit {
 
+  optionValue: any;
   item: Reservation = new Reservation();
   item1: Reservation = new Reservation();
   route_url: Array<string> = [];
@@ -52,6 +53,7 @@ export class AdminUpdateReservationComponent implements OnInit {
       this.item.reservationDescription = data.reservationDescription;
       this.item.total = data.total;
       this.item.status = data.status;
+      this.item.reason = data.reason;
 
       this.updateReservationform = new FormGroup({
         startdate: new FormControl(this.item.startdate),
@@ -60,6 +62,7 @@ export class AdminUpdateReservationComponent implements OnInit {
         endtime: new FormControl(this.item.endtime),
         discount: new FormControl(this.item.discount),
         status: new FormControl(this.item.status),
+        reason: new FormControl(this.item.reason),
       });
 
     });
@@ -80,6 +83,7 @@ export class AdminUpdateReservationComponent implements OnInit {
 
     this.item1.discount = this.updateReservationform.value.discount;
     this.item1.status = this.updateReservationform.value.status;
+    this.item1.reason = this.updateReservationform.value.reason;
 
     this.item1.quantity = this.calculateQuantity(this.item.ruangpricePer, this.item1.startdate,this.item1.enddate);
     this.item1.total = (this.item.ruangprice*this.item1.quantity)-this.item1.discount;
@@ -142,5 +146,7 @@ export class AdminUpdateReservationComponent implements OnInit {
       return days
     }
   }
+
+  
 
 }

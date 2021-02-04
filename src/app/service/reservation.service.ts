@@ -24,6 +24,7 @@ class tempReservelist{
   ruangpricePer: string;
   total: number;
   status: string;
+  reason: string;
 
 }
 
@@ -113,6 +114,7 @@ export class ReservationService {
             this.reserveid1.ruangprice = data.ruangprice;
             this.reserveid1.ruangpricePer = data.ruangpricePer;
             this.reserveid1.status = data.status;
+            this.reserveid1.reason = data.reason;
             this.reserveid1.quantity = data.quantity;
             this.reserveid1.total = data.total;
             

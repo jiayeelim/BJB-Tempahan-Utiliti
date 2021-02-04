@@ -57,6 +57,7 @@ export class AdminViewReservationComponent implements OnInit {
             this.reservation.discount = data.discount;
             this.reservation.total =data.total;
             this.reservation.status = data.status;
+            this.reservation.reason = data.reason;
 
             this.reservationList.push(this.reservation);
             
@@ -74,6 +75,7 @@ export class AdminViewReservationComponent implements OnInit {
       //console.log(reserveID);
       //this.reserveService.deleteReservation(this.reservationService.reservationlistID,reserveID);
       this.firestore.collection<Reservation>('Reservation').doc(reserveID).delete();
+      window.location.reload();
   }
   }
 

@@ -70,9 +70,6 @@ export class UserViewUtilitiComponent implements OnInit {
     
   }
 
-  //addReservation(ruangID){
-  //  this.router.navigate(['/insertReservation',ruangID]);
- // }
 
   }
 

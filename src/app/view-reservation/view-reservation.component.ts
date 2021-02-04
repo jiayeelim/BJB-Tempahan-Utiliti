@@ -37,6 +37,8 @@ class tempReservelist{
   ruangname: string;
   ruangprice: number;
   discount: number;
+  status: string;
+  reason: string;
   ruangpricePer: string;
 
 }
@@ -118,6 +120,8 @@ export class ViewReservationComponent implements OnInit {
         this.reserveid.ruangname = data.ruangname;
         this.reserveid.ruangprice = data.ruangprice;
         this.reserveid.ruangpricePer = data.ruangpricePer;
+        this.reserveid.status = data.status;
+        this.reserveid.reason = data.reason;
         
 
         this.reserveidList.push(this.reserveid);
@@ -143,6 +147,8 @@ export class ViewReservationComponent implements OnInit {
           this.reservationData.ruangprice = data.ruangprice;
           this.reservationData.discount = data.discount;
           this.reservationData.ruangname = data.ruangname;
+          this.reservationData.status = data.status;
+          this.reservationData.reason = data.reason;
 
           //this.reservationList.push(this.reservationData);
           //console.log(this.name);
@@ -232,7 +238,6 @@ export class ViewReservationComponent implements OnInit {
       console.log(reservationID);
       this.reservelist.deleteReservation(this.reservationService.reservationlistID,reservationID);
       this.firestore.collection<Reservation>('Reservation').doc(reservationID).delete();
-      
     }
   }
 
